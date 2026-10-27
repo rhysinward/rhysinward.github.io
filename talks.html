@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-role','listing-event','listing-place','listing-when','listing-kind','listing-links','listing-note',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-event','listing-place','listing-when','listing-kind','listing-role','listing-links','listing-note',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-role","listing-event","listing-place","listing-when","listing-kind","listing-links","listing-note"],
+      searchColumns: ["listing-title","listing-event","listing-place","listing-when","listing-kind","listing-role","listing-links","listing-note"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -229,14 +229,24 @@ window.Quarto = {
 <div class="chip-filter" role="group" aria-label="Filter talks and posters" data-target=".talk">
   <button type="button" class="chip" data-kind="all" aria-pressed="true">All</button>
 
-  <button type="button" class="chip kk-talk" data-kind="talk" aria-pressed="false"><span class="dot"></span>Talks</button>
-
   <button type="button" class="chip kk-poster" data-kind="poster" aria-pressed="false"><span class="dot"></span>Posters</button>
+
+  <button type="button" class="chip kk-talk" data-kind="talk" aria-pressed="false"><span class="dot"></span>Talks</button>
 
   <button type="button" class="chip kk-workshop" data-kind="workshop" aria-pressed="false"><span class="dot"></span>Workshops</button>
 
 </div>
 <ul class="talks">
+
+  <li class="talk kk-poster" data-kind="poster">
+    <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
+    <div class="talk-body">
+      <span class="tag">Poster</span>
+      <h3 class="anchored">Climate, importation, and immunity shape chikungunya transmission across emerging and endemic settings</h3>
+      <p class="talk-meta">International Pandemic Sciences Conference · Singapore · 2026</p>
+      
+    </div>
+  </li>
 
   <li class="talk kk-talk" data-kind="talk">
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
