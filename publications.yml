@@ -1,7 +1,8 @@
 # Newest first. "Inward RPD" is bolded automatically.
 # Joint first authors are marked * (only where Inward is one of them).
 # Long author lists are shortened with … around "Inward RPD".
-# featured: 1, 2 or 3 puts a paper on the home page, in that order, with its summary.
+# featured: a number puts a paper on the home page (lowest first) with its summary; 3 or 4 lay out best.
+# A featured entry needs a Paper or Preprint link.
 # Text in [square brackets] shows as a dashed placeholder.
 
 - title: "Global approaches to infectious disease surveillance and modeling"
@@ -114,7 +115,7 @@
   year: "2023"
   tags: [Joint first author]
   featured: 3
-  summary: "Phylogenetic analysis traced how the Cosmopolitan genotype of DENV-2 re-emerged in Ho Chi Minh City, its probable routes of introduction and the timeline of events, and showed the need for continuous genomic surveillance."
+  summary: "We traced how the Cosmopolitan genotype of DENV-2 re-emerged in Ho Chi Minh City, its probable routes of introduction and the timeline of events. The findings highlight the need for continuous, systematic genomic surveillance."
   links:
     - label: Paper
       href: https://doi.org/10.3201/eid2910.230529
@@ -138,7 +139,7 @@
   year: "2023"
   tags: [Joint first author]
   featured: 2
-  summary: "From 115,622 genomes, we identified more than 6,000 separate introductions of Omicron BA.1 into England. Six of the eight largest lineages were already spreading when Omicron was first reported, and importation continued despite travel restrictions."
+  summary: "From 115,622 genomes, we identified more than 6,000 separate introductions of Omicron BA.1 into England. Six of the eight largest lineages were already spreading when Omicron was first reported in southern Africa, and importation continued despite restrictions on travel from southern Africa."
   links:
     - label: Paper
       href: https://doi.org/10.1126/science.adg6605

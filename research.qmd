@@ -1,5 +1,8 @@
 ---
 title: "Research"
+image: assets/img/research/omicron-lineage-a.jpg
+image-alt: "Map of England showing the largest Omicron BA.1 transmission lineage spreading across the country"
+lightbox: true
 subtitle: "How pathogens are introduced, spread and persist, and how surveillance can see them clearly."
 ---
 
@@ -19,9 +22,9 @@ Each of dengue's four serotypes is made up of genotypes that rise and fall. I us
 ::: {.findings}
 [What we found]{.findings-label}
 
-- Among dengue patients sampled at the Hospital for Tropical Diseases in Ho Chi Minh City, DENV-2 replaced DENV-1 as the predominant serotype in 2019, with several DENV-2 genotypes circulating side by side.
+- Among dengue patients sampled at the Hospital for Tropical Diseases in Ho Chi Minh City, DENV-2 replaced DENV-1 as the predominant serotype in 2019, with two DENV-2 genotypes (Asian I and Cosmopolitan) circulating side by side.
 - The Cosmopolitan genotype re-emerged through at least three separate recent introductions into southern Vietnam (clades A, B and C), sharing ancestry with sequences from Indonesia (A and B) and Cambodia (C).
-- Two of these clades had persisted locally for at least five years, roughly two years before they were first sampled, suggesting undetected transmission across several dengue seasons.
+- Two of these clades (A and C) had persisted locally for at least five years, with about two years between their estimated common ancestor and the first sampled sequence, suggesting the genotype may have spread undetected across several dengue seasons.
 
 [Tran, Inward et al., *Emerging Infectious Diseases* 2023 (joint first author)](https://doi.org/10.3201/eid2910.230529)
 :::
@@ -41,9 +44,9 @@ Each of dengue's four serotypes is made up of genotypes that rise and fall. I us
 
 ::: {.g-col-12 .g-col-md-5}
 ::: {.real-fig}
-![](assets/img/research/denv2-cosmopolitan-tree.jpg){fig-alt="Time-scaled phylogenetic tree of the DENV-2 Cosmopolitan genotype from 1990 to the early 2020s, with Ho Chi Minh City sequences in red falling into three clades labelled A, B and C"}
+![](assets/img/research/denv2-cosmopolitan-tree.jpg){.lightbox fig-alt="Time-scaled phylogenetic tree of the DENV-2 Cosmopolitan genotype from 1990 to the early 2020s, with Ho Chi Minh City sequences in red falling into three clades labelled A, B and C"}
 
-[Time-scaled phylogeny of the DENV-2 Cosmopolitan genotype. Sequences from Ho Chi Minh City (red) fall into three clades, A to C. From [Tran, Inward et al., *Emerging Infectious Diseases* 2023](https://doi.org/10.3201/eid2910.230529) (public domain).]{.fig-credit}
+[Time-scaled phylogeny of the DENV-2 Cosmopolitan genotype. Sequences from Ho Chi Minh City are in red; 27 of the 28 new sequences from the region fall into three clades, A to C. From [Tran, Inward et al., *Emerging Infectious Diseases* 2023](https://doi.org/10.3201/eid2910.230529) (public domain).]{.fig-credit}
 :::
 :::
 ::::
@@ -62,8 +65,8 @@ Before my DPhil I worked on how SARS-CoV-2 variants of concern arrived in Englan
 [Omicron BA.1]{.findings-label}
 
 - Analysing 115,622 genomes, we identified more than 6,000 separate introductions of Omicron BA.1 into England.
-- Six of the eight largest lineages were already spreading when Omicron was first reported on 22 November 2021, and importation continued despite travel restrictions because well-connected countries elsewhere were exporting it.
-- About 6% of introductions accounted for about 80% of BA.1 infections reported in England up to the end of January 2022.
+- Six of the eight largest lineages were already spreading when Omicron was first reported in southern Africa on 22 November 2021, and importation continued despite restrictions on travel from southern Africa, because well-connected countries elsewhere were exporting it.
+- The early introductions, made before restrictions on travel from southern Africa ended on 15 December 2021, were only about 6% of the total but accounted for about 80% of BA.1 infections reported in England up to the end of January 2022.
 
 [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023 (joint first author)](https://doi.org/10.1126/science.adg6605)
 :::
@@ -83,9 +86,9 @@ Before my DPhil I worked on how SARS-CoV-2 variants of concern arrived in Englan
 ::::
 
 ::: {.real-fig .wide}
-![](assets/img/research/omicron-spread.jpg){fig-alt="Three maps of England on 30 November, 7 December and 20 December 2021, showing an Omicron transmission lineage starting in Greater London and spreading across the country"}
+![](assets/img/research/omicron-spread.jpg){.lightbox fig-alt="Three maps of England on 30 November, 7 December and 20 December 2021, showing an Omicron transmission lineage starting in Greater London and spreading across the country"}
 
-[The largest Omicron BA.1 transmission lineage spreading out of Greater London, 30 November to 20 December 2021, reconstructed by continuous phylogeography. Adapted (cropped) from [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023](https://doi.org/10.1126/science.adg6605) (author manuscript, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.fig-credit}
+[The largest Omicron BA.1 transmission lineage spreading out of Greater London, 30 November to 20 December 2021, reconstructed by continuous phylogeography. Adapted (cropped) from [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023](https://doi.org/10.1126/science.adg6605) ([author manuscript](https://europepmc.org/article/PMC/PMC10866301), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.fig-credit}
 :::
 
 ::: {.related}
@@ -107,7 +110,7 @@ Which genomes get sequenced, and how cases are reported, shapes what surveillanc
 
 - How sequences are chosen changes estimates of Rt and the growth rate, while R0 and the estimated date an outbreak began stay relatively stable.
 - In Hong Kong, sampling sequences in proportion to weekly case numbers matched case-based Rt most closely. In Amazonas, Brazil, opportunistic sampling gave the estimates that differed most.
-- Molecular clock dating placed the emergence of the Gamma variant in Amazonas in late October to early November 2020, about five weeks before the first reported case.
+- Molecular clock dating placed the common ancestor of Gamma (P.1) in Amazonas in late October to early November 2020, about five weeks before the first reported case on 6 December.
 
 [Inward, Parag & Faria, *Nature Communications* 2022 (first author)](https://doi.org/10.1038/s41467-022-32812-0) · [Code](https://github.com/rhysinward/Phylodynamic-Subsampling)
 :::
@@ -127,7 +130,7 @@ Which genomes get sequenced, and how cases are reported, shapes what surveillanc
 ::::
 
 ::: {.real-fig .wide}
-![](assets/img/research/sampling-rt-hong-kong.jpg){fig-alt="Two panels of time-varying reproduction number in Hong Kong in early 2020, comparing estimates from genomes and from case data for unsampled and proportionally sampled sequences"}
+![](assets/img/research/sampling-rt-hong-kong.jpg){.lightbox fig-alt="Two panels of time-varying reproduction number in Hong Kong in early 2020, comparing estimates from genomes and from case data for unsampled and proportionally sampled sequences"}
 
 [Hong Kong, early 2020: Rt estimated from genomes (BDSKY, blue) and from cases (EpiFilter, green), using all available sequences (left) and sequences sampled in proportion to cases (right). Adapted (cropped) from [Inward, Parag & Faria, *Nature Communications* 2022](https://doi.org/10.1038/s41467-022-32812-0) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.fig-credit}
 :::
@@ -185,7 +188,7 @@ Manuscript in preparation. I presented this work as a poster at the Internationa
 
 ::: {.g-col-12 .g-col-md-5}
 ::: {.real-fig}
-![](assets/img/research/grapevne-interface.jpg){fig-alt="Screenshot of the GRAPEVNE interface showing a module library, a canvas with a dengue workflow built from linked modules, and a module documentation panel"}
+![](assets/img/research/grapevne-interface.jpg){.lightbox fig-alt="Screenshot of the GRAPEVNE interface showing a module library, a canvas with a dengue workflow built from linked modules, and a module documentation panel"}
 
 [The GRAPEVNE interface, with a dengue workflow built from linked modules. From [Brittain, Tsui, Inward et al., *Wellcome Open Research* 2025](https://doi.org/10.12688/wellcomeopenres.23824.1) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.fig-credit}
 :::
@@ -200,7 +203,7 @@ Manuscript in preparation. I presented this work as a poster at the Internationa
 
 ## Field epidemiology
 
-Since September 2026 I've been a fellow on the UK Field Epidemiology Training Programme, based at UKHSA's North West Field Service in Liverpool. It is a two-year, full-time fellowship run by UKHSA and accredited by TEPHINET.
+Since September 2026 I've been a fellow on the UK Field Epidemiology Training Programme, based at UKHSA's North West Field Service in Liverpool. It is a two-year, full-time fellowship led by UKHSA with Public Health Wales and the Public Health Agency Northern Ireland, and accredited by TEPHINET.
 
 Fellows learn on the job across outbreak investigation, surveillance, applied research, scientific communication and teaching. The programme also supports UKHSA's international outbreak response and capacity building, which is where I want to connect genomic epidemiology with public health practice.
 :::

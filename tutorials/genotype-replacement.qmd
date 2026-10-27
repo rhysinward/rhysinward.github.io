@@ -4,6 +4,7 @@ description: "Estimate how fast a new dengue genotype takes over, with a logisti
 categories: [Dengue, Tutorial]
 date: 2026-10-24
 image: ../assets/img/dengue.svg
+image-alt: "Illustration of dengue genotypes replacing one another over time"
 ---
 
 When a new genotype arrives, the share of sequences that belong to it often follows an S-shaped curve. A logistic model fitted to monthly sequence counts sums up the takeover in one number: how fast the odds of sampling the new genotype grow each month.

@@ -1,4 +1,5 @@
 ---
+image-alt: "Portrait of Rhys Inward"
 title: "Publications"
 subtitle: "Peer-reviewed papers, preprints and software."
 listing:

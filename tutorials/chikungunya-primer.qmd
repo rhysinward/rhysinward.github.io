@@ -4,6 +4,7 @@ description: "Lineages, the mutation that helped it adapt to a new mosquito, and
 categories: [Chikungunya, Primer]
 date: 2026-10-18
 image: ../assets/img/chikv.svg
+image-alt: "Illustration of a chikungunya epidemic curve"
 ---
 
 ::: {.facts .k-chik}

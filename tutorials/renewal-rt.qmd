@@ -4,6 +4,7 @@ description: "Simulate an outbreak from the renewal equation, then recover the t
 categories: [Methods, Tutorial]
 date: 2026-10-22
 image: ../assets/img/rt.svg
+image-alt: "Illustration of a reproduction number curve with an uncertainty band"
 ---
 
 The renewal equation says that new infections today depend on recent infections, weighted by the generation interval $w_s$, the chance that $s$ days separate an infection from the one it causes:

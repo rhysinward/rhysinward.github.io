@@ -12,7 +12,7 @@ website:
   open-graph: true
   twitter-card:
     card-style: summary
-  description: "Genomic and field epidemiology of dengue, chikungunya and bacterial pathogens."
+  description: "Field epidemiology fellow at UKHSA and Oxford DPhil candidate using pathogen genomes and surveillance data to show how dengue, chikungunya and SARS-CoV-2 spread."
   favicon: assets/img/favicon.svg
   search:
     location: navbar

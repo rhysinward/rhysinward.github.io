@@ -30,6 +30,8 @@ R code only runs on your machine. `freeze: auto` saves the results in `_freeze/`
 | PPIE projects | `ppie.qmd` |
 | A new tutorial or primer | copy a `.qmd` in `tutorials/`; its first category picks the hub, its second labels it (`Primer` or `Tutorial`) |
 | A new pathogen hub | add it to the list at the top of `_templates/hubs.ejs` |
-| Your photo | swap `assets/img/avatar.svg` for a photo and update the path in `index.qmd` |
+| Your photo | replace `assets/img/rhys-inward.jpg` (square, 480 x 480) |
+| Selected publications (home page) | add `featured: <number>` and `summary:` to the entry in `publications.yml`; lowest number first; it needs a Paper or Preprint link |
+| Timeline highlights | `key: true` in `timeline.yml` or `awards.yml` |
 
 Text in `[square brackets]` (and `20XX` in the timeline) shows as a dashed placeholder. Delete the `announcement` block in `_quarto.yml` once everything is filled in.

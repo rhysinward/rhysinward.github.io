@@ -1,16 +1,20 @@
 ```{=html}
 <%
+const ph = s => String(s == null ? "" : s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>');
 const feat = items.filter(i => i.featured).sort((a, b) => a.featured - b.featured);
 const link = (p, label) => (p.links || []).find(l => l.label === label);
 %>
 <div class="featured">
-<% for (const p of feat) { const paper = link(p, "Paper"); const code = link(p, "Code"); %>
+<% for (const p of feat) {
+     const paper = link(p, "Paper") || link(p, "Preprint");
+     const code = link(p, "Code");
+     const noun = paper && paper.label === "Preprint" ? "preprint" : "paper"; %>
   <article class="feat">
-    <p class="feat-venue"><em><%= p.journal %></em> · <%= p.year %></p>
-    <h3 class="feat-title"><% if (paper) { %><a href="<%= paper.href %>"><%= p.title %></a><% } else { %><%= p.title %><% } %></h3>
-    <% for (const t of (p.tags || [])) { %><span class="pub-tag<%= /first author/i.test(t) ? ' is-first' : '' %>"><%= t %></span><% } %>
-    <% if (p.summary) { %><p class="feat-summary"><%= p.summary %></p><% } %>
-    <p class="feat-links"><% if (paper) { %><a href="<%= paper.href %>">Read the paper</a><% } %><% if (code) { %><a href="<%= code.href %>">Code</a><% } %></p>
+    <p class="feat-venue"><%= [p.journal && '<em>' + ph(p.journal) + '</em>', p.year].filter(Boolean).join(' · ') %></p>
+    <h3 class="feat-title"><% if (paper) { %><a href="<%= paper.href %>"><%= ph(p.title) %></a><% } else { %><%= ph(p.title) %><% } %></h3>
+    <% if ((p.tags || []).length) { %><p class="feat-tags"><% for (const t of p.tags) { %><span class="pub-tag<%= /first author/i.test(t) ? ' is-first' : '' %>"><%= t %></span><% } %></p><% } %>
+    <% if (p.summary) { %><p class="feat-summary"><%= ph(p.summary) %></p><% } %>
+    <% if (paper || code) { %><p class="feat-links"><% if (paper) { %><a href="<%= paper.href %>">Read the <%= noun %><span class="visually-hidden">: <%= p.title %></span></a><% } %><% if (code) { %><a href="<%= code.href %>">Code<span class="visually-hidden"> for <%= p.title %></span></a><% } %></p><% } %>
   </article>
 <% } %>
 </div>

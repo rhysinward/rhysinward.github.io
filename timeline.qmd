@@ -1,4 +1,5 @@
 ---
+image-alt: "Portrait of Rhys Inward"
 title: "Timeline"
 subtitle: "The highlights first, then every role, qualification, grant and award."
 listing:

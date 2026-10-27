@@ -4,6 +4,7 @@ description: "The virus, its serotypes and genotypes, how it spreads, and where 
 categories: [Dengue, Primer]
 date: 2026-10-20
 image: ../assets/img/dengue.svg
+image-alt: "Illustration of dengue genotypes replacing one another over time"
 ---
 
 ::: {.facts .k-dengue}

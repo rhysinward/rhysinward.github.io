@@ -1,5 +1,6 @@
 ---
 pagetitle: "Rhys Inward"
+description: "Field epidemiology fellow at UKHSA and Oxford DPhil candidate using pathogen genomes and surveillance data to show how dengue, chikungunya and SARS-CoV-2 spread."
 page-layout: full
 listing:
   - id: latest
@@ -40,7 +41,7 @@ I'm a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a
 ::: {.hero-figure}
 ![](assets/img/research/omicron-lineage-a.jpg){.hero-phylo fig-alt="Map of England covered in thousands of orange points joined by curved lines, showing how the largest Omicron BA.1 transmission lineage spread across the country"}
 
-[The largest Omicron BA.1 transmission lineage in England (11,351 genomes), reconstructed by continuous phylogeography and coloured by date. Adapted from [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023](https://doi.org/10.1126/science.adg6605) (author manuscript, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.hero-caption}
+[The largest Omicron BA.1 transmission lineage in England (11,351 genomes), reconstructed by continuous phylogeography and coloured by date. Adapted (cropped from Fig. 3C) from [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023](https://doi.org/10.1126/science.adg6605) ([author manuscript](https://europepmc.org/article/PMC/PMC10866301), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.hero-caption}
 :::
 ::::
 
@@ -81,7 +82,7 @@ Since September 2026, applying these skills with UKHSA's North West Field Servic
 
 ### Analyses others can rerun
 
-Reproducible pipelines for public health teams, including [GRAPEVNE](https://doi.org/10.12688/wellcomeopenres.23824.1) and a [data pipeline for climate-sensitive diseases](https://doi.org/10.12688/wellcomeopenres.24774.3).
+Reproducible pipelines that researchers and public health teams can run locally, including [GRAPEVNE](https://doi.org/10.12688/wellcomeopenres.23824.1) and a [data pipeline for climate-sensitive diseases](https://doi.org/10.12688/wellcomeopenres.24774.3).
 :::
 :::
 ::::

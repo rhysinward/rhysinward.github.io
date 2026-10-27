@@ -4,6 +4,7 @@ description: "A member of the anginosus group, best known for brain and liver ab
 categories: [S. intermedius, Primer]
 date: 2026-10-16
 image: ../assets/img/strep.svg
+image-alt: "Illustration of Streptococcus chains"
 ---
 
 ::: {.facts .k-strep}

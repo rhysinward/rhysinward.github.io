@@ -261,18 +261,6 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
 .hero-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 .hero-links p { display: contents; }
 .hero-figure { min-width: 0; }
-.hero-tree { width: 100%; height: auto; display: block; }
-.hero-tree path { fill: none; stroke-width: 1.7; stroke-linecap: round; }
-.hero-tree path.b { stroke: var(--ink-2); opacity: 0.45; }
-.hero-tree circle.b { fill: var(--ink-2); opacity: 0.5; }
-.hero-tree path.c0 { stroke: var(--T); }
-.hero-tree path.c1 { stroke: var(--G); }
-.hero-tree path.c2 { stroke: var(--A); }
-.hero-tree path.c3 { stroke: var(--C); }
-.hero-tree circle.c0 { fill: var(--T); }
-.hero-tree circle.c1 { fill: var(--G); }
-.hero-tree circle.c2 { fill: var(--A); }
-.hero-tree circle.c3 { fill: var(--C); }
 .hero-caption {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -506,7 +494,7 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
 // 10. Profile refresh: public health, featured papers, highlights ---------------
 
 .ph-themes .theme { border-top: 2px solid var(--k, var(--rule-strong)); padding-top: 0.9rem; }
-.ph-themes .theme p a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.ph-themes .theme p a { color: var(--ink); text-decoration-color: currentColor; }
 .ph-themes .theme p a:hover { color: var(--C); }
 
 .featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
@@ -517,7 +505,7 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
 .feat-title { font-size: 1.05rem; line-height: 1.35; margin: 0; }
 .feat-title a { color: var(--ink); text-decoration: none; }
 .feat-title a:hover { color: var(--C); text-decoration: underline; }
-.feat .pub-tag { align-self: flex-start; }
+.feat-tags { margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .feat-summary { margin: 0.2rem 0 0; color: var(--ink-2); font-size: 0.93rem; flex: 1; }
 .feat-links { margin: 0.3rem 0 0; display: flex; gap: 1rem; font-size: 0.92rem; font-weight: 700; }
 
@@ -531,10 +519,10 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
 .chip-key .star { color: var(--G); font-size: 0.85rem; line-height: 1; }
 .chip-key[aria-pressed="true"] .star { color: var(--paper); }
 .tl-key { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--G); }
-.tl-key::before { content: "★ "; }
+.tl-key::before { content: "★ "; content: "★ " / ""; }
 .tl-item.is-key .tl-card { border-color: var(--rule-strong); box-shadow: inset 3px 0 0 var(--k); }
 .tl-item.is-key .tl-title { font-size: 1.14rem; }
-.awards .pub.is-key .pub-title::before { content: "★ "; color: var(--G); }
+.awards .pub.is-key .pub-title::before { content: "★ "; content: "★ " / ""; color: var(--G); }
 
 @media (max-width: 991.98px) {
   .featured { grid-template-columns: minmax(0, 1fr); }
