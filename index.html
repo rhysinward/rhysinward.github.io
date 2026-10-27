@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f91c55cb4b87ef7019e0c512f6f2c0a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d4da18518c402bfe952910bfce5a2035.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,6 +103,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-featured-pubs .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-authors','listing-journal','listing-year','listing-tags','listing-links','listing-featured','listing-summary',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-authors","listing-journal","listing-year","listing-tags","listing-links","listing-featured","listing-summary"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-featured-pubs'] = new List('listing-featured-pubs', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,6 +167,14 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="Rhys Inward">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta property="og:site_name" content="Rhys Inward">
+<meta property="og:image:alt" content="Rhys Inward">
+<meta name="twitter:title" content="Rhys Inward">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image:alt" content="Rhys Inward">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -210,12 +246,12 @@ window.Quarto = {
 <div class="home">
 <div class="hero">
 <div class="hero-text">
-<p><img src="assets/img/avatar.svg" class="avatar img-fluid" alt="Placeholder for a photo of Rhys"></p>
-<p><span class="eyebrow">Field epidemiology · Pathogen genomics · Arboviruses</span></p>
+<p><img src="assets/img/rhys-inward.jpg" class="avatar img-fluid" alt="Rhys Inward"></p>
+<p><span class="eyebrow">Field epidemiology · Genomic surveillance · Arboviruses</span></p>
 <section id="rhys-inward" class="level1">
 <h1>Rhys Inward</h1>
 <div class="lead">
-<p>I’m a final-year DPhil candidate at the University of Oxford and a field epidemiology fellow with the UK Health Security Agency (UKHSA) in Liverpool. I use pathogen genomes, case data, and climate and mobility data to understand how dengue, chikungunya and other infections spread.</p>
+<p>I’m a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a final-year DPhil candidate at the University of Oxford. I use pathogen genomes, surveillance data, and climate and mobility data to understand how infections such as dengue, chikungunya and SARS-CoV-2 are introduced and spread, and to turn that into evidence for surveillance and outbreak response.</p>
 </div>
 <div class="hero-links">
 <p><a href="./research.html" class="btn-ink">Research</a> <a href="./tutorials/index.html" class="btn-line">Tutorials</a> <a href="./timeline.html" class="btn-line">Timeline &amp; CV</a></p>
@@ -223,8 +259,81 @@ window.Quarto = {
 </section>
 </div>
 <div class="hero-figure">
-<svg class="hero-tree" viewbox="0 0 460 400" role="img" aria-label="A simulated time-scaled phylogenetic tree with four coloured clades"><path class="b" d="M10.0 64.0H24.0M24.0 10.0V118.0M24.0 10.0H38.6M24.0 118.0H64.2M64.2 31.8V204.2M64.2 31.8H254.7M254.7 19.0V44.6M254.7 19.0H284.9M284.9 16.0V22.1M284.9 16.0H328.1M284.9 22.1H450.0M254.7 44.6H321.9M321.9 28.1V61.2M321.9 28.1H338.1M64.2 204.2H257.3M257.3 152.1V256.4M257.3 256.4H295.2M295.2 207.7V305.0M295.2 207.7H345.0M345.0 200.0V215.5M345.0 200.0H353.0M353.0 197.0V203.0M353.0 197.0H379.1M353.0 203.0H365.6M345.0 215.5H347.5M347.5 209.0V221.9M347.5 209.0H353.3M347.5 221.9H349.0M349.0 215.1V228.7M349.0 215.1H450.0M349.0 228.7H410.5M410.5 221.1V236.2M410.5 221.1H450.0M410.5 236.2H422.6M422.6 230.2V242.2M422.6 230.2H439.5M439.5 227.1V233.2M439.5 227.1H447.1M439.5 233.2H450.0M422.6 242.2H427.7M427.7 239.2V245.2M427.7 239.2H450.0M427.7 245.2H450.0M295.2 305.0H304.9M304.9 263.3V346.6"></path><path class="c0" d="M321.9 61.2H366.9M366.9 40.9V81.4M366.9 40.9H373.4M373.4 34.1V47.7M373.4 34.1H450.0M373.4 47.7H402.7M402.7 40.2V55.2M402.7 40.2H450.0M402.7 55.2H413.0M413.0 49.2V61.3M413.0 49.2H447.1M447.1 46.2V52.2M447.1 46.2H450.0M447.1 52.2H450.0M413.0 61.3H448.4M448.4 58.3V64.3M448.4 58.3H450.0M448.4 64.3H450.0M366.9 81.4H367.0M367.0 70.3V92.6M367.0 70.3H450.0M367.0 92.6H380.8M380.8 80.9V104.2M380.8 80.9H443.7M443.7 76.3V85.4M443.7 76.3H450.0M443.7 85.4H449.9M449.9 82.4V88.4M449.9 82.4H450.0M449.9 88.4H450.0M380.8 104.2H407.4M407.4 97.5V111.0M407.4 97.5H414.4M414.4 94.4V100.5M414.4 94.4H450.0M414.4 100.5H450.0M407.4 111.0H411.0M411.0 106.5V115.6M411.0 106.5H450.0M411.0 115.6H429.5M429.5 112.5V118.6M429.5 112.5H450.0M429.5 118.6H450.0"></path><path class="c1" d="M257.3 152.1H293.5M293.5 136.7V167.6M293.5 136.7H352.2M352.2 127.6V145.7M352.2 127.6H355.2M355.2 124.6V130.6M355.2 124.6H450.0M355.2 130.6H408.8M352.2 145.7H358.5M358.5 139.7V151.7M358.5 139.7H390.7M390.7 136.7V142.7M390.7 136.7H450.0M390.7 142.7H437.9M358.5 151.7H440.7M440.7 148.7V154.8M440.7 148.7H450.0M440.7 154.8H450.0M293.5 167.6H345.5M345.5 160.8V174.4M345.5 160.8H381.2M345.5 174.4H378.3M378.3 166.8V181.9M378.3 166.8H450.0M378.3 181.9H387.6M387.6 175.9V187.9M387.6 175.9H444.8M444.8 172.9V178.9M444.8 172.9H445.6M444.8 178.9H447.6M387.6 187.9H436.4M436.4 184.9V191.0M436.4 184.9H450.0M436.4 191.0H450.0"></path><path class="c2" d="M304.9 263.3H317.7M317.7 251.3V275.4M317.7 251.3H375.2M317.7 275.4H353.4M353.4 261.8V289.0M353.4 261.8H391.7M391.7 257.3V266.3M391.7 257.3H450.0M391.7 266.3H399.2M399.2 263.3V269.4M399.2 263.3H450.0M399.2 269.4H450.0M353.4 289.0H410.2M410.2 279.9V298.0M410.2 279.9H430.6M430.6 275.4V284.4M430.6 275.4H450.0M430.6 284.4H435.3M435.3 281.4V287.5M435.3 281.4H450.0M435.3 287.5H450.0M410.2 298.0H414.9M414.9 293.5V302.5M414.9 293.5H418.3M414.9 302.5H440.7M440.7 299.5V305.6M440.7 299.5H450.0M440.7 305.6H450.0"></path><path class="c3" d="M304.9 346.6H347.7M347.7 325.5V367.8M347.7 325.5H406.3M406.3 316.1V335.0M406.3 316.1H415.8M415.8 311.6V320.6M415.8 311.6H450.0M415.8 320.6H444.8M444.8 317.6V323.7M444.8 317.6H450.0M444.8 323.7H450.0M406.3 335.0H435.2M435.2 329.7V340.2M435.2 329.7H444.3M435.2 340.2H448.8M448.8 335.7V344.8M448.8 335.7H450.0M448.8 344.8H449.5M449.5 341.7V347.8M449.5 341.7H450.0M449.5 347.8H450.0M347.7 367.8H388.0M388.0 358.3V377.2M388.0 358.3H389.3M389.3 353.8V362.9M389.3 353.8H450.0M389.3 362.9H426.8M426.8 359.8V365.9M426.8 359.8H450.0M426.8 365.9H450.0M388.0 377.2H412.0M412.0 371.9V382.5M412.0 371.9H450.0M412.0 382.5H430.9M430.9 377.9V387.0M430.9 377.9H450.0M430.9 387.0H437.4M437.4 384.0V390.0M437.4 384.0H450.0M437.4 390.0H450.0"></path><circle class="tip b" cx="38.6" cy="10.0" r="2.4"></circle><circle class="tip b" cx="328.1" cy="16.0" r="2.4"></circle><circle class="tip b" cx="450.0" cy="22.1" r="2.4"></circle><circle class="tip b" cx="338.1" cy="28.1" r="2.4"></circle><circle class="tip c0" cx="450.0" cy="34.1" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="40.2" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="46.2" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="52.2" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="58.3" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="64.3" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="70.3" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="76.3" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="82.4" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="88.4" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="94.4" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="100.5" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="106.5" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="112.5" r="3.6"></circle><circle class="tip c0" cx="450.0" cy="118.6" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="124.6" r="3.6"></circle><circle class="tip c1" cx="408.8" cy="130.6" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="136.7" r="3.6"></circle><circle class="tip c1" cx="437.9" cy="142.7" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="148.7" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="154.8" r="3.6"></circle><circle class="tip c1" cx="381.2" cy="160.8" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="166.8" r="3.6"></circle><circle class="tip c1" cx="445.6" cy="172.9" r="3.6"></circle><circle class="tip c1" cx="447.6" cy="178.9" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="184.9" r="3.6"></circle><circle class="tip c1" cx="450.0" cy="191.0" r="3.6"></circle><circle class="tip b" cx="379.1" cy="197.0" r="2.4"></circle><circle class="tip b" cx="365.6" cy="203.0" r="2.4"></circle><circle class="tip b" cx="353.3" cy="209.0" r="2.4"></circle><circle class="tip b" cx="450.0" cy="215.1" r="2.4"></circle><circle class="tip b" cx="450.0" cy="221.1" r="2.4"></circle><circle class="tip b" cx="447.1" cy="227.1" r="2.4"></circle><circle class="tip b" cx="450.0" cy="233.2" r="2.4"></circle><circle class="tip b" cx="450.0" cy="239.2" r="2.4"></circle><circle class="tip b" cx="450.0" cy="245.2" r="2.4"></circle><circle class="tip c2" cx="375.2" cy="251.3" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="257.3" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="263.3" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="269.4" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="275.4" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="281.4" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="287.5" r="3.6"></circle><circle class="tip c2" cx="418.3" cy="293.5" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="299.5" r="3.6"></circle><circle class="tip c2" cx="450.0" cy="305.6" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="311.6" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="317.6" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="323.7" r="3.6"></circle><circle class="tip c3" cx="444.3" cy="329.7" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="335.7" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="341.7" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="347.8" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="353.8" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="359.8" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="365.9" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="371.9" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="377.9" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="384.0" r="3.6"></circle><circle class="tip c3" cx="450.0" cy="390.0" r="3.6"></circle></svg>
-<p class="hero-caption">Simulated time-scaled tree · 64 tips</p>
+<p><img src="assets/img/research/omicron-lineage-a.jpg" class="hero-phylo img-fluid" alt="Map of England covered in thousands of orange points joined by curved lines, showing how the largest Omicron BA.1 transmission lineage spread across the country"></p>
+<p><span class="hero-caption">The largest Omicron BA.1 transmission lineage in England (11,351 genomes), reconstructed by continuous phylogeography and coloured by date. Adapted from <a href="https://doi.org/10.1126/science.adg6605">Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., <em>Science</em> 2023</a> (author manuscript, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</span></p>
+</div>
+</div>
+<div class="home-section">
+<section id="from-research-to-public-health" class="level2 section-head">
+<h2 class="anchored" data-anchor-id="from-research-to-public-health">From research to public health</h2>
+<p><a href="./research.html#field-epidemiology">Field epidemiology →</a></p>
+</section>
+<div class="themes ph-themes">
+<div class="theme k-public-health">
+<p><span class="tag">Surveillance</span></p>
+<section id="seeing-outbreaks-clearly" class="level3">
+<h3 class="anchored" data-anchor-id="seeing-outbreaks-clearly">Seeing outbreaks clearly</h3>
+<p>How sampling and reporting shape what genomic and case data can tell us (<a href="https://doi.org/10.1038/s41467-022-32812-0"><em>Nature Communications</em></a>, <a href="https://doi.org/10.1016/j.epidem.2022.100627"><em>Epidemics</em></a>), and how surveillance and modelling can work globally (<a href="https://doi.org/10.1038/s41591-026-04351-4"><em>Nature Medicine</em></a>).</p>
+</section>
+</div>
+<div class="theme k-dengue">
+<p><span class="tag">Spread</span></p>
+<section id="tracing-introductions" class="level3">
+<h3 class="anchored" data-anchor-id="tracing-introductions">Tracing introductions</h3>
+<p>Reconstructing how pathogens arrive and spread: Omicron and Delta in England (<a href="https://doi.org/10.1126/science.adg6605"><em>Science</em></a>, <a href="https://doi.org/10.1038/s41586-022-05200-3"><em>Nature</em></a>), dengue in Vietnam (<a href="https://doi.org/10.3201/eid2910.230529"><em>EID</em></a>) and cholera in Malawi (<a href="https://doi.org/10.3201/eid3106.240930"><em>EID</em></a>).</p>
+</section>
+</div>
+<div class="theme k-field">
+<p><span class="tag">UKFETP</span></p>
+<section id="on-the-front-line" class="level3">
+<h3 class="anchored" data-anchor-id="on-the-front-line">On the front line</h3>
+<p>Since September 2026, applying these skills with UKHSA’s North West Field Service: surveillance, outbreak response and applied projects.</p>
+</section>
+</div>
+<div class="theme k-methods">
+<p><span class="tag">Tools</span></p>
+<section id="analyses-others-can-rerun" class="level3">
+<h3 class="anchored" data-anchor-id="analyses-others-can-rerun">Analyses others can rerun</h3>
+<p>Reproducible pipelines for public health teams, including <a href="https://doi.org/10.12688/wellcomeopenres.23824.1">GRAPEVNE</a> and a <a href="https://doi.org/10.12688/wellcomeopenres.24774.3">data pipeline for climate-sensitive diseases</a>.</p>
+</section>
+</div>
+</div>
+</div>
+<div class="home-section">
+<section id="selected-publications" class="level2 section-head">
+<h2 class="anchored" data-anchor-id="selected-publications">Selected publications</h2>
+<p><a href="./publications.html">All publications →</a></p>
+</section>
+<div id="listing-featured-pubs" class="quarto-listing quarto-listing-container-custom">
+
+<div class="featured">
+
+  <article class="feat">
+    <p class="feat-venue"><em>Nature Communications</em> · 2022</p>
+    <h3 class="feat-title anchored"><a href="https://doi.org/10.1038/s41467-022-32812-0">Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data</a></h3>
+    <span class="pub-tag is-first">First author</span>
+    <p class="feat-summary">Which genomes you analyse matters. With SARS-CoV-2 data from Hong Kong and Amazonas, Brazil, we showed that estimates of Rt and growth rate shift with sampling choices, while R0 and the date of origin are relatively robust.</p>
+    <p class="feat-links"><a href="https://doi.org/10.1038/s41467-022-32812-0">Read the paper</a><a href="https://github.com/rhysinward/Phylodynamic-Subsampling">Code</a></p>
+  </article>
+
+  <article class="feat">
+    <p class="feat-venue"><em>Science</em> · 2023</p>
+    <h3 class="feat-title anchored"><a href="https://doi.org/10.1126/science.adg6605">Genomic assessment of invasion dynamics of SARS-CoV-2 Omicron BA.1</a></h3>
+    <span class="pub-tag is-first">Joint first author</span>
+    <p class="feat-summary">From 115,622 genomes, we identified more than 6,000 separate introductions of Omicron BA.1 into England. Six of the eight largest lineages were already spreading when Omicron was first reported, and importation continued despite travel restrictions.</p>
+    <p class="feat-links"><a href="https://doi.org/10.1126/science.adg6605">Read the paper</a><a href="https://github.com/joetsui1994/Omicron-BA.1-invasion-dynamics">Code</a></p>
+  </article>
+
+  <article class="feat">
+    <p class="feat-venue"><em>Emerging Infectious Diseases</em> · 2023</p>
+    <h3 class="feat-title anchored"><a href="https://doi.org/10.3201/eid2910.230529">Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam</a></h3>
+    <span class="pub-tag is-first">Joint first author</span>
+    <p class="feat-summary">Phylogenetic analysis traced how the Cosmopolitan genotype of DENV-2 re-emerged in Ho Chi Minh City, its probable routes of introduction and the timeline of events, and showed the need for continuous genomic surveillance.</p>
+    <p class="feat-links"><a href="https://doi.org/10.3201/eid2910.230529">Read the paper</a><a href="https://github.com/rhysinward/Phylodynamics-HCMC">Code</a></p>
+  </article>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div>
 </div>
 <div class="home-section">
@@ -270,7 +379,7 @@ window.Quarto = {
 </section>
 <div id="listing-latest" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGVuZ3VlJTJDVHV0b3JpYWw=" data-listing-date-sort="1792800000000" data-listing-file-modified-sort="1793139473668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="419">
+<div class="g-col-1" data-index="0" data-categories="RGVuZ3VlJTJDVHV0b3JpYWw=" data-listing-date-sort="1792800000000" data-listing-file-modified-sort="1793143527206" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="419">
 <a href="./tutorials/genotype-replacement.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -293,7 +402,7 @@ Genotype replacement in R
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="TWV0aG9kcyUyQ1R1dG9yaWFs" data-listing-date-sort="1792627200000" data-listing-file-modified-sort="1793139473668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
+<div class="g-col-1" data-index="1" data-categories="TWV0aG9kcyUyQ1R1dG9yaWFs" data-listing-date-sort="1792627200000" data-listing-file-modified-sort="1793143527206" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
 <a href="./tutorials/renewal-rt.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -316,7 +425,7 @@ Estimating Rt with a renewal equation
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="RGVuZ3VlJTJDUHJpbWVy" data-listing-date-sort="1792454400000" data-listing-file-modified-sort="1793139473668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
+<div class="g-col-1" data-index="2" data-categories="RGVuZ3VlJTJDUHJpbWVy" data-listing-date-sort="1792454400000" data-listing-file-modified-sort="1793143527206" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
 <a href="./tutorials/dengue-primer.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -344,13 +453,18 @@ Dengue: a primer
 </div>
 </div>
 <div id="contact" class="home-section">
-<section id="get-in-touch" class="level3 contact">
+<div class="contact">
+<section id="get-in-touch" class="level3 contact-text">
 <h3 class="anchored" data-anchor-id="get-in-touch">Get in touch</h3>
-<p>I’m happy to talk about collaborations, field epidemiology and patient involvement. Email <a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a>.</p>
+<p>I’m happy to talk about collaborations, field epidemiology and patient involvement, or, away from work, hiking, squash and choral music. Email <a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a>.</p>
 <div class="contact-links">
 <p><a href="https://scholar.google.com/citations?user=MG7ctSYAAAAJ">Google Scholar</a> <a href="https://orcid.org/0000-0003-0016-661X">ORCID</a> <a href="https://github.com/rhysinward">GitHub</a> <a href="https://www.linkedin.com/in/rhys-inward-4750a71b2/">LinkedIn</a></p>
 </div>
 </section>
+<div class="contact-photo">
+<p><img src="assets/img/rhys-bench.jpg" class="img-fluid" alt="Rhys smiling on a carved wooden bench, between a wooden Yoda and a carved scallop shell"></p>
+</div>
+</div>
 </div>
 </div>
 
@@ -369,7 +483,10 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     const btn = e.target.closest(".chip");
     if (!btn) return;
     group.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-    items().forEach(el => { el.hidden = btn.dataset.kind !== "all" && el.dataset.kind !== btn.dataset.kind; });
+    const kind = btn.dataset.kind;
+    items().forEach(el => {
+      el.hidden = kind === "key" ? el.dataset.key !== "true" : kind !== "all" && el.dataset.kind !== kind;
+    });
     sides();
   });
 });

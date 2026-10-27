@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f91c55cb4b87ef7019e0c512f6f2c0a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d4da18518c402bfe952910bfce5a2035.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,6 +79,14 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
 
 
+<meta property="og:title" content="Patient &amp; public involvement – Rhys Inward">
+<meta property="og:description" content="Research works better when the people it affects help shape it.">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta property="og:site_name" content="Rhys Inward">
+<meta name="twitter:title" content="Patient &amp; public involvement – Rhys Inward">
+<meta name="twitter:description" content="Research works better when the people it affects help shape it.">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -256,7 +264,10 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     const btn = e.target.closest(".chip");
     if (!btn) return;
     group.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-    items().forEach(el => { el.hidden = btn.dataset.kind !== "all" && el.dataset.kind !== btn.dataset.kind; });
+    const kind = btn.dataset.kind;
+    items().forEach(el => {
+      el.hidden = kind === "key" ? el.dataset.key !== "true" : kind !== "all" && el.dataset.kind !== kind;
+    });
     sides();
   });
 });

@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f91c55cb4b87ef7019e0c512f6f2c0a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d4da18518c402bfe952910bfce5a2035.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-authors','listing-journal','listing-year','listing-tags','listing-links',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-authors','listing-journal','listing-year','listing-tags','listing-links','listing-featured','listing-summary',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-authors","listing-journal","listing-year","listing-tags","listing-links"],
+      searchColumns: ["listing-title","listing-authors","listing-journal","listing-year","listing-tags","listing-links","listing-featured","listing-summary"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -139,6 +139,14 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="Publications – Rhys Inward">
+<meta property="og:description" content="Peer-reviewed papers, preprints and software.">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta property="og:site_name" content="Rhys Inward">
+<meta name="twitter:title" content="Publications – Rhys Inward">
+<meta name="twitter:description" content="Peer-reviewed papers, preprints and software.">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/rhys-inward.jpg">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -443,7 +451,10 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     const btn = e.target.closest(".chip");
     if (!btn) return;
     group.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-    items().forEach(el => { el.hidden = btn.dataset.kind !== "all" && el.dataset.kind !== btn.dataset.kind; });
+    const kind = btn.dataset.kind;
+    items().forEach(el => {
+      el.hidden = kind === "key" ? el.dataset.key !== "true" : kind !== "all" && el.dataset.kind !== kind;
+    });
     sides();
   });
 });
