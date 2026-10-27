@@ -1,24 +1,14 @@
 [
   {
-    "listing": "/timeline.html",
+    "listing": "/talks.html",
     "items": []
-  },
-  {
-    "listing": "/tutorials/index.html",
-    "items": [
-      "/tutorials/s-intermedius-primer.html",
-      "/tutorials/chikungunya-primer.html",
-      "/tutorials/dengue-primer.html",
-      "/tutorials/renewal-rt.html",
-      "/tutorials/genotype-replacement.html"
-    ]
   },
   {
     "listing": "/publications.html",
     "items": []
   },
   {
-    "listing": "/talks.html",
+    "listing": "/timeline.html",
     "items": []
   },
   {
@@ -29,6 +19,16 @@
       "/tutorials/dengue-primer.html",
       "/tutorials/chikungunya-primer.html",
       "/tutorials/s-intermedius-primer.html"
+    ]
+  },
+  {
+    "listing": "/tutorials/index.html",
+    "items": [
+      "/tutorials/s-intermedius-primer.html",
+      "/tutorials/chikungunya-primer.html",
+      "/tutorials/dengue-primer.html",
+      "/tutorials/renewal-rt.html",
+      "/tutorials/genotype-replacement.html"
     ]
   }
 ]
