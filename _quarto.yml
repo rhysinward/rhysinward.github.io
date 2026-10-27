@@ -8,6 +8,10 @@ project:
 website:
   title: "Rhys Inward"
   site-url: https://rhysinward.github.io
+  image: assets/img/rhys-inward.jpg
+  open-graph: true
+  twitter-card:
+    card-style: summary
   description: "Genomic and field epidemiology of dengue, chikungunya and bacterial pathogens."
   favicon: assets/img/favicon.svg
   search:

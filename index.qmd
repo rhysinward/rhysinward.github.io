@@ -2,30 +2,34 @@
 pagetitle: "Rhys Inward"
 page-layout: full
 listing:
-  id: latest
-  contents:
-    - tutorials/*.qmd
-    - "!tutorials/index.qmd"
-  sort: "date desc"
-  max-items: 3
-  type: grid
-  grid-columns: 3
-  fields: [image, title, description, categories]
-  image-height: 150px
+  - id: latest
+    contents:
+      - tutorials/*.qmd
+      - "!tutorials/index.qmd"
+    sort: "date desc"
+    max-items: 3
+    type: grid
+    grid-columns: 3
+    fields: [image, title, description, categories]
+    image-height: 150px
+  - id: featured-pubs
+    contents: publications.yml
+    template: _templates/featured.ejs
+    sort: false
 ---
 
 ::::: {.home}
 
 :::: {.hero}
 ::: {.hero-text}
-![](assets/img/avatar.svg){.avatar fig-alt="Placeholder for a photo of Rhys"}
+![](assets/img/rhys-inward.jpg){.avatar fig-alt="Rhys Inward"}
 
-[Field epidemiology · Pathogen genomics · Arboviruses]{.eyebrow}
+[Field epidemiology · Genomic surveillance · Arboviruses]{.eyebrow}
 
 # Rhys Inward
 
 ::: {.lead}
-I'm a final-year DPhil candidate at the University of Oxford and a field epidemiology fellow with the UK Health Security Agency (UKHSA) in Liverpool. I use pathogen genomes, case data, and climate and mobility data to understand how dengue, chikungunya and other infections spread.
+I'm a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a final-year DPhil candidate at the University of Oxford. I use pathogen genomes, surveillance data, and climate and mobility data to understand how infections such as dengue, chikungunya and SARS-CoV-2 are introduced and spread, and to turn that into evidence for surveillance and outbreak response.
 :::
 
 ::: {.hero-links}
@@ -34,7 +38,62 @@ I'm a final-year DPhil candidate at the University of Oxford and a field epidemi
 :::
 
 ::: {.hero-figure}
-{{< include _hero-tree.qmd >}}
+![](assets/img/research/omicron-lineage-a.jpg){.hero-phylo fig-alt="Map of England covered in thousands of orange points joined by curved lines, showing how the largest Omicron BA.1 transmission lineage spread across the country"}
+
+[The largest Omicron BA.1 transmission lineage in England (11,351 genomes), reconstructed by continuous phylogeography and coloured by date. Adapted from [Tsui, McCrone, Lambert, Bajaj, Inward, Bosetti et al., *Science* 2023](https://doi.org/10.1126/science.adg6605) (author manuscript, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).]{.hero-caption}
+:::
+::::
+
+:::: {.home-section}
+::: {.section-head}
+## From research to public health
+
+[Field epidemiology →](research.qmd#field-epidemiology)
+:::
+
+::: {.themes .ph-themes}
+::: {.theme .k-public-health}
+[Surveillance]{.tag}
+
+### Seeing outbreaks clearly
+
+How sampling and reporting shape what genomic and case data can tell us ([*Nature Communications*](https://doi.org/10.1038/s41467-022-32812-0), [*Epidemics*](https://doi.org/10.1016/j.epidem.2022.100627)), and how surveillance and modelling can work globally ([*Nature Medicine*](https://doi.org/10.1038/s41591-026-04351-4)).
+:::
+
+::: {.theme .k-dengue}
+[Spread]{.tag}
+
+### Tracing introductions
+
+Reconstructing how pathogens arrive and spread: Omicron and Delta in England ([*Science*](https://doi.org/10.1126/science.adg6605), [*Nature*](https://doi.org/10.1038/s41586-022-05200-3)), dengue in Vietnam ([*EID*](https://doi.org/10.3201/eid2910.230529)) and cholera in Malawi ([*EID*](https://doi.org/10.3201/eid3106.240930)).
+:::
+
+::: {.theme .k-field}
+[UKFETP]{.tag}
+
+### On the front line
+
+Since September 2026, applying these skills with UKHSA's North West Field Service: surveillance, outbreak response and applied projects.
+:::
+
+::: {.theme .k-methods}
+[Tools]{.tag}
+
+### Analyses others can rerun
+
+Reproducible pipelines for public health teams, including [GRAPEVNE](https://doi.org/10.12688/wellcomeopenres.23824.1) and a [data pipeline for climate-sensitive diseases](https://doi.org/10.12688/wellcomeopenres.24774.3).
+:::
+:::
+::::
+
+:::: {.home-section}
+::: {.section-head}
+## Selected publications
+
+[All publications →](publications.qmd)
+:::
+
+::: {#featured-pubs}
 :::
 ::::
 
@@ -93,12 +152,18 @@ Working with patients, families and the public on research questions and tools.
 
 :::: {#contact .home-section}
 ::: {.contact}
+::: {.contact-text}
 ### Get in touch
 
-I'm happy to talk about collaborations, field epidemiology and patient involvement. Email [rhys.inward@biology.ox.ac.uk](mailto:rhys.inward@biology.ox.ac.uk).
+I'm happy to talk about collaborations, field epidemiology and patient involvement, or, away from work, hiking, squash and choral music. Email [rhys.inward@biology.ox.ac.uk](mailto:rhys.inward@biology.ox.ac.uk).
 
 ::: {.contact-links}
 [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ) [ORCID](https://orcid.org/0000-0003-0016-661X) [GitHub](https://github.com/rhysinward) [LinkedIn](https://www.linkedin.com/in/rhys-inward-4750a71b2/)
+:::
+:::
+
+::: {.contact-photo}
+![](assets/img/rhys-bench.jpg){fig-alt="Rhys smiling on a carved wooden bench, between a wooden Yoda and a carved scallop shell"}
 :::
 :::
 ::::

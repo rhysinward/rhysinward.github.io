@@ -15,19 +15,21 @@ const used = Object.keys(kinds).filter(k => items.some(i => i.kind === k));
 %>
 <div class="chip-filter" role="group" aria-label="Filter the timeline" data-target=".tl-item">
   <button type="button" class="chip" data-kind="all" aria-pressed="true">All</button>
+  <button type="button" class="chip chip-key" data-kind="key" aria-pressed="false"><span class="star" aria-hidden="true">★</span>Highlights</button>
 <% for (const k of used) { %>
   <button type="button" class="chip k-<%= k %>" data-kind="<%= k %>" aria-pressed="false"><span class="dot"></span><%= kinds[k].label %></button>
 <% } %>
 </div>
 <ol class="timeline">
 <% items.forEach((item, i) => { const k = kinds[item.kind] || kinds.research; %>
-  <li class="tl-item k-<%= item.kind %><%= item.current ? ' is-current' : '' %>" data-kind="<%= item.kind %>" data-side="<%= i % 2 ? 'r' : 'l' %>">
+  <li class="tl-item k-<%= item.kind %><%= item.current ? ' is-current' : '' %><%= item.key ? ' is-key' : '' %>" data-kind="<%= item.kind %>" data-key="<%= item.key ? 'true' : 'false' %>" data-side="<%= i % 2 ? 'r' : 'l' %>">
     <div class="tl-node" aria-hidden="true"><i class="bi <%= k.icon %>"></i></div>
     <div class="tl-when"><%= ph(item.when) %></div>
     <div class="tl-card">
       <div class="tl-meta">
         <span class="tag"><%= k.label %></span>
         <% if (item.current) { %><span class="tl-now">Current</span><% } %>
+        <% if (item.key) { %><span class="tl-key">Highlight</span><% } %>
       </div>
       <h3 class="tl-title"><%= ph(item.title) %></h3>
       <p class="tl-org"><%= ph(item.org) %></p>

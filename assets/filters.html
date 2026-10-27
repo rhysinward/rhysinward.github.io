@@ -9,7 +9,10 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     const btn = e.target.closest(".chip");
     if (!btn) return;
     group.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-    items().forEach(el => { el.hidden = btn.dataset.kind !== "all" && el.dataset.kind !== btn.dataset.kind; });
+    const kind = btn.dataset.kind;
+    items().forEach(el => {
+      el.hidden = kind === "key" ? el.dataset.key !== "true" : kind !== "all" && el.dataset.kind !== kind;
+    });
     sides();
   });
 });

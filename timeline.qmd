@@ -1,6 +1,6 @@
 ---
 title: "Timeline"
-subtitle: "Roles, training and education, most recent first, then grants and awards."
+subtitle: "The highlights first, then every role, qualification, grant and award."
 listing:
   - id: timeline
     contents: timeline.yml
@@ -13,6 +13,70 @@ listing:
 ---
 
 <!-- Add a public CV to files/ and link it here, e.g. [Download my CV (PDF)](files/Rhys_Inward_CV.pdf){.btn-line} -->
+
+## At a glance {.glance-title}
+
+:::: {.glance}
+::: {.glance-item .k-public-health}
+[Now]{.glance-when}
+
+### UK Field Epidemiology Training Programme fellow
+
+UK Health Security Agency, since 2026
+:::
+
+::: {.glance-item .k-ppie}
+[2024 –]{.glance-when}
+
+### PPIE consultant
+
+Evelina London Children's Hospital
+:::
+
+::: {.glance-item .k-research}
+[2023 –]{.glance-when}
+
+### DPhil in Biology
+
+University of Oxford
+:::
+
+::: {.glance-item .k-research}
+[2021 – 2025]{.glance-when}
+
+### Data scientist in genomic epidemiology
+
+University of Oxford, Department of Biology
+:::
+
+::: {.glance-item .k-education}
+[2021]{.glance-when}
+
+### MSc Epidemiology, Distinction
+
+Imperial College London
+:::
+
+::: {.glance-item .k-education}
+[2020]{.glance-when}
+
+### BSc Infectious Diseases, First Class
+
+University of Edinburgh, with the Ritchie Prize for the most distinguished student
+:::
+
+::: {.glance-item .k-research .glance-papers}
+[6 papers]{.glance-when}
+
+### First or joint first author
+
+Including *Science* and *Nature Communications*. [See them](publications.qmd)
+:::
+::::
+
+## Full timeline
+
+Use **Highlights** to see the key roles only, or filter by type.
 
 ::: {#timeline}
 :::

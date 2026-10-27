@@ -1,0 +1,17 @@
+```{=html}
+<%
+const feat = items.filter(i => i.featured).sort((a, b) => a.featured - b.featured);
+const link = (p, label) => (p.links || []).find(l => l.label === label);
+%>
+<div class="featured">
+<% for (const p of feat) { const paper = link(p, "Paper"); const code = link(p, "Code"); %>
+  <article class="feat">
+    <p class="feat-venue"><em><%= p.journal %></em> · <%= p.year %></p>
+    <h3 class="feat-title"><% if (paper) { %><a href="<%= paper.href %>"><%= p.title %></a><% } else { %><%= p.title %><% } %></h3>
+    <% for (const t of (p.tags || [])) { %><span class="pub-tag<%= /first author/i.test(t) ? ' is-first' : '' %>"><%= t %></span><% } %>
+    <% if (p.summary) { %><p class="feat-summary"><%= p.summary %></p><% } %>
+    <p class="feat-links"><% if (paper) { %><a href="<%= paper.href %>">Read the paper</a><% } %><% if (code) { %><a href="<%= code.href %>">Code</a><% } %></p>
+  </article>
+<% } %>
+</div>
+```

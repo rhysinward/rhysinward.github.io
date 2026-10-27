@@ -1,4 +1,4 @@
-# Newest first. kind: Grant, Scholarship or Prize.
+# Newest first. kind: Grant, Scholarship or Prize. key: true marks a highlight.
 # Text in [square brackets] shows as a dashed placeholder.
 
 - title: Bowers Fund grants (two awards)
@@ -20,11 +20,13 @@
   org: EScamps conference, University of Cambridge
   year: "2023"
   kind: Prize
+  key: true
 
 - title: Oxford-Natural Motion Graduate Scholarship
   org: University of Oxford, in partnership with Jesus College
   year: "2023"
   kind: Scholarship
+  key: true
 
 - title: Graduate Choral Scholarship
   org: St Peter's College, Oxford
@@ -36,6 +38,7 @@
   text: Winner at the local and European stages.
   year: "2020–21"
   kind: Prize
+  key: true
 
 - title: Runner-up, Imperial Healthcare Hackathon
   org: Imperial College London
@@ -47,6 +50,7 @@
   text: For the most distinguished student in the year, with the highest overall mark.
   year: "2020"
   kind: Prize
+  key: true
 
 - title: Highest dissertation mark
   org: BSc Infectious Diseases, University of Edinburgh

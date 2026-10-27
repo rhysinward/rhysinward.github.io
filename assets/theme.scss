@@ -248,7 +248,7 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
   margin-block: clamp(1.25rem, 3vw, 2.5rem) 1rem;
 }
 .hero-text { min-width: 0; }
-.hero .avatar { width: 88px; height: 88px; border-radius: 50%; display: block; margin-bottom: 1.1rem; }
+.hero .avatar { width: 112px; height: 112px; border-radius: 50%; display: block; margin-bottom: 1.1rem; object-fit: cover; border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--rule-strong), 0 8px 24px rgba(29, 41, 48, 0.12); }
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.76rem;
@@ -299,7 +299,11 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
 .theme { min-width: 0; }
 .theme h3 { font-size: 1.12rem; margin: 0.7rem 0 0.35rem; }
 .theme p { color: var(--ink-2); margin: 0; }
-.contact { background: var(--paper-2); border-radius: 14px; padding: 1.5rem clamp(1.1rem, 3vw, 2rem); }
+.contact { background: var(--paper-2); border-radius: 14px; padding: 1.5rem clamp(1.1rem, 3vw, 2rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: 1.25rem 2rem; align-items: center; }
+.contact-text { min-width: 0; }
+.contact-photo { min-width: 0; }
+.contact-photo p { margin: 0; }
+.contact-photo img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 12px; }
 .contact h3 { margin-top: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; }
 .contact-links p { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin: 0; font-family: var(--font-mono); font-size: 0.85rem; }
 
@@ -497,3 +501,84 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
   .hub-head { grid-template-columns: minmax(0, 1fr); }
   .hub-head img { display: none; }
 }
+
+
+// 10. Profile refresh: public health, featured papers, highlights ---------------
+
+.ph-themes .theme { border-top: 2px solid var(--k, var(--rule-strong)); padding-top: 0.9rem; }
+.ph-themes .theme p a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.ph-themes .theme p a:hover { color: var(--C); }
+
+.featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.feat { min-width: 0; display: flex; flex-direction: column; gap: 0.5rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 1.15rem 1.25rem 1.2rem; }
+.feat:hover { border-color: var(--rule-strong); }
+.feat-venue { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+.feat-venue em { font-style: normal; color: var(--ink); }
+.feat-title { font-size: 1.05rem; line-height: 1.35; margin: 0; }
+.feat-title a { color: var(--ink); text-decoration: none; }
+.feat-title a:hover { color: var(--C); text-decoration: underline; }
+.feat .pub-tag { align-self: flex-start; }
+.feat-summary { margin: 0.2rem 0 0; color: var(--ink-2); font-size: 0.93rem; flex: 1; }
+.feat-links { margin: 0.3rem 0 0; display: flex; gap: 1rem; font-size: 0.92rem; font-weight: 700; }
+
+.glance-title { margin-top: 0.5rem; }
+.glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin: 1rem 0 2.5rem; }
+.glance-item { min-width: 0; border: 1px solid var(--rule); border-top: 3px solid var(--k, var(--ink-2)); border-radius: 12px; padding: 0.9rem 1.1rem 1rem; background: var(--paper); }
+.glance-item p { margin: 0; color: var(--ink-2); font-size: 0.93rem; }
+.glance-item h3 { font-size: 1.02rem; margin: 0.3rem 0 0.25rem; }
+.glance-when { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--k, var(--ink-2)); }
+
+.chip-key .star { color: var(--G); font-size: 0.85rem; line-height: 1; }
+.chip-key[aria-pressed="true"] .star { color: var(--paper); }
+.tl-key { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--G); }
+.tl-key::before { content: "★ "; }
+.tl-item.is-key .tl-card { border-color: var(--rule-strong); box-shadow: inset 3px 0 0 var(--k); }
+.tl-item.is-key .tl-title { font-size: 1.14rem; }
+.awards .pub.is-key .pub-title::before { content: "★ "; color: var(--G); }
+
+@media (max-width: 991.98px) {
+  .featured { grid-template-columns: minmax(0, 1fr); }
+  .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+  .contact { grid-template-columns: minmax(0, 1fr); }
+  .contact-photo { max-width: 420px; }
+}
+@media (max-width: 575.98px) {
+  .glance { grid-template-columns: minmax(0, 1fr); }
+}
+
+.hero-figure p { margin: 0; }
+.hero-phylo { display: block; width: 100%; height: auto; background: #fff; border-radius: 12px; padding: 0.5rem 0.6rem 0.3rem; border: 1px solid var(--rule); }
+.hero-figure .hero-caption { display: block; text-align: left; margin-top: 0.55rem; line-height: 1.5; }
+.hero-figure .hero-caption a { color: var(--ink-2); }
+
+// 11. Evidence-led research page ---------------------------------------------
+
+.research-intro { font-size: 1.08rem; max-width: 46rem; color: var(--ink); margin-bottom: 0.5rem; }
+.research-intro p { margin: 0; }
+.findings { margin: 1.1rem 0; padding: 0.95rem 1.1rem 1rem; border: 1px solid var(--rule); border-left: 3px solid var(--k, var(--ink-2)); border-radius: 0 10px 10px 0; background: var(--paper); }
+.findings-label { display: block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--k, var(--ink-2)); margin-bottom: 0.45rem; }
+.findings ul { margin: 0 0 0.6rem; padding-left: 1.1rem; }
+.findings li { margin-bottom: 0.35rem; }
+.findings p { margin: 0; font-size: 0.92rem; }
+.findings.in-progress { border-left-style: dashed; background: transparent; }
+.findings.in-progress ul { margin-bottom: 0; }
+.real-fig { margin: 0.5rem 0 1rem; }
+.real-fig p { margin: 0; }
+.real-fig img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 0.5rem; }
+.real-fig.wide { max-width: 980px; }
+.fig-credit { display: block; margin-top: 0.5rem; font-size: 0.8rem; line-height: 1.5; color: var(--ink-2); }
+.fig-credit a { color: var(--ink-2); }
+
+// Four selected papers sit in a 2 x 2 grid instead of 3 + 1.
+.featured:has(> .feat:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 991.98px) { .featured:has(> .feat:nth-child(4)) { grid-template-columns: minmax(0, 1fr); } }
+
+// A lone last card in the glance grid spans the row (3 columns, then 2).
+.glance-item:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }
+@media (max-width: 991.98px) {
+  .glance-item:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .glance-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 575.98px) { .glance-item:last-child:nth-child(odd) { grid-column: auto; } }

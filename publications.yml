@@ -1,6 +1,7 @@
 # Newest first. "Inward RPD" is bolded automatically.
 # Joint first authors are marked * (only where Inward is one of them).
 # Long author lists are shortened with … around "Inward RPD".
+# featured: 1, 2 or 3 puts a paper on the home page, in that order, with its summary.
 # Text in [square brackets] shows as a dashed placeholder.
 
 - title: "Global approaches to infectious disease surveillance and modeling"
@@ -112,6 +113,8 @@
   journal: Emerging Infectious Diseases
   year: "2023"
   tags: [Joint first author]
+  featured: 3
+  summary: "Phylogenetic analysis traced how the Cosmopolitan genotype of DENV-2 re-emerged in Ho Chi Minh City, its probable routes of introduction and the timeline of events, and showed the need for continuous genomic surveillance."
   links:
     - label: Paper
       href: https://doi.org/10.3201/eid2910.230529
@@ -134,6 +137,8 @@
   journal: Science
   year: "2023"
   tags: [Joint first author]
+  featured: 2
+  summary: "From 115,622 genomes, we identified more than 6,000 separate introductions of Omicron BA.1 into England. Six of the eight largest lineages were already spreading when Omicron was first reported, and importation continued despite travel restrictions."
   links:
     - label: Paper
       href: https://doi.org/10.1126/science.adg6605
@@ -174,6 +179,8 @@
   journal: Nature Communications
   year: "2022"
   tags: [First author]
+  featured: 1
+  summary: "Which genomes you analyse matters. With SARS-CoV-2 data from Hong Kong and Amazonas, Brazil, we showed that estimates of Rt and growth rate shift with sampling choices, while R0 and the date of origin are relatively robust."
   links:
     - label: Paper
       href: https://doi.org/10.1038/s41467-022-32812-0
