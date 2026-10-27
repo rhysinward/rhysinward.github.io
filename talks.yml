@@ -4,6 +4,12 @@
 # Put slide decks and poster PDFs in files/ and link them as files/name.pdf.
 # Text in [square brackets] shows as a dashed placeholder.
 
+- title: Climate, importation, and immunity shape chikungunya transmission across emerging and endemic settings
+  event: International Pandemic Sciences Conference
+  place: Singapore
+  when: "2026"
+  kind: Poster
+
 - title: "PPIE: the patient experience"
   role: Guest speaker
   event: NIHR Health and Care Internship Training Day
