@@ -1,0 +1,12 @@
+---
+title: "Talks & posters"
+subtitle: "Conference talks and posters, invited lectures and panels."
+listing:
+  id: talks
+  contents: talks.yml
+  template: _templates/talks.ejs
+  sort: false
+---
+
+::: {#talks}
+:::

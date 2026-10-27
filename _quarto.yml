@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/img/*
+    - files/*
+
+website:
+  title: "Rhys Inward"
+  site-url: https://rhysinward.github.io
+  description: "Genomic and field epidemiology of dengue, chikungunya and bacterial pathogens."
+  favicon: assets/img/favicon.svg
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    left:
+      - href: research.qmd
+      - href: tutorials/index.qmd
+        text: Tutorials
+      - href: publications.qmd
+      - href: talks.qmd
+        text: Talks & posters
+      - href: ppie.qmd
+        text: PPIE
+      - href: timeline.qmd
+    right:
+      - icon: github
+        href: https://github.com/rhysinward
+        aria-label: GitHub
+  page-footer:
+    left: "© 2026 Rhys Inward · Views are my own"
+    right: "Made with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: [default, assets/theme.scss]
+    include-in-header: assets/fonts.html
+    include-after-body: assets/filters.html
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js"
+    toc: false
+    code-copy: true
+    link-external-newwindow: true
+    smooth-scroll: true
+
+execute:
+  freeze: auto

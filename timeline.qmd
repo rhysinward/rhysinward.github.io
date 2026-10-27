@@ -1,0 +1,23 @@
+---
+title: "Timeline"
+subtitle: "Roles, training and education, most recent first, then grants and awards."
+listing:
+  - id: timeline
+    contents: timeline.yml
+    template: _templates/timeline.ejs
+    sort: false
+  - id: awards
+    contents: awards.yml
+    template: _templates/awards.ejs
+    sort: false
+---
+
+<!-- Add a public CV to files/ and link it here, e.g. [Download my CV (PDF)](files/Rhys_Inward_CV.pdf){.btn-line} -->
+
+::: {#timeline}
+:::
+
+## Grants and awards
+
+::: {#awards}
+:::

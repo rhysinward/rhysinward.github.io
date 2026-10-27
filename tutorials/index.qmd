@@ -1,0 +1,12 @@
+---
+title: "Tutorials"
+subtitle: "Background on the pathogens I work on, and hands-on walkthroughs of the methods. Code is in R."
+toc: false
+listing:
+  id: hubs
+  contents: "*.qmd"
+  template: ../_templates/hubs.ejs
+---
+
+::: {#hubs}
+:::

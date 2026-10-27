@@ -1,0 +1,190 @@
+# Newest first. "Inward RPD" is bolded automatically.
+# Joint first authors are marked * (only where Inward is one of them).
+# Long author lists are shortened with … around "Inward RPD".
+# Text in [square brackets] shows as a dashed placeholder.
+
+- title: "Global approaches to infectious disease surveillance and modeling"
+  authors: "Khurana MP, Tsui JLH, Gutierrez B, …, Inward RPD, …, Kraemer MUG"
+  journal: Nature Medicine
+  year: "2026"
+  tags: [Review]
+  links:
+    - label: Paper
+      href: https://doi.org/10.1038/s41591-026-04351-4
+
+- title: "Cardiac structure relates to hemorrhagic cerebral small vessel disease phenotype"
+  authors: "Stewart CR, Lyon J, Nash PS, Best JG, Bonifacio G, Jitpimolmard J, Inward RPD, Chan E, Oliver R, Werring DJ"
+  journal: Journal of the American Heart Association
+  year: "2026"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1161/JAHA.124.039474
+
+- title: "Transmission lineage dynamics and the detection of viral importation in emerging epidemics"
+  authors: "Tsui JLH, Sambaturu P, Pena RE, Too L, Gutierrez B, Inward RPD, Kraemer MUG, du Plessis L, Pybus OG"
+  journal: Epidemics
+  year: "2026"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1016/j.epidem.2026.100893
+    - label: Code
+      href: https://github.com/joetsui1994/Transmission-lineage-dynamics-and-detection
+
+- title: "A market-based virus monitoring strategy complementary to epidemiological surveillance in urban settings"
+  authors: "Martínez-Duque P, Jiménez-Rico MA, Bacab-Cab LA, …, Inward RPD, …, Escalera-Zamudio M"
+  journal: medRxiv
+  year: "2025"
+  tags: [Preprint]
+  links:
+    - label: Preprint
+      href: https://doi.org/10.64898/2025.12.22.25342882
+
+- title: "The role of climate change in the expansion of dengue"
+  authors: "de Abreu R, Fernandez IP, Mishra S, …, Inward RPD, …, Sparrow S"
+  journal: medRxiv
+  year: "2025"
+  tags: [Preprint]
+  links:
+    - label: Preprint
+      href: https://doi.org/10.1101/2025.10.06.25337235
+
+- title: "Scalable, open-access and multidisciplinary data integration pipeline for climate-sensitive diseases"
+  authors: "Dasgupta A, Perez-Fernandez I, Huynh T, …, Inward RPD, …, Kraemer MUG"
+  journal: Wellcome Open Research
+  year: "2025"
+  tags: [Software]
+  links:
+    - label: Paper
+      href: https://doi.org/10.12688/wellcomeopenres.24774.3
+    - label: Code
+      href: https://github.com/kraemer-lab/DART-Pipeline
+
+- title: "Genomic surveillance of climate-amplified cholera outbreak, Malawi, 2022–2023"
+  authors: "Chabuka L, Choga WT, Mavian CN, …, Inward RPD, …, Kagoli M"
+  journal: Emerging Infectious Diseases
+  year: "2025"
+  links:
+    - label: Paper
+      href: https://doi.org/10.3201/eid3106.240930
+
+- title: "GRAPEVNE – Graphical Analytical Pipeline Development Environment for Infectious Diseases"
+  authors: "Brittain JS*, Tsui J*, Inward RPD*, …, Kraemer MUG"
+  journal: Wellcome Open Research
+  year: "2025"
+  tags: [Joint first author, Software]
+  links:
+    - label: Paper
+      href: https://doi.org/10.12688/wellcomeopenres.23824.1
+    - label: Code
+      href: https://github.com/kraemer-lab/GRAPEVNE
+    - label: Docs
+      href: https://grapevne.readthedocs.io
+
+- title: "UK research priority setting for childhood neurological conditions"
+  authors: "Cadwgan J, Goodwin J, Babcock B, …, Inward RPD, …, UK Childhood Neurological Disorders PSP Group"
+  journal: Developmental Medicine & Child Neurology
+  year: "2024"
+  tags: [PPIE]
+  links:
+    - label: Paper
+      href: https://doi.org/10.1111/dmcn.16021
+
+- title: "Routes of importation and spatial dynamics of SARS-CoV-2 variants during localized interventions in Chile"
+  authors: "Gutierrez B, Tsui JLH, Pullano G, …, Inward RPD, …, Kraemer MUG"
+  journal: PNAS Nexus
+  year: "2024"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1093/pnasnexus/pgae483
+    - label: Code
+      href: https://github.com/BernardoGG/SARS2_Chile
+
+- title: "Impacts of climate change-related human migration on infectious diseases"
+  authors: "Tsui JLH, Pena RE, Moir M, Inward RPD, …, Sambaturu P"
+  journal: Nature Climate Change
+  year: "2024"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1038/s41558-024-02078-z
+
+- title: "Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam"
+  authors: "Tran VT*, Inward RPD*, Gutierrez B, Nguyen NM, Nguyen PT, Rajendiran I, Cao TT, Duong KTH, Kraemer MUG, Yacoub S"
+  journal: Emerging Infectious Diseases
+  year: "2023"
+  tags: [Joint first author]
+  links:
+    - label: Paper
+      href: https://doi.org/10.3201/eid2910.230529
+    - label: Code
+      href: https://github.com/rhysinward/Phylodynamics-HCMC
+
+- title: "Comparing the evolutionary dynamics of predominant SARS-CoV-2 virus lineages co-circulating in Mexico"
+  authors: "Castelán-Sánchez HG*, Delaye L*, Inward RPD*, Dellicour S*, Gutierrez B*, …, Escalera Zamudio M"
+  journal: eLife
+  year: "2023"
+  tags: [Joint first author]
+  links:
+    - label: Paper
+      href: https://doi.org/10.7554/eLife.82069
+    - label: Code
+      href: https://github.com/rhysinward/Mexico_subsampling
+
+- title: "Genomic assessment of invasion dynamics of SARS-CoV-2 Omicron BA.1"
+  authors: "Tsui JLH*, McCrone JT*, Lambert B*, Bajaj S*, Inward RPD*, Bosetti P*, …, Kraemer MUG"
+  journal: Science
+  year: "2023"
+  tags: [Joint first author]
+  links:
+    - label: Paper
+      href: https://doi.org/10.1126/science.adg6605
+    - label: Code
+      href: https://github.com/joetsui1994/Omicron-BA.1-invasion-dynamics
+
+- title: "Identification of evolutionary trajectories shared across human betacoronaviruses"
+  authors: "Escalera-Zamudio M, Kosakovsky Pond SL, Martínez de la Viña N, Gutiérrez B, Inward RPD, Thézé J, van Dorp L, Castelán-Sánchez HG, Bowden TA, Pybus OG, Hulswit RJG"
+  journal: Genome Biology and Evolution
+  year: "2023"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1093/gbe/evad076
+
+- title: "Impact of spatiotemporal heterogeneity in COVID-19 disease surveillance on epidemiological parameters and case growth rates"
+  authors: "Inward RPD*, Jackson F*, Dasgupta A, Lee G, Battle AL, Parag KV, Kraemer MUG; Global.health consortium"
+  journal: Epidemics
+  year: "2022"
+  tags: [Joint first author]
+  links:
+    - label: Paper
+      href: https://doi.org/10.1016/j.epidem.2022.100627
+    - label: Code
+      href: https://github.com/fojackson8/COVID19_mapping_epiparams
+
+- title: "Context-specific emergence and growth of the SARS-CoV-2 Delta variant"
+  authors: "McCrone JT, Hill V, Bajaj S, …, Inward RPD, …, Kraemer MUG"
+  journal: Nature
+  year: "2022"
+  links:
+    - label: Paper
+      href: https://doi.org/10.1038/s41586-022-05200-3
+    - label: Code
+      href: https://github.com/COG-UK/Delta-analysis
+
+- title: "Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data"
+  authors: "Inward RPD, Parag KV, Faria NR"
+  journal: Nature Communications
+  year: "2022"
+  tags: [First author]
+  links:
+    - label: Paper
+      href: https://doi.org/10.1038/s41467-022-32812-0
+    - label: Code
+      href: https://github.com/rhysinward/Phylodynamic-Subsampling
+
+- title: "Epidemic waves of COVID-19 in Scotland: a genomic perspective on the impact of the introduction and relaxation of lockdown on SARS-CoV-2"
+  authors: "Lycett SJ, Hughes J, McHugh MP, …, Inward RPD, …, Robertson DL"
+  journal: medRxiv
+  year: "2021"
+  tags: [Preprint]
+  links:
+    - label: Preprint
+      href: https://doi.org/10.1101/2021.01.08.20248677

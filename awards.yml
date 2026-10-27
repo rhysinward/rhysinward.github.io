@@ -1,0 +1,60 @@
+# Newest first. kind: Grant, Scholarship or Prize.
+# Text in [square brackets] shows as a dashed placeholder.
+
+- title: Bowers Fund grants (two awards)
+  amount: £300 each
+  year: "2026"
+  kind: Grant
+
+- title: Bowers Fund grant
+  amount: £300
+  year: "2025"
+  kind: Grant
+
+- title: Jesus College Graduate Scholarship
+  org: Jesus College, Oxford
+  year: "2025"
+  kind: Scholarship
+
+- title: Prize for best speaker
+  org: EScamps conference, University of Cambridge
+  year: "2023"
+  kind: Prize
+
+- title: Oxford-Natural Motion Graduate Scholarship
+  org: University of Oxford, in partnership with Jesus College
+  year: "2023"
+  kind: Scholarship
+
+- title: Graduate Choral Scholarship
+  org: St Peter's College, Oxford
+  year: "2023"
+  kind: Scholarship
+
+- title: Gold Prize, EIT Innovation in Health challenge
+  org: European Institute of Innovation and Technology
+  text: Winner at the local and European stages.
+  year: "2020–21"
+  kind: Prize
+
+- title: Runner-up, Imperial Healthcare Hackathon
+  org: Imperial College London
+  year: "2020–21"
+  kind: Prize
+
+- title: Ritchie Prize
+  org: University of Edinburgh
+  text: For the most distinguished student in the year, with the highest overall mark.
+  year: "2020"
+  kind: Prize
+
+- title: Highest dissertation mark
+  org: BSc Infectious Diseases, University of Edinburgh
+  year: "2020"
+  kind: Prize
+
+- title: Undergraduate Vacation Scholarship
+  org: Medical Research Scotland
+  text: Funded a summer research project on host–pathogen interactions.
+  year: "2019"
+  kind: Scholarship

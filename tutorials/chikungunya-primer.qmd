@@ -1,0 +1,49 @@
+---
+title: "Chikungunya: a primer"
+description: "Lineages, the mutation that helped it adapt to a new mosquito, and where it spreads."
+categories: [Chikungunya, Primer]
+date: 2026-10-18
+image: ../assets/img/chikv.svg
+---
+
+::: {.facts .k-chik}
+[At a glance]{.facts-label}
+
+Family
+: *Togaviridae*, genus *Alphavirus*
+
+Genome
+: About 11.8 kb of positive-sense, single-stranded RNA
+
+Lineages
+: West African, East/Central/South African (ECSA) and Asian, plus the Indian Ocean lineage that emerged from ECSA
+
+Vectors
+: *Aedes aegypti* and *Ae. albopictus*
+
+Disease
+: Sudden fever and severe joint pain, which can last for months ([WHO](https://www.who.int/news-room/fact-sheets/detail/chikungunya))
+:::
+
+## The virus
+
+The genome carries two open reading frames. The first encodes four non-structural proteins (nsP1–nsP4) that copy the genome. The second encodes the structural proteins: capsid, E3, E2, 6K/TF and E1.
+
+## Lineages and adaptation
+
+During the 2005–06 outbreak on La Réunion, an alanine-to-valine change at position 226 of the E1 protein (E1-A226V) let some ECSA strains spread more efficiently in *Ae. albopictus*. That mosquito is now established across much of southern Europe, which is one reason chikungunya can transmit locally there.
+
+## Where it spreads
+
+The Asian lineage reached the Americas in late 2013, and the ECSA lineage was detected in Brazil the following year. Outbreaks with local transmission have also occurred in Italy and France.
+
+## How my work fits in
+
+I model chikungunya outbreaks in France and Brazil with renewal equations, and use climate counterfactuals to ask how much climate shaped transmission. The [renewal-equation tutorial](renewal-rt.qmd) walks through the core idea.
+
+## Resources
+
+::: {.resources}
+- [WHO fact sheet: chikungunya](https://www.who.int/news-room/fact-sheets/detail/chikungunya)
+- [CDC: chikungunya virus](https://www.cdc.gov/chikungunya/)
+:::

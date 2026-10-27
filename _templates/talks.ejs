@@ -1,0 +1,27 @@
+```{=html}
+<%
+const ph = s => String(s == null ? "" : s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>');
+const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const thumbs = { talk: "talk.svg", poster: "poster.svg", workshop: "workshop.svg" };
+const kinds = [...new Set(items.map(i => i.kind))];
+%>
+<div class="chip-filter" role="group" aria-label="Filter talks and posters" data-target=".talk">
+  <button type="button" class="chip" data-kind="all" aria-pressed="true">All</button>
+<% for (const k of kinds) { %>
+  <button type="button" class="chip kk-<%= slug(k) %>" data-kind="<%= slug(k) %>" aria-pressed="false"><span class="dot"></span><%= k %>s</button>
+<% } %>
+</div>
+<ul class="talks">
+<% for (const item of items) { const k = slug(item.kind); %>
+  <li class="talk kk-<%= k %>" data-kind="<%= k %>">
+    <div class="talk-thumb"><img src="<%= item.image || ('assets/img/' + (thumbs[k] || 'talk.svg')) %>" alt="" loading="lazy"></div>
+    <div class="talk-body">
+      <span class="tag"><%= item.kind %></span><% if (item.note) { %> <span class="talk-note"><%= ph(item.note) %></span><% } %>
+      <h3><%= ph(item.title) %></h3>
+      <p class="talk-meta"><%= [item.role, item.event, item.place, item.when].filter(Boolean).map(s => ph(s)).join(" · ") %></p>
+      <% if (item.links) { %><p class="talk-links"><% for (const l of item.links) { %><a href="<%= l.href %>"><%= l.label %></a><% } %></p><% } %>
+    </div>
+  </li>
+<% } %>
+</ul>
+```

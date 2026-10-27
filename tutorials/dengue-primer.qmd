@@ -1,0 +1,57 @@
+---
+title: "Dengue: a primer"
+description: "The virus, its serotypes and genotypes, how it spreads, and where to find data."
+categories: [Dengue, Primer]
+date: 2026-10-20
+image: ../assets/img/dengue.svg
+---
+
+::: {.facts .k-dengue}
+[At a glance]{.facts-label}
+
+Family
+: *Flaviviridae*, genus *Orthoflavivirus*
+
+Genome
+: About 10.7 kb of positive-sense, single-stranded RNA
+
+Serotypes
+: Four: DENV-1, DENV-2, DENV-3 and DENV-4
+
+Vectors
+: *Aedes aegypti*, and *Ae. albopictus* in some settings
+
+Burden
+: An estimated 100–400 million infections a year, with about half the world's population at risk ([WHO](https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue))
+:::
+
+## The virus
+
+The genome is translated as a single polyprotein, then cut into three structural proteins (capsid, prM and envelope) and seven non-structural proteins (NS1, NS2A, NS2B, NS3, NS4A, NS4B and NS5). The envelope (E) gene was the classic target for genotyping. Whole genomes are now routine.
+
+## Serotypes, genotypes and lineages
+
+Infection with one serotype gives long-lasting protection against that serotype, but cross-protection against the others is short-lived. A second infection with a different serotype carries a higher risk of severe dengue.
+
+Each serotype splits into genotypes. DENV-2, for example, has the Asian I, Asian II, Asian-American, American, Cosmopolitan and sylvatic genotypes. A [lineage nomenclature](https://dengue-lineages.org) now divides genotypes further, which makes surveillance reports easier to compare.
+
+## Transmission
+
+*Aedes aegypti* lives close to people, bites during the day and breeds in small containers of water, which makes dengue an urban disease. *Ae. albopictus* tolerates cooler climates and is behind the occasional local transmission now seen in southern Europe. Temperature affects how long mosquitoes live and how quickly the virus develops inside them, so climate shapes when and where outbreaks happen.
+
+## How my work fits in
+
+My DPhil looks at how DENV-2 genotypes replace one another in Vietnam, and at the global spread of the DENV-2 Cosmopolitan genotype after the COVID-19 pandemic. More on the [research page](../research.qmd).
+
+## Resources
+
+::: {.resources}
+- [WHO fact sheet: dengue and severe dengue](https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue)
+- [Nextstrain dengue builds](https://nextstrain.org/dengue): real-time phylogenies by serotype
+- [Dengue lineage nomenclature](https://dengue-lineages.org)
+- [OpenDengue](https://opendengue.org): global case counts in one dataset
+:::
+
+::: {.next-up}
+**Next:** [Genotype replacement in R](genotype-replacement.qmd), a hands-on tutorial with simulated sequence data.
+:::

@@ -1,0 +1,117 @@
+# Newest first. kind: Talk, Poster or Workshop.
+# role (optional) comes first in the details line, e.g. "Invited speaker".
+# note (optional) shows as a small label, e.g. a prize.
+# Put slide decks and poster PDFs in files/ and link them as files/name.pdf.
+# Text in [square brackets] shows as a dashed placeholder.
+
+- title: "PPIE: the patient experience"
+  role: Guest speaker
+  event: NIHR Health and Care Internship Training Day
+  place: London
+  when: "2026"
+  kind: Talk
+
+- title: Championing patient and public involvement in research
+  role: Guest speaker
+  event: Encephalitis International VIP Changemaker Event
+  place: London
+  when: "2025"
+  kind: Talk
+
+- title: Incorporating patient voice in clinical research
+  role: Expert panellist
+  event: Evelina London Research Showcase
+  place: London
+  when: "2025"
+  kind: Talk
+
+- title: Global homogenisation of dengue virus diversity following the relaxation of COVID-19 pandemic restrictions
+  event: Ecology and Evolution of Infectious Diseases (EEID)
+  place: University of Notre Dame, USA
+  when: "2025"
+  kind: Poster
+
+- title: "Patient perspective: from patient to researcher"
+  role: Invited speaker and expert panellist
+  event: British Paediatric Neurology Association Annual Meeting
+  place: Birmingham
+  when: "2024"
+  kind: Talk
+
+- title: "Patient perspective: from patient to researcher"
+  role: Invited speaker
+  event: Royal College of Paediatrics and Child Health
+  place: London
+  when: "2024"
+  kind: Talk
+
+- title: "Streamlining large-scale analyses: building scalable and flexible pipelines for disease analytics – case study of dengue in Vietnam"
+  event: Epidemics Conference
+  place: Bologna, Italy
+  when: "2023"
+  kind: Poster
+  links:
+    - label: Pipeline code
+      href: https://github.com/rhysinward/dengue_pipeline
+
+- title: Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam
+  role: Contributed talk
+  event: EScamps
+  place: University of Cambridge
+  when: "2023"
+  kind: Talk
+  note: Best speaker prize
+  links:
+    - label: Paper
+      href: https://doi.org/10.3201/eid2910.230529
+
+- title: Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam
+  event: Virus Evolution and Molecular Epidemiology (VEME)
+  place: Stellenbosch University, South Africa
+  when: "2023"
+  kind: Poster
+  links:
+    - label: Paper
+      href: https://doi.org/10.3201/eid2910.230529
+
+- title: Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam
+  event: Pandemic Sciences Conference
+  place: University of Oxford
+  when: "2023"
+  kind: Poster
+  links:
+    - label: Paper
+      href: https://doi.org/10.3201/eid2910.230529
+
+- title: "Viral evolution and genomic dataset construction; applying statistical inference while accounting for phylogenetic structure; Bayesian statistics for phylogenetics (BEAST)"
+  role: Invited lectures
+  event: Genomic Epidemiology and Statistics Workshop, Oxford University Clinical Research Unit
+  place: Ho Chi Minh City, Vietnam
+  when: "2022"
+  kind: Workshop
+
+- title: Spatial dynamics of SARS-CoV-2 across a heterogeneous mobility landscape in Chile
+  event: Virus Genomics and Evolution (VGE)
+  place: Cambridge
+  when: "2022"
+  kind: Poster
+  links:
+    - label: Paper
+      href: https://doi.org/10.1093/pnasnexus/pgae483
+
+- title: Virus evolution and genomic dataset construction
+  role: Invited lecture
+  event: Genomic Epidemiology and Data Science Workshop, Universidad Autónoma de Yucatán
+  place: Mérida, Mexico
+  when: "2022"
+  kind: Workshop
+
+- title: Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data
+  role: Contributed talk
+  event: Ecology and Evolution of Infectious Diseases (EEID)
+  place: Emory University, Atlanta, USA
+  when: "2022"
+  kind: Talk
+  links:
+    - label: Paper
+      href: https://doi.org/10.1038/s41467-022-32812-0

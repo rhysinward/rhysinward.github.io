@@ -1,0 +1,122 @@
+# Most recent first.
+# kind: public-health, research, teaching, ppie, leadership or education.
+# current: true gives the node a pulse. 20XX and [square brackets] show as placeholders.
+
+- title: UK Field Epidemiology Training Programme fellow
+  org: UK Health Security Agency · North West Field Service, Liverpool
+  when: Sep 2026 – present
+  kind: public-health
+  current: true
+  text: Applied field epidemiology training, covering surveillance, outbreak response and applied projects.
+
+- title: Co-design lead, Q-CDSS
+  org: NIHR Invention for Innovation (i4i) FAST · UCL AI4coma lab
+  when: 2026 – present
+  kind: ppie
+  current: true
+  text: Leading stakeholder co-design for a hybrid classical–quantum decision-support tool to predict critical events such as cardiac arrest in intensive care patients. Funded by NIHR i4i FAST in 2026, with Applied Quantum Computing and Guy's and St Thomas' NHS Foundation Trust.
+
+- title: MCR Sports Representative
+  org: Jesus College, Oxford
+  when: 2026 – present
+  kind: leadership
+  current: true
+
+- title: MCR President
+  org: Jesus College, Oxford
+  when: "2025"
+  kind: leadership
+  text: Served three terms leading the college's graduate common room, and co-chaired the Conference of Common Rooms. Before that I was the MCR's Social Secretary (2023–2025).
+
+- title: Non-Stipendiary Lecturer in Biology
+  org: St Catherine's College, Oxford
+  when: Jan 2025 – Jan 2026
+  kind: teaching
+  text: Undergraduate tutorials in infectious disease epidemiology and evolution. I designed the teaching materials, set essays and marked assessments.
+
+- title: Undergraduate tutor
+  org: Jesus College, Oxford
+  when: Jan 2025 – 2026
+  kind: teaching
+  text: Small-group tutorials in epidemiology and molecular biology.
+
+- title: Module co-lead
+  org: Department of Biology, University of Oxford
+  when: Jan 2025 – 2026
+  kind: teaching
+  text: Co-developed the computational epidemiology practicals, written in R, for second-year MBiol students.
+
+- title: Consultant in patient and public involvement and engagement (PPIE)
+  org: Evelina London Children's Hospital · King's College London
+  when: Aug 2024 – present
+  kind: ppie
+  current: true
+  text: Evaluating patient and public involvement in the Neurology department through surveys of clinical staff, and recommending how to build patient perspectives into research strategy and reporting.
+
+- title: DPhil in Biology
+  org: University of Oxford · Department of Biology and Pandemic Sciences Institute
+  when: Oct 2023 – present
+  kind: research
+  current: true
+  text: Thesis on integrating multiple data sources and quantitative tools to understand pathogen dynamics, with chapters on dengue and chikungunya transmission and on the GRAPEVNE pipeline environment. Supervised by Moritz Kraemer and Katrina Lythgoe. Funded by the Oxford-Natural Motion Graduate Scholarship with Jesus College.
+
+- title: Genomic epidemiology workshops
+  org: OUCRU, Ho Chi Minh City · Universidad Autónoma de Yucatán, Mérida
+  when: "2022"
+  kind: teaching
+  text: Invited lectures on virus evolution and genomic dataset construction, statistical inference that accounts for phylogenetic structure, and Bayesian phylogenetics with BEAST.
+
+- title: Demonstrator
+  org: Department of Biology (formerly Zoology), University of Oxford
+  when: Jan 2022 – 2026
+  kind: teaching
+  text: Undergraduate practicals in phylogenetics, epidemiology and evolutionary biology, including help with coding in R.
+
+- title: PGCert in Philosophy
+  org: University of Cambridge
+  when: Sep 2021 – Aug 2022
+  kind: education
+
+- title: Data scientist in genomic epidemiology
+  org: Department of Biology (formerly Zoology), University of Oxford
+  when: Aug 2021 – 2025
+  kind: research
+  text: Genomic epidemiology of COVID-19 variants and control measures, scalable phylodynamic pipelines, dengue resurgence in Vietnam, and biases in COVID-19 surveillance data with the Global.health consortium.
+
+- title: Public contributor
+  org: NIHR Health Protection Research Unit in Emerging and Zoonotic Infections
+  when: 2021 – present
+  kind: ppie
+  current: true
+  text: Helping the unit improve how it involves patients and the public in its research.
+
+- title: MSc Epidemiology, Distinction
+  org: Imperial College London · School of Public Health
+  when: Oct 2020 – Oct 2021
+  kind: education
+  text: Dissertation on genomic sampling strategies for estimating SARS-CoV-2 epidemiological parameters, supervised by Nuno Faria and Kris Parag and later published in Nature Communications. Gold Prize at the European stage of the EIT Innovation in Health challenge.
+
+- title: Research assistant
+  org: Roslin Institute, University of Edinburgh
+  when: May – Nov 2020
+  kind: research
+  text: Phylogenetic analysis of the spread of SARS-CoV-2 in Scotland.
+
+- title: Young adult representative
+  org: James Lind Alliance · Childhood Neurological Conditions Priority Setting Partnership
+  when: 2020 – 2023
+  kind: ppie
+  text: On the steering group of the partnership that identified the UK's top ten research priorities for childhood neurological conditions, and in the team that analysed the survey data. Published in Developmental Medicine & Child Neurology in 2024.
+
+- title: Support, information and research volunteer
+  org: Encephalitis International
+  when: 2018 – present
+  kind: ppie
+  current: true
+  text: Peer support, public engagement and patient-facing resources, including the charity's information page on CLIPPERS.
+
+- title: BSc (Hons) Infectious Diseases, First Class
+  org: University of Edinburgh
+  when: Sep 2017 – Jul 2020
+  kind: education
+  text: Ritchie Prize for the most distinguished student in the year. My dissertation, on the spread and evolution of zoonotic RNA viruses from China, received the highest mark in the cohort.

@@ -1,0 +1,106 @@
+---
+pagetitle: "Rhys Inward"
+page-layout: full
+listing:
+  id: latest
+  contents:
+    - tutorials/*.qmd
+    - "!tutorials/index.qmd"
+  sort: "date desc"
+  max-items: 3
+  type: grid
+  grid-columns: 3
+  fields: [image, title, description, categories]
+  image-height: 150px
+---
+
+::::: {.home}
+
+:::: {.hero}
+::: {.hero-text}
+![](assets/img/avatar.svg){.avatar fig-alt="Placeholder for a photo of Rhys"}
+
+[Field epidemiology · Pathogen genomics · Arboviruses]{.eyebrow}
+
+# Rhys Inward
+
+::: {.lead}
+I'm a final-year DPhil candidate at the University of Oxford and a field epidemiology fellow with the UK Health Security Agency (UKHSA) in Liverpool. I use pathogen genomes, case data, and climate and mobility data to understand how dengue, chikungunya and other infections spread.
+:::
+
+::: {.hero-links}
+[Research](research.qmd){.btn-ink} [Tutorials](tutorials/index.qmd){.btn-line} [Timeline & CV](timeline.qmd){.btn-line}
+:::
+:::
+
+::: {.hero-figure}
+{{< include _hero-tree.qmd >}}
+:::
+::::
+
+:::: {.home-section}
+::: {.section-head}
+## What I work on
+
+[Research →](research.qmd)
+:::
+
+::: {.themes}
+::: {.theme .k-dengue}
+[DENV]{.tag}
+
+### Dengue genotype dynamics
+
+Where new dengue genotypes come from, how they spread, and why some replace the ones already circulating.
+:::
+
+::: {.theme .k-chik}
+[CHIKV]{.tag}
+
+### Chikungunya transmission
+
+Renewal-equation models of chikungunya outbreaks in France and Brazil, and how climate shapes them.
+:::
+
+::: {.theme .k-field}
+[UKFETP]{.tag}
+
+### Field epidemiology
+
+Surveillance, outbreak response and applied projects with UKHSA's North West Field Service.
+:::
+
+::: {.theme .k-ppie}
+[PPIE]{.tag}
+
+### Patient & public involvement
+
+Working with patients, families and the public on research questions and tools.
+:::
+:::
+::::
+
+:::: {.home-section}
+::: {.section-head}
+## Latest tutorials
+
+[All tutorials →](tutorials/index.qmd)
+:::
+
+::: {#latest}
+:::
+::::
+
+:::: {#contact .home-section}
+::: {.contact}
+### Get in touch
+
+I'm happy to talk about collaborations, field epidemiology and patient involvement. Email [rhys.inward@biology.ox.ac.uk](mailto:rhys.inward@biology.ox.ac.uk).
+
+::: {.contact-links}
+[Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ) [ORCID](https://orcid.org/0000-0003-0016-661X) [GitHub](https://github.com/rhysinward) [LinkedIn](https://www.linkedin.com/in/rhys-inward-4750a71b2/)
+:::
+:::
+::::
+
+:::::

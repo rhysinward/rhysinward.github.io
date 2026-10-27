@@ -1,0 +1,27 @@
+```{=html}
+<%
+const ph = s => String(s == null ? "" : s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>');
+const me = s => ph(s).replace(/Inward RPD/g, '<strong class="me">Inward RPD</strong>');
+const isFirstTag = t => /first author/i.test(t);
+const isFirst = i => (i.tags || []).some(isFirstTag);
+const nFirst = items.filter(isFirst).length;
+%>
+<div class="chip-filter" role="group" aria-label="Filter publications" data-target=".pub">
+  <button type="button" class="chip" data-kind="all" aria-pressed="true">All · <%= items.length %></button>
+  <button type="button" class="chip k-methods" data-kind="first" aria-pressed="false"><span class="dot"></span>First author · <%= nFirst %></button>
+  <button type="button" class="chip" data-kind="co" aria-pressed="false"><span class="dot"></span>Co-author · <%= items.length - nFirst %></button>
+</div>
+<ol class="pubs">
+<% for (const item of items) { %>
+  <li class="pub" data-kind="<%= isFirst(item) ? 'first' : 'co' %>">
+    <div class="pub-year"><%= ph(item.year) %></div>
+    <div class="pub-body">
+      <h3 class="pub-title"><%= ph(item.title) %></h3>
+      <p class="pub-authors"><%= me(item.authors) %></p>
+      <p class="pub-venue"><em><%= ph(item.journal) %></em><% for (const t of (item.tags || [])) { %><span class="pub-tag<%= isFirstTag(t) ? ' is-first' : '' %>"><%= t %></span><% } %></p>
+      <% if (item.links) { %><p class="pub-links"><% for (const l of item.links) { %><a href="<%= l.href %>"><%= l.label %></a><% } %></p><% } %>
+    </div>
+  </li>
+<% } %>
+</ol>
+```

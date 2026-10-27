@@ -1,0 +1,17 @@
+```{=html}
+<%
+const ph = s => String(s == null ? "" : s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>');
+%>
+<ol class="pubs awards">
+<% for (const item of items) { %>
+  <li class="pub">
+    <div class="pub-year"><%= ph(item.year) %></div>
+    <div class="pub-body">
+      <h3 class="pub-title"><%= ph(item.title) %></h3>
+      <p class="pub-venue"><%= [item.org, item.amount].filter(Boolean).map(s => ph(s)).join(" · ") %><% if (item.kind) { %><span class="pub-tag"><%= item.kind %></span><% } %></p>
+      <% if (item.text) { %><p class="pub-authors"><%= ph(item.text) %></p><% } %>
+    </div>
+  </li>
+<% } %>
+</ol>
+```

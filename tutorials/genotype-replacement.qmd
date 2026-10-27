@@ -1,0 +1,96 @@
+---
+title: "Genotype replacement in R"
+description: "Estimate how fast a new dengue genotype takes over, with a logistic model fitted to sequence counts."
+categories: [Dengue, Tutorial]
+date: 2026-10-24
+image: ../assets/img/dengue.svg
+---
+
+When a new genotype arrives, the share of sequences that belong to it often follows an S-shaped curve. A logistic model fitted to monthly sequence counts sums up the takeover in one number: how fast the odds of sampling the new genotype grow each month.
+
+This tutorial uses simulated data, so you can check that the model recovers a known answer. You'll need **dplyr** and **ggplot2**.
+
+## 1. Simulate sequence counts
+
+Three years of monthly sequencing, about 40 sequences a month, with the new genotype reaching half of all sequences in month 18.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+set.seed(42)
+
+months <- 0:35
+true_growth <- 0.25
+
+seqs <- tibble(
+  month = months,
+  n = rpois(length(months), 40),
+  new = rbinom(length(months), n, plogis(true_growth * (months - 18))),
+  old = n - new
+)
+
+head(seqs)
+```
+
+## 2. Plot the raw proportions
+
+```{r}
+#| fig-cap: "Share of sequences belonging to the new genotype each month. Point size shows the number of sequences."
+#| fig-width: 7
+#| fig-height: 3.6
+ggplot(seqs, aes(month, new / n)) +
+  geom_point(aes(size = n), colour = "#B2433A", alpha = 0.75) +
+  scale_size_area(max_size = 3.5, guide = "none") +
+  labs(x = "Month", y = "Proportion new genotype") +
+  theme_minimal(base_size = 13)
+```
+
+## 3. Fit a logistic model
+
+A binomial GLM with month as the only predictor. The slope is the growth rate on the log-odds scale.
+
+```{r}
+fit <- glm(cbind(new, old) ~ month, family = binomial, data = seqs)
+
+coef(summary(fit))
+```
+
+## 4. Plot the fit
+
+```{r}
+#| fig-cap: "Fitted logistic curve with a 95% confidence interval."
+#| fig-width: 7
+#| fig-height: 3.6
+pred <- predict(fit, se.fit = TRUE)
+
+seqs <- seqs |>
+  mutate(
+    fit = plogis(pred$fit),
+    lo = plogis(pred$fit - 1.96 * pred$se.fit),
+    hi = plogis(pred$fit + 1.96 * pred$se.fit)
+  )
+
+ggplot(seqs, aes(month)) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), fill = "#B2433A", alpha = 0.18) +
+  geom_line(aes(y = fit), colour = "#B2433A", linewidth = 0.9) +
+  geom_point(aes(y = new / n, size = n), colour = "#1D2930", alpha = 0.55) +
+  scale_size_area(max_size = 3.5, guide = "none") +
+  labs(x = "Month", y = "Proportion new genotype") +
+  theme_minimal(base_size = 13)
+```
+
+## 5. Read off the growth advantage
+
+```{r}
+growth <- coef(fit)[["month"]]
+
+c(growth = growth, odds_ratio_per_month = exp(growth))
+```
+
+The model estimates a growth rate of `r round(growth, 2)` per month against a true value of `r true_growth`. Each month, the odds that a sequence belongs to the new genotype multiply by about `r round(exp(growth), 2)`.
+
+::: {.callout-note}
+## With real data
+Sequencing is rarely random. Check how samples were chosen for sequencing before reading the slope as a fitness advantage, and if you pool several places, consider a random effect for location.
+:::

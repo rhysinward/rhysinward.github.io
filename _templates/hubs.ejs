@@ -1,0 +1,41 @@
+```{=html}
+<%
+const hubs = [
+  { name: "Dengue", tag: "DENV", cls: "p-dengue", img: "../assets/img/dengue.svg",
+    blurb: "Four serotypes, many genotypes and a great deal of genomic data." },
+  { name: "Chikungunya", tag: "CHIKV", cls: "p-chik", img: "../assets/img/chikv.svg",
+    blurb: "An alphavirus behind explosive outbreaks and long-lasting joint pain." },
+  { name: "S. intermedius", label: "<em>S.&nbsp;intermedius</em>", tag: "Anginosus group", cls: "p-strep", img: "../assets/img/strep.svg",
+    blurb: "A commensal streptococcus with a habit of forming abscesses." },
+  { name: "Methods", tag: "Methods", cls: "p-methods", img: "../assets/img/methods.svg",
+    blurb: "Renewal equations, phylodynamics and reproducible pipelines." }
+];
+const rank = i => ((i.categories || [])[1] === "Primer" ? 0 : 1);
+const md = s => String(s || "").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+%>
+<div class="hubs">
+<% for (const hub of hubs) {
+     const pages = items.filter(i => (i.categories || [])[0] === hub.name).sort((a, b) => rank(a) - rank(b)); %>
+  <section class="hub <%= hub.cls %>">
+    <div class="hub-head">
+      <div>
+        <span class="tag"><%= hub.tag %></span>
+        <h2><%= hub.label || hub.name %></h2>
+        <p><%= hub.blurb %></p>
+      </div>
+      <img src="<%= hub.img %>" alt="">
+    </div>
+    <ul>
+    <% for (const p of pages) { %>
+      <li><a href="<%= p.path %>">
+        <span class="hub-kind"><%= (p.categories || [])[1] || "" %></span>
+        <span class="hub-title"><%= md(p.title) %></span>
+        <% if (p.description) { %><span class="hub-desc"><%= md(p.description) %></span><% } %>
+      </a></li>
+    <% } %>
+    <% if (!pages.length) { %><li class="hub-empty">Coming soon</li><% } %>
+    </ul>
+  </section>
+<% } %>
+</div>
+```

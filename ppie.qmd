@@ -1,0 +1,87 @@
+---
+title: "Patient & public involvement"
+subtitle: "Research works better when the people it affects help shape it."
+---
+
+I work with patients, carers, families and members of the public at different stages of research, from choosing the questions to sharing what we found. These are some of the projects I've been part of.
+
+## Projects
+
+:::: {.ppie-grid}
+::: {.ppie-card}
+[Consultant · since 2024]{.ppie-role}
+
+### Evelina London Children's Hospital
+
+I'm evaluating patient and public involvement in the Neurology department: I designed and analysed surveys of clinical staff, and recommended ways to build patient perspectives into research strategy and reporting. I also sat on the panel for Round 2 of the Evelina London Children's Charity Research Development Fund, a £500,000 call for fellowships and research capacity awards.
+:::
+
+::: {.ppie-card}
+[Co-design lead · funded 2026]{.ppie-role}
+
+### NIHR i4i FAST · Q-CDSS
+
+I lead stakeholder co-design for Q-CDSS, a hybrid classical–quantum decision-support tool to predict critical events such as cardiac arrest in intensive care patients. The project, led by UCL's AI4coma lab with Applied Quantum Computing and Guy's and St Thomas' NHS Foundation Trust, was funded by NIHR Invention for Innovation (i4i) FAST in 2026.
+:::
+
+::: {.ppie-card}
+[Online tool]{.ppie-role}
+
+### PPIE decision-support tool
+
+An R Shiny app for planning, delivering and evaluating involvement. It recommends how much involvement a project needs and which methods suit it, and produces downloadable PPIE plans and evaluation templates. [Open the tool](https://4m5yiw-rhys0inward.shinyapps.io/ppie/).
+:::
+
+::: {.ppie-card}
+[Writing · 2026]{.ppie-role}
+
+### How to embed PPIE into research or clinical service projects
+
+My article in the British Academy of Childhood Disability's newsletter (Summer 2026). Drawing on our survey at Evelina London, it sets out a practical approach: decide what involvement is for and how much power contributors hold, recruit deliberately, keep each contribution traceable, and evaluate. [Read the article (PDF)](files/inward-2026-embedding-ppie-bacd-news.pdf).
+:::
+
+::: {.ppie-card}
+[Young adult representative · 2020–2023]{.ppie-role}
+
+### James Lind Alliance Childhood Neurological Conditions Priority Setting Partnership
+
+From 2020 to 2023 I was a young adult representative on the steering group of this partnership between patients, families and clinicians, run with the British Paediatric Neurology Association. I helped analyse the survey data and co-wrote the commentary on emotional wellbeing. The top ten UK research priorities are published in [*Developmental Medicine & Child Neurology* (2024)](https://doi.org/10.1111/dmcn.16021).
+:::
+
+::: {.ppie-card}
+[Volunteer · since 2018]{.ppie-role}
+
+### Encephalitis International
+
+Support, information and research volunteer: peer support, public engagement and patient-facing resources. I wrote the charity's [information page on CLIPPERS](https://www.encephalitis.info/types-of-encephalitis/other/clippers/) and co-wrote a [report on Encephalitis Conference 2021](https://acnr.co.uk/conference-reports/encephalitis-conference-2021/) for *ACNR*.
+:::
+
+::: {.ppie-card}
+[Public contributor · since 2021]{.ppie-role}
+
+### NIHR HPRU in Emerging and Zoonotic Infections
+
+I'm a public contributor to the Health Protection Research Unit, helping improve how it involves patients and the public in its research.
+:::
+
+::: {.ppie-card}
+[Speaking]{.ppie-role}
+
+### Speaking on patient involvement
+
+Talks and panels on the patient's perspective and on involving patients in research, at the Royal College of Paediatrics and Child Health, the British Paediatric Neurology Association and an NIHR internship training day. [All talks](talks.qmd).
+:::
+::::
+
+## Resources for researchers
+
+::: {.resources}
+- [UK Standards for Public Involvement](https://www.cso.scot.nhs.uk/wp-content/uploads/UK-Standards-for-Public-Involvement_Nov19.pdf): six standards for good involvement (PDF, 2019)
+- [GRIPP2 reporting checklists](https://doi.org/10.1136/bmj.j3453): how to report involvement in papers (*BMJ*, 2017)
+- [Public involvement guidance for researchers from the HRA](https://www.hra.nhs.uk/planning-and-improving-research/best-practice/public-involvement/guidance-for-researchers/)
+- [James Lind Alliance](https://www.jla.nihr.ac.uk): priority setting partnerships between patients, carers and clinicians
+:::
+
+## Get involved
+
+If you'd like to take part in a project, or want help planning involvement in yours, [get in touch](index.qmd#contact).

@@ -1,0 +1,14 @@
+---
+title: "Publications"
+subtitle: "Peer-reviewed papers, preprints and software."
+listing:
+  id: pubs
+  contents: publications.yml
+  template: _templates/publications.ejs
+  sort: false
+---
+
+Full list on [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ) and [ORCID](https://orcid.org/0000-0003-0016-661X). Where I'm a joint first author, all the joint first authors are marked \*.
+
+::: {#pubs}
+:::

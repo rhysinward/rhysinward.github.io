@@ -1,0 +1,45 @@
+---
+title: "*Streptococcus intermedius*: a primer"
+description: "A member of the anginosus group, best known for brain and liver abscesses."
+categories: [S. intermedius, Primer]
+date: 2026-10-16
+image: ../assets/img/strep.svg
+---
+
+::: {.facts .k-strep}
+[At a glance]{.facts-label}
+
+Group
+: *Streptococcus anginosus* group, with *S. anginosus* and *S. constellatus*
+
+Gram stain
+: Gram-positive cocci in chains
+
+Habitat
+: Normal flora of the mouth, upper airway, gut and genitourinary tract
+
+Known for
+: Abscesses, especially in the brain and liver
+
+Key toxin
+: Intermedilysin, which targets human cells through CD59
+:::
+
+## The organism
+
+Older papers call this group the "*Streptococcus milleri* group". Lancefield grouping is unreliable here: isolates can carry group A, C, F or G antigens, or none. On culture, the group is often described as smelling of caramel. Identification now relies on MALDI-TOF or sequencing, because biochemical tests struggle to separate the three species.
+
+## Why it matters clinically
+
+All three species can cause invasive infection, but *S. intermedius* is the one most often linked to brain and liver abscesses. Brain abscesses often have a dental or sinus source.
+
+## Intermedilysin
+
+Intermedilysin is a cholesterol-dependent cytolysin, a pore-forming toxin. Most toxins in this family bind cholesterol on any cell, but intermedilysin first binds human CD59, so it damages human cells far more readily than those of other animals.
+
+## Resources
+
+::: {.resources}
+- [From normal flora to brain abscesses: a review of *Streptococcus intermedius*](https://doi.org/10.3389/fmicb.2020.00826) (*Frontiers in Microbiology*, 2020)
+- [UK Standards for Microbiology Investigations](https://www.gov.uk/government/collections/standards-for-microbiology-investigations-smi)
+:::
