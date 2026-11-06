@@ -14,6 +14,8 @@ listing:
     sort: false
 ---
 
+For a printable version, see the [CV](cv.qmd).
+
 ## At a glance {.glance-title}
 
 :::: {.glance}

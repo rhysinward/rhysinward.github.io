@@ -1,0 +1,3 @@
+# Used across the site with {{< var email >}}. Change it here and it updates the
+# footer, the home page and the CV.
+email: rhys.inward@biology.ox.ac.uk

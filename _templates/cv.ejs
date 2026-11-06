@@ -1,0 +1,78 @@
+```{=html}
+<%
+// One template for every CV section. The listing's template-params pick the section.
+const section = (templateParams && templateParams.section) || "";
+const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const ph = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>').replace(/\b20XX\b/g, '<span class="ph">20XX</span>');
+// Keep the dash with the first date so a wrapped range reads "Aug 2021 –" then "2025".
+const when = s => ph(s).replace(/ – /g, "&nbsp;– ");
+const me = s => ph(s).replace(/Inward RPD(\*?)/g, '<strong>Inward RPD$1</strong>');
+const isDPhil = i => /^DPhil/.test(i.title || "");
+const groups = {
+  positions: i => (i.kind === "public-health" || i.kind === "research") && !isDPhil(i),
+  education: i => i.kind === "education" || isDPhil(i),
+  teaching: i => i.kind === "teaching",
+  ppie: i => i.kind === "ppie",
+  leadership: i => i.kind === "leadership",
+};
+const doi = item => {
+  const l = (item.links || []).find(x => /doi\.org\//.test(x.href)) || null;
+  return l ? l.href.replace(/^https?:\/\/(dx\.)?doi\.org\//, "") : null;
+};
+%>
+<% if (groups[section]) { %>
+<ol class="cv-list">
+<% for (const item of items.filter(groups[section])) { %>
+  <li class="cv-item">
+    <span class="cv-when"><%= when(item.when) %></span>
+    <div class="cv-what">
+      <p class="cv-title"><%= ph(item.title) %></p>
+      <% if (item.org) { %><p class="cv-org"><%= ph(item.org).replace(/ · /g, ", ") %></p><% } %>
+      <% if (item.text) { %><p class="cv-text"><%= ph(item.text) %></p><% } %>
+    </div>
+  </li>
+<% } %>
+</ol>
+<% } else if (section === "publications") {
+  const isPre = i => (i.tags || []).includes("Preprint");
+  const parts = [["Peer-reviewed articles", items.filter(i => !isPre(i))], ["Preprints", items.filter(isPre)]];
+%>
+<% for (const [heading, list] of parts) { if (!list.length) continue; %>
+<h3 class="cv-sub"><%= heading %></h3>
+<ol class="cv-list cv-pubs">
+<% for (const item of list) { const d = doi(item); const tags = (item.tags || []).filter(t => !/Preprint/.test(t)); %>
+  <li class="cv-item">
+    <span class="cv-when"><%= ph(item.year) %></span>
+    <div class="cv-what">
+      <p class="cv-text"><%= me(item.authors) %>. <span class="cv-ptitle"><%= ph(item.title) %>.</span> <em><%= ph(item.journal) %></em>.<% if (d) { %> <a href="https://doi.org/<%= esc(d) %>">doi:<%= esc(d) %></a><% } %><% if (tags.length) { %> <span class="cv-tags">(<%= tags.join(", ").toLowerCase() %>)</span><% } %></p>
+    </div>
+  </li>
+<% } %>
+</ol>
+<% } %>
+<% } else if (section === "awards") { %>
+<ol class="cv-list">
+<% for (const item of items) { %>
+  <li class="cv-item">
+    <span class="cv-when"><%= ph(item.year) %></span>
+    <div class="cv-what">
+      <p class="cv-title"><%= ph(item.title) %><% if (item.amount) { %><span class="cv-amount">, <%= ph(item.amount) %></span><% } %></p>
+      <% if (item.org || item.text) { %><p class="cv-org"><%= [item.org, item.text].filter(Boolean).map(ph).join(". ") %></p><% } %>
+    </div>
+  </li>
+<% } %>
+</ol>
+<% } else if (section === "talks") { %>
+<ol class="cv-list">
+<% for (const item of items) { %>
+  <li class="cv-item">
+    <span class="cv-when"><%= when(item.when) %></span>
+    <div class="cv-what">
+      <p class="cv-title"><%= ph(item.title) %></p>
+      <p class="cv-org"><%= [item.role || item.kind, item.event, item.place].filter(Boolean).map(ph).join(", ") %><% if (item.note) { %>. <%= ph(item.note) %><% } %></p>
+    </div>
+  </li>
+<% } %>
+</ol>
+<% } %>
+```

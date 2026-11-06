@@ -28,12 +28,15 @@ website:
       - href: ppie.qmd
         text: PPIE
       - href: timeline.qmd
+      - href: cv.qmd
+        text: CV
     right:
       - icon: github
         href: https://github.com/rhysinward
         aria-label: GitHub
   page-footer:
     left: "© 2026 Rhys Inward · Views are my own"
+    center: "[{{< var email >}}](mailto:{{< var email >}}) · [CV](/cv.qmd)"
     right: "Made with [Quarto](https://quarto.org)"
 
 format:

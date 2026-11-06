@@ -31,6 +31,9 @@ R code only runs on your machine. `freeze: auto` saves the results in `_freeze/`
 | A new tutorial or primer | copy a `.qmd` in `tutorials/`; its first category picks the hub, its second labels it (`Primer` or `Tutorial`) |
 | A new pathogen hub | add it to the list at the top of `_templates/hubs.ejs` |
 | Your photo | replace `assets/img/rhys-inward.jpg` (square, 480 x 480) |
+| Email address (footer, home page, CV) | `_variables.yml` |
+| CV page | `cv.qmd` (built from `timeline.yml`, `publications.yml`, `awards.yml` and `talks.yml` via `_templates/cv.ejs`); the PDF is printed from it on every publish |
+| Interactive explorers in the two R tutorials | `tutorials/explorers.js` (maths) and the `{ojs}` cells in each tutorial; editing only the `.js` file needs no R |
 | Link-preview images for tutorials and talks | `assets/img/card-*.png` (1200 x 630), set per page under `open-graph:` and `twitter-card:` in the front matter |
 | Selected publications (home page) | add `featured: <number>` and `summary:` to the entry in `publications.yml`; lowest number first; it needs a Paper or Preprint link |
 | Timeline highlights | `key: true` in `timeline.yml` or `awards.yml` |

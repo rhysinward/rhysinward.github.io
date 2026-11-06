@@ -35,7 +35,7 @@ I'm a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a
 :::
 
 ::: {.hero-links}
-[Research](research.qmd){.btn-ink} [Tutorials](tutorials/index.qmd){.btn-line} [Timeline & CV](timeline.qmd){.btn-line}
+[Research](research.qmd){.btn-ink} [Tutorials](tutorials/index.qmd){.btn-line} [CV](cv.qmd){.btn-line}
 :::
 :::
 
@@ -157,7 +157,7 @@ Working with patients, families and the public on research questions and tools.
 ::: {.contact-text}
 ## Get in touch
 
-I'm happy to talk about collaborations, field epidemiology and patient involvement, or, away from work, hiking, squash and choral music. Email [rhys.inward@biology.ox.ac.uk](mailto:rhys.inward@biology.ox.ac.uk).
+I'm happy to talk about collaborations, field epidemiology and patient involvement, or, away from work, hiking, squash and choral music. Email [{{< var email >}}](mailto:{{< var email >}}).
 
 ::: {.contact-links}
 [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ) [ORCID](https://orcid.org/0000-0003-0016-661X) [GitHub](https://github.com/rhysinward) [LinkedIn](https://www.linkedin.com/in/rhys-inward-4750a71b2/)

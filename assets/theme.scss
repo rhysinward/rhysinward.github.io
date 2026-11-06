@@ -202,6 +202,8 @@ nav[role="doc-toc"] ul > li > a.active, #TOC .nav-link.active { color: var(--C) 
 // 3. Code, figures, callouts, tables ---------------------------------------
 
 code { color: var(--code-ink); background: var(--code-bg); border-radius: 4px; padding: 0.1em 0.3em; font-size: 0.86em; }
+// Quarto gives inline code in text a fixed light background; follow the theme instead.
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode), dd code:not(.sourceCode) { color: var(--code-ink); background: var(--code-bg); }
 pre code, div.sourceCode code { background: transparent !important; padding: 0; color: var(--ink); }
 div.sourceCode, pre.sourceCode {
   background: var(--code-bg) !important;
@@ -219,6 +221,7 @@ div.sourceCode pre.sourceCode { border: 0 !important; margin: 0; }
 .code-copy-button { color: var(--ink-2) !important; background: var(--code-bg) !important; border-radius: 6px; }
 .code-copy-button > .bi { color: inherit !important; background: transparent !important; }
 body pre > code.sourceCode > span, body code.sourceCode > span { color: var(--ink); }
+body code.sourceCode span:not([class]) { color: inherit; }
 body code span.kw, body code span.cf, body code span.im { color: var(--syn-kw); font-weight: 500; }
 body code span.fu, body code span.bu { color: var(--syn-fu); }
 body code span.st, body code span.ch, body code span.vs, body code span.ss, body code span.sc { color: var(--syn-st); }
@@ -629,4 +632,125 @@ div.sourceCode pre.sourceCode { padding-right: 2.6rem; }
 // Smallest phones: keep the full name in the top bar.
 @media (max-width: 345px) {
   .navbar-title { font-size: 1.08rem; }
+}
+
+// 13. In-page explorers (tutorials/explorers.js) ------------------------------
+
+// Quarto keeps a hidden copy of each {ojs} cell's source; hide its copy button too.
+.code-copy-outer-scaffold:has(> .cell-code.hidden) > .code-copy-button { display: none !important; }
+
+.explorer {
+  --ex: var(--C);
+  --sans-serif: var(--font-body);
+  --monospace: var(--font-mono);
+  border: 1px solid var(--rule-strong);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem 1rem;
+  margin: 1.25rem 0 1rem;
+  background: var(--paper);
+}
+.ex-rt { --ex: var(--G); }
+.ex-geno { --ex: var(--T); }
+.explorer .cell, .explorer .cell-output-display { margin: 0; }
+
+// Controls (Observable Inputs)
+.explorer form { font: inherit; font-size: 0.92rem; color: var(--ink); margin: 0 0 0.45rem; --label-width: 19rem; --input-width: 15rem; }
+.explorer form > label { color: var(--ink); font-weight: 400; }
+.explorer input[type="number"] {
+  font: inherit; font-variant-numeric: tabular-nums;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--rule-strong); border-radius: 6px; padding: 0.1rem 0.35rem;
+}
+.explorer input[type="range"], .explorer input[type="checkbox"], .explorer input[type="radio"] { accent-color: var(--ex); }
+.explorer form button {
+  font: inherit; font-weight: 700; font-size: 0.9rem;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--rule-strong); border-radius: 999px; padding: 0.35rem 1rem; cursor: pointer;
+}
+.explorer form button:hover { border-color: var(--ink); }
+.explorer form button:active { background: var(--paper-2); }
+.explorer input:focus-visible, .explorer button:focus-visible { outline: 2px solid var(--C); outline-offset: 2px; }
+
+// Charts (Observable Plot): colours set here so they follow light and dark mode
+.explorer svg[class^="plot"] { --plot-background: transparent; background: transparent !important; color: var(--ink-2); max-width: 100%; font-family: var(--font-body); }
+.explorer g[data-mark="local cases"], .explorer g[data-mark="local cases"] g, .explorer g[data-mark="points"], .explorer g[data-mark="points"] g { fill: var(--ex); }
+.explorer g[data-mark="points"], .explorer g[data-mark="points"] g { fill-opacity: 0.72; }
+.explorer g[data-mark="imported cases"], .explorer g[data-mark="imported cases"] g { fill: var(--ink-2); fill-opacity: 0.55; }
+.explorer g[data-mark="drop"], .explorer g[data-mark="drop"] g, .explorer g[data-mark="reference"], .explorer g[data-mark="reference"] g { stroke: var(--ink-2); stroke-opacity: 0.75; }
+.explorer g[data-mark="estimate band"], .explorer g[data-mark="estimate band"] g, .explorer g[data-mark="fit band"], .explorer g[data-mark="fit band"] g { fill: var(--ex); fill-opacity: 0.22; }
+.explorer g[data-mark="estimate"], .explorer g[data-mark="estimate"] g, .explorer g[data-mark="fit"], .explorer g[data-mark="fit"] g { stroke: var(--ex); }
+.explorer g[data-mark="true Rt"], .explorer g[data-mark="true Rt"] g, .explorer g[data-mark="truth"], .explorer g[data-mark="truth"] g { stroke: var(--ink); }
+
+.explorer-key { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; margin: 1rem 0 0.2rem; font-size: 0.85rem; color: var(--ink-2); }
+.explorer-key > span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.explorer-key .sw { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; }
+.explorer-key .sw-main { background: var(--ex); }
+.explorer-key .sw-imported { background: var(--ink-2); opacity: 0.55; }
+.explorer-key .sw-band { background: color-mix(in srgb, var(--ex) 28%, transparent); box-shadow: inset 0 -2px 0 var(--ex); }
+.explorer-key .sw-rule { width: 0; height: 0.95rem; border-left: 2px dashed var(--ink-2); border-radius: 0; }
+.explorer-key .sw-dash { width: 1.2rem; height: 0; border-top: 2px dashed var(--ink); border-radius: 0; }
+.explorer-readout { margin: 0.4rem 0 0; font-size: 0.98rem; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 575.98px) {
+  .explorer { padding: 0.9rem 0.9rem 0.8rem; }
+  .explorer form { --label-width: 100%; --input-width: 100%; }
+  .explorer form { flex-wrap: wrap; }
+  .explorer form > label { margin-bottom: 0.15rem; }
+}
+
+// 14. CV page (cv.qmd) ---------------------------------------------------------
+
+.cv { max-width: 52rem; }
+.cv-page #title-block-header { display: none; }
+.cv-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; margin: 1.5rem 0 1.25rem; padding-bottom: 1.1rem; border-bottom: 2px solid var(--ink); }
+.cv-head h1 { font-size: clamp(2.3rem, 1.6rem + 2.4vw, 3.2rem); line-height: 1.05; margin: 0 0 0.45rem; }
+.cv-name p { margin: 0; font-size: 1.08rem; color: var(--ink); max-width: 40rem; }
+.cv-contact p { display: flex; flex-wrap: wrap; gap: 0.2rem 1.4rem; margin: 0; font-size: 0.95rem; }
+.cv-actions p { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.75rem; margin: 0 0 0.5rem; }
+.cv-actions button { font: inherit; font-weight: 700; background: transparent; cursor: pointer; }
+.cv-actions .cv-pdf[hidden] { display: none; }
+.cv-updated { color: var(--ink-2); font-size: 0.88rem; }
+.cv h2 { font-size: 1.4rem; margin: 2rem 0 0.4rem; padding-bottom: 0.3rem !important; border-bottom: 1px solid var(--rule) !important; }
+.cv h2 + p { color: var(--ink-2); font-size: 0.92rem; margin: 0.35rem 0 0.2rem; }
+.cv .cv-sub { font-size: 0.82rem; font-weight: 700; color: var(--ink-2); margin: 1rem 0 0; }
+.cv-list { list-style: none; margin: 0; padding: 0; }
+.cv-item { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+.cv-item:last-child { border-bottom: 0; }
+.cv-when { font-size: 0.9rem; color: var(--ink-2); font-variant-numeric: tabular-nums; padding-top: 0.08rem; }
+.cv-what p { margin: 0; }
+.cv-title { font-weight: 700; }
+.cv-org { color: var(--ink-2); font-size: 0.95rem; }
+.cv-text { font-size: 0.95rem; margin-top: 0.15rem !important; }
+.cv-pubs .cv-text { margin-top: 0 !important; }
+.cv-ptitle { color: var(--ink); }
+.cv-pubs .cv-when { padding-top: 0.12rem; }
+.cv-tags { color: var(--ink-2); }
+.cv-pubs a { overflow-wrap: anywhere; }
+@media (max-width: 575.98px) {
+  .cv-item { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+}
+
+// Printing (any page, laid out for the CV): no site chrome, A4, black on white.
+@media print {
+  @page { size: A4; margin: 14mm 15mm 14mm; }
+  :root { --paper: #fff; --paper-2: #fff; --ink: #000; --ink-2: #333; --rule: #ccc; --C: #000; }
+  html { font-size: 9pt; }
+  body { background: #fff !important; color: #000; line-height: 1.42; }
+  #quarto-header, .nav-footer, #quarto-announcement, .cv-actions, .quarto-search, #quarto-back-to-top, .anchorjs-link { display: none !important; }
+  #quarto-content, main.content, .page-columns { padding-top: 0 !important; margin-top: 0 !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+  .cv { max-width: none; }
+  // Use the full width of the page rather than the screen's reading column.
+  #quarto-content, #quarto-content.page-columns, main.content, .page-columns .content {
+    display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important;
+  }
+  #quarto-sidebar, #quarto-margin-sidebar, .sidebar { display: none !important; }
+  .cv-head { margin-top: 0; }
+  .cv-head h1 { font-size: 24pt; }
+  .cv h2 { font-size: 13pt; margin-top: 1.1rem; break-after: avoid; }
+  .cv .cv-sub { break-after: avoid; }
+  .cv-item { padding: 0.28rem 0; grid-template-columns: 7rem minmax(0, 1fr); gap: 0 1rem; }
+  .cv-text, .cv-org { font-size: 0.97rem; }
+  .cv-head { padding-bottom: 0.7rem; margin-bottom: 0.6rem; }
+  .cv h2 + p { margin: 0.2rem 0 0; }
 }

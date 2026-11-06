@@ -102,6 +102,100 @@ ggplot(est, aes(day)) +
 
 The estimate tracks the true $R_t$ and takes about a window's length to catch up after the drop on day 50.
 
+## 5. Try it yourself
+
+The same simulation and estimator, running in your browser. Change a setting and the outbreak is simulated again and $R_t$ re-estimated. The true $R_t$ is fixed at 1.5, dropping to 0.8 on day 50.
+
+Things to try:
+
+- **Assume the wrong generation interval.** Leave the true mean at 6 days and set the analyst's to 4. The estimate is pulled towards 1: roughly 1.3 instead of 1.5 while cases grow, and 0.86 instead of 0.8 after the drop. Assume 9 days and it is pushed away from 1 instead.
+- **Add imported cases.** Set 10 a day, then switch on *Count imported cases as local*. The estimate runs high throughout and creeps back towards 1 after the drop, because imported cases look like local offspring.
+- **Widen the window.** Go from 7 to 21 days. The band narrows, but the estimate takes about two weeks, rather than four days, to fall below 1 after the drop.
+
+```{ojs}
+//| echo: false
+import { genInterval, simulate, cori, labelRange, tidyPlot } from "./explorers.js"
+```
+
+::: {.explorer .ex-rt}
+
+```{ojs}
+//| echo: false
+viewof trueMean = labelRange(Inputs.range([2, 20], { value: 6, step: 1, label: "True generation interval (mean, days)" }))
+viewof assumedMean = labelRange(Inputs.range([2, 20], { value: 6, step: 1, label: "Generation interval the analyst assumes (days)" }))
+viewof tau = labelRange(Inputs.range([1, 28], { value: 7, step: 1, label: "Estimation window (days)" }))
+viewof imports = labelRange(Inputs.range([0, 20], { value: 0, step: 1, label: "Imported cases a day" }))
+viewof lump = Inputs.toggle({ label: "Count imported cases as local", value: false })
+viewof seed = Inputs.button("New random outbreak", { value: 4, reduce: v => v + 1 })
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+rtTrue = (t) => (t < 49 ? 1.5 : 0.8)
+sim = simulate({ rt: rtTrue, w: genInterval(trueMean), rpois: d3.randomPoisson.source(d3.randomLcg(seed)), imported: imports })
+cases = sim.local.map((v, i) => ({ day: i + 1, local: v, imported: sim.imp[i] }))
+minCases = 11
+est = cori({
+  local: lump ? sim.local.map((v, i) => v + sim.imp[i]) : sim.local,
+  imp: lump ? null : sim.imp,
+  w: genInterval(assumedMean),
+  tau
+}).map(r => (r.cases < minCases ? { ...r, mean: NaN, lo: NaN, hi: NaN } : r))
+fmt = (day) => {
+  const r = est.find(d => d.day === day);
+  return r && Number.isFinite(r.mean) ? r.mean.toFixed(2) : "too few cases";
+}
+```
+
+```{ojs}
+//| echo: false
+html`<p class="explorer-key" aria-hidden="true"><span><i class="sw sw-main"></i>Local cases</span>${imports > 0 ? html`<span><i class="sw sw-imported"></i>Imported cases</span>` : ""}<span><i class="sw sw-rule"></i><span>Day 50, when R<sub>t</sub> drops</span></span></p>`
+```
+
+```{ojs}
+//| echo: false
+tidyPlot(Plot.plot({
+  width, height: 190, marginLeft: 44, marginBottom: 36,
+  ariaLabel: "Simulated daily cases",
+  ariaDescription: `Bar chart of simulated daily cases over 120 days, peaking at ${d3.max(sim.local)} local cases on day ${sim.local.indexOf(d3.max(sim.local)) + 1}${imports ? `, plus ${imports} imported cases a day` : ""}.`,
+  x: { label: "Day", domain: [0.5, 120.5] },
+  y: { label: "Cases", grid: true },
+  marks: [
+    Plot.rectY(cases, { x1: d => d.day - 0.42, x2: d => d.day + 0.42, y: "local", fill: "currentColor", ariaDescription: "local cases" }),
+    Plot.rectY(cases.filter(d => d.imported), { x1: d => d.day - 0.42, x2: d => d.day + 0.42, y1: "local", y2: d => d.local + d.imported, fill: "currentColor", ariaDescription: "imported cases" }),
+    Plot.ruleX([49.5], { stroke: "currentColor", strokeDasharray: "4,3", ariaDescription: "drop" }),
+    Plot.ruleY([0])
+  ]
+}))
+```
+
+```{ojs}
+//| echo: false
+tidyPlot(Plot.plot({
+  width, height: 230, marginLeft: 44, marginBottom: 36,
+  ariaLabel: "Estimated Rt against the true value",
+  ariaDescription: `Estimated Rt with a 95% credible interval from day ${est[0].day}. The true Rt, dashed, is 1.5 until day 50 and 0.8 after. Estimate on day 40: ${fmt(40)}; on day 110: ${fmt(110)}.`,
+  x: { label: "Day", domain: [0.5, 120.5] },
+  y: { label: "Rt", grid: true, domain: [0, 3] },
+  marks: [
+    Plot.ruleY([1], { stroke: "currentColor", ariaDescription: "reference" }),
+    Plot.areaY(est, { x: "day", y1: "lo", y2: d => Math.min(d.hi, 3), fill: "currentColor", clip: true, ariaDescription: "estimate band" }),
+    Plot.lineY(est, { x: "day", y: d => Math.min(d.mean, 3), stroke: "currentColor", strokeWidth: 2, clip: true, ariaDescription: "estimate" }),
+    Plot.lineY(d3.range(1, 121).map(day => ({ day, rt: rtTrue(day - 1) })), { x: "day", y: "rt", curve: "step-after", stroke: "currentColor", strokeDasharray: "5,4", ariaDescription: "true Rt" })
+  ]
+}))
+```
+
+```{ojs}
+//| echo: false
+html`<p class="explorer-readout" aria-live="polite">Estimate on day 40: <strong>${fmt(40)}</strong> (true 1.5). On day 110: <strong>${fmt(110)}</strong> (true 0.8).</p>`
+```
+
+:::
+
+The line is left out wherever the window holds fewer than 11 cases, where the estimate reflects the prior more than the data. Your browser draws its own random numbers, so the outbreak differs from the one above, which R generated with `set.seed(1)`.
+
 ::: {.callout-note}
 ## For mosquito-borne viruses
 The generation interval for dengue or chikungunya includes the time the virus spends developing inside the mosquito, so it is longer than for a respiratory virus and changes with temperature. Imported cases also need separating from local ones, or they inflate $R_t$. See the [chikungunya primer](chikungunya-primer.qmd).

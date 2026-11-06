@@ -14,12 +14,30 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # Pinned to the version the site is built and tested with locally.
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.19
 
-      - name: Render and publish
+      - name: Render site
+        run: quarto render
+
+      # Print the CV page to a PDF so it always matches the yml files. If this
+      # step fails the site still publishes, and the CV page hides its PDF link.
+      - name: Save the CV as a PDF
+        continue-on-error: true
+        run: |
+          mkdir -p _site/files
+          google-chrome --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
+            --virtual-time-budget=15000 \
+            --print-to-pdf="$PWD/_site/files/rhys-inward-cv.pdf" "file://$PWD/_site/cv.html"
+          test -s _site/files/rhys-inward-cv.pdf
+
+      - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: "false"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

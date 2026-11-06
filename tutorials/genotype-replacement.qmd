@@ -100,6 +100,87 @@ c(growth = growth, odds_ratio_per_month = exp(growth))
 
 The model estimates a growth rate of `r round(growth, 2)` per month against a true value of `r true_growth`. Each month, the odds that a sequence belongs to the new genotype multiply by about `r round(exp(growth), 2)`.
 
+## 6. Try it yourself
+
+The same simulation and model, running in your browser: three years of monthly sequencing, with the new genotype reaching half of all cases in month 18. Change a setting and the sequences are drawn again and the model refitted.
+
+Things to try:
+
+- **Sequence the new genotype more often.** Choose *3 times as often*. The new genotype looks commoner than it is and the curve shifts earlier, but the growth rate barely moves: a bias that stays constant shifts the curve without changing its slope.
+- **Sequence it more often early on only.** Choose *More often early on*. The first months look further along than they are, the curve flattens, and the growth rate drops to about 0.21 against a true 0.25.
+- **Sequence less.** Drop to 5 sequences a month. The estimate still centres on the truth, but its confidence interval is about three times wider.
+
+```{ojs}
+//| echo: false
+import { simulateSequences, logisticFit, labelRange, tidyPlot } from "./explorers.js"
+```
+
+::: {.explorer .ex-geno}
+
+```{ojs}
+//| echo: false
+viewof growth = labelRange(Inputs.range([0.05, 0.6], { value: 0.25, step: 0.01, label: "True growth rate (per month)" }))
+viewof perMonth = labelRange(Inputs.range([5, 200], { value: 40, step: 5, label: "Sequences a month" }))
+viewof sampling = Inputs.radio(new Map([
+  ["At random", "random"],
+  ["New genotype sequenced 3 times as often", "constant"],
+  ["More often early on, fading by month 18", "fading"]
+]), { value: "random", label: "Which cases get sequenced" })
+viewof seed = Inputs.button("New random sample", { value: 4, reduce: v => v + 1 })
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+biases = ({ random: () => 1, constant: () => 3, fading: m => 1 + 2 * Math.max(0, 1 - m / 18) })
+seqs = {
+  const lcg = d3.randomLcg(seed);
+  return simulateSequences({ growth, perMonth, bias: biases[sampling], rpois: d3.randomPoisson.source(lcg), rbinom: d3.randomBinomial.source(lcg) });
+}
+fit = logisticFit(seqs.map(d => d.month), seqs.map(d => d.newer), seqs.map(d => d.n))
+curve = d3.range(0, 35.01, 0.25).map(m => {
+  const eta = fit.b0 + fit.b1 * m;
+  const se = Math.sqrt(fit.cov[0][0] + 2 * m * fit.cov[0][1] + m * m * fit.cov[1][1]);
+  const p = x => 1 / (1 + Math.exp(-x));
+  return { month: m, fit: p(eta), lo: p(eta - 1.96 * se), hi: p(eta + 1.96 * se), truth: p(growth * (m - 18)) };
+})
+fitted = Number.isFinite(fit.b1) && Number.isFinite(fit.se1)
+```
+
+```{ojs}
+//| echo: false
+html`<p class="explorer-key" aria-hidden="true"><span><i class="sw sw-main"></i>Share of sequences each month</span><span><i class="sw sw-band"></i>Fitted curve and 95% interval</span><span><i class="sw sw-dash"></i>True share of cases</span></p>`
+```
+
+```{ojs}
+//| echo: false
+tidyPlot(Plot.plot({
+  width, height: 250, marginLeft: 44, marginBottom: 36,
+  ariaLabel: "Share of sequences belonging to the new genotype, with the fitted and true curves",
+  ariaDescription: `Monthly share of sequences that belong to the new genotype over 36 months, with a fitted logistic curve${fitted ? ` growing at ${fit.b1.toFixed(2)} per month` : ""} and the true curve, dashed, growing at ${growth.toFixed(2)} per month.`,
+  x: { label: "Month", domain: [0, 35] },
+  y: { label: "Proportion new genotype", grid: true, domain: [0, 1] },
+  r: { range: [1.5, 5] },
+  marks: [
+    fitted ? Plot.areaY(curve, { x: "month", y1: "lo", y2: "hi", fill: "currentColor", ariaDescription: "fit band" }) : null,
+    Plot.dot(seqs.filter(d => d.n > 0), { x: "month", y: d => d.newer / d.n, r: "n", fill: "currentColor", ariaDescription: "points" }),
+    fitted ? Plot.lineY(curve, { x: "month", y: "fit", stroke: "currentColor", strokeWidth: 2, ariaDescription: "fit" }) : null,
+    Plot.lineY(curve, { x: "month", y: "truth", stroke: "currentColor", strokeDasharray: "5,4", ariaDescription: "truth" })
+  ]
+}))
+```
+
+```{ojs}
+//| echo: false
+html`<p class="explorer-readout" aria-live="polite">${fitted
+  ? html`Estimated growth rate <strong>${fit.b1.toFixed(2)}</strong> per month (95% CI ${(fit.b1 - 1.96 * fit.se1).toFixed(2)} to ${(fit.b1 + 1.96 * fit.se1).toFixed(2)}), against a true ${growth.toFixed(2)}.${fit.b1 > 0 ? ` The odds of sampling the new genotype double every ${(Math.LN2 / fit.b1).toFixed(1)} months.` : ""}`
+  : "The model could not be fitted to this sample. Try more sequences a month."}</p>`
+```
+
+:::
+
+Your browser draws its own random numbers, so these samples differ from the one above, which R generated with `set.seed(42)`. The sampling choices are illustrations, not real data.
+
 ::: {.callout-note}
 ## With real data
 Sequencing is rarely random. Check how samples were chosen for sequencing before reading the slope as a fitness advantage, and if you pool several places, consider a random effect for location.

@@ -1,0 +1,121 @@
+---
+pagetitle: "CV – Rhys Inward"
+description: "Curriculum vitae of Rhys Inward: field epidemiology fellow at UKHSA and Oxford DPhil candidate in genomic epidemiology."
+image-alt: "Portrait of Rhys Inward"
+html-math-method: plain
+body-classes: cv-page
+date: today
+date-format: "D MMMM YYYY"
+listing:
+  - id: cv-positions
+    contents: timeline.yml
+    template: _templates/cv.ejs
+    template-params: { section: positions }
+    sort: false
+  - id: cv-education
+    contents: timeline.yml
+    template: _templates/cv.ejs
+    template-params: { section: education }
+    sort: false
+  - id: cv-publications
+    contents: publications.yml
+    template: _templates/cv.ejs
+    template-params: { section: publications }
+    sort: false
+  - id: cv-awards
+    contents: awards.yml
+    template: _templates/cv.ejs
+    template-params: { section: awards }
+    sort: false
+  - id: cv-talks
+    contents: talks.yml
+    template: _templates/cv.ejs
+    template-params: { section: talks }
+    sort: false
+  - id: cv-teaching
+    contents: timeline.yml
+    template: _templates/cv.ejs
+    template-params: { section: teaching }
+    sort: false
+  - id: cv-ppie
+    contents: timeline.yml
+    template: _templates/cv.ejs
+    template-params: { section: ppie }
+    sort: false
+  - id: cv-leadership
+    contents: timeline.yml
+    template: _templates/cv.ejs
+    template-params: { section: leadership }
+    sort: false
+---
+
+::::: {.cv}
+
+:::: {.cv-head}
+::: {.cv-name}
+# Rhys Inward
+
+UK Field Epidemiology Training Programme fellow, UK Health Security Agency. DPhil candidate in Biology, University of Oxford.
+:::
+
+::: {.cv-contact}
+[{{< var email >}}](mailto:{{< var email >}}) [rhysinward.github.io](https://rhysinward.github.io) [ORCID 0000-0003-0016-661X](https://orcid.org/0000-0003-0016-661X) [github.com/rhysinward](https://github.com/rhysinward)
+:::
+::::
+
+::: {.cv-actions}
+[Download PDF](files/rhys-inward-cv.pdf){.btn-ink .cv-pdf} <button type="button" class="btn-line cv-print">Print</button> [Updated {{< meta date >}}. Built from the same records as the rest of this site.]{.cv-updated}
+:::
+
+## Positions
+
+::: {#cv-positions}
+:::
+
+## Education
+
+::: {#cv-education}
+:::
+
+## Publications
+
+Joint first authors are marked \*. Full list on [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ).
+
+::: {#cv-publications}
+:::
+
+## Grants and awards
+
+::: {#cv-awards}
+:::
+
+## Talks and posters
+
+::: {#cv-talks}
+:::
+
+## Teaching
+
+::: {#cv-teaching}
+:::
+
+## Patient and public involvement
+
+::: {#cv-ppie}
+:::
+
+## Leadership and service
+
+::: {#cv-leadership}
+:::
+
+:::::
+
+<script>
+document.querySelector(".cv-print")?.addEventListener("click", () => window.print());
+// The PDF is made when the site is published; hide the link if it is missing.
+const pdf = document.querySelector(".cv-pdf");
+if (pdf && location.protocol.startsWith("http")) {
+  fetch(pdf.href, { method: "HEAD" }).then(r => { if (!r.ok) pdf.hidden = true; }).catch(() => { pdf.hidden = true; });
+}
+</script>
