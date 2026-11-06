@@ -17,3 +17,81 @@ document.querySelectorAll(".chip-filter").forEach(group => {
   });
 });
 </script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
+</script>

@@ -4,7 +4,7 @@ Personal website built with [Quarto](https://quarto.org) and published with GitH
 
 ## Preview locally
 
-1. Install [Quarto](https://quarto.org/docs/get-started/) 1.5 or later (the announcement bar needs it), plus R with `dplyr`, `ggplot2`, `knitr` and `rmarkdown`.
+1. Install [Quarto](https://quarto.org/docs/get-started/) 1.10 or later (the live site is built with 1.10.19; older versions such as 1.3 fail on `assets/theme.scss`), plus R with `dplyr`, `ggplot2`, `knitr` and `rmarkdown`. Check with `quarto --version`.
 2. Run `quarto preview` in this folder. The site opens in your browser and reloads as you edit.
 
 ## Publish
@@ -14,7 +14,7 @@ Personal website built with [Quarto](https://quarto.org) and published with GitH
 3. In the repo's Settings → Pages, set the source to the `gh-pages` branch, `/ (root)`.
 4. After that, every push to `main` republishes the site through `.github/workflows/publish.yml`.
 
-R code only runs on your machine. `freeze: auto` saves the results in `_freeze/`, so commit that folder and the GitHub Action never needs R.
+R code only runs on your machine. `freeze: auto` saves the results in `_freeze/`, so commit that folder and the GitHub Action never needs R. Any edit to `tutorials/genotype-replacement.qmd` or `tutorials/renewal-rt.qmd`, even a typo, means re-rendering it locally and committing the updated `_freeze/` in the same push; otherwise the Action tries to run R and fails.
 
 ## Where things live
 
@@ -31,6 +31,7 @@ R code only runs on your machine. `freeze: auto` saves the results in `_freeze/`
 | A new tutorial or primer | copy a `.qmd` in `tutorials/`; its first category picks the hub, its second labels it (`Primer` or `Tutorial`) |
 | A new pathogen hub | add it to the list at the top of `_templates/hubs.ejs` |
 | Your photo | replace `assets/img/rhys-inward.jpg` (square, 480 x 480) |
+| Link-preview images for tutorials and talks | `assets/img/card-*.png` (1200 x 630), set per page under `open-graph:` and `twitter-card:` in the front matter |
 | Selected publications (home page) | add `featured: <number>` and `summary:` to the entry in `publications.yml`; lowest number first; it needs a Paper or Preprint link |
 | Timeline highlights | `key: true` in `timeline.yml` or `awards.yml` |
 

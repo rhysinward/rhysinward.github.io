@@ -1,6 +1,7 @@
 ---
 image-alt: "Portrait of Rhys Inward"
 title: "Publications"
+html-math-method: plain
 subtitle: "Peer-reviewed papers, preprints and software."
 listing:
   id: pubs

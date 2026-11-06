@@ -2,10 +2,18 @@
 title: "Tutorials"
 subtitle: "Background on the pathogens I work on, and hands-on walkthroughs of the methods. Code is in R."
 toc: false
+html-math-method: plain
 listing:
   id: hubs
   contents: "*.qmd"
   template: ../_templates/hubs.ejs
+open-graph:
+  image: ../assets/img/card-tutorials.png
+  image-alt: "Tutorials by Rhys Inward, with illustrations of dengue, chikungunya, streptococcus and a phylogenetic tree"
+twitter-card:
+  image: ../assets/img/card-tutorials.png
+  image-alt: "Tutorials by Rhys Inward, with illustrations of dengue, chikungunya, streptococcus and a phylogenetic tree"
+  card-style: summary_large_image
 ---
 
 ::: {#hubs}

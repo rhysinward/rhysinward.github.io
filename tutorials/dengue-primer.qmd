@@ -5,6 +5,13 @@ categories: [Dengue, Primer]
 date: 2026-10-20
 image: ../assets/img/dengue.svg
 image-alt: "Illustration of dengue genotypes replacing one another over time"
+open-graph:
+  image: ../assets/img/card-dengue-primer.png
+  image-alt: "Dengue: a primer, by Rhys Inward, with an illustration of dengue genotypes replacing one another over time"
+twitter-card:
+  image: ../assets/img/card-dengue-primer.png
+  image-alt: "Dengue: a primer, by Rhys Inward, with an illustration of dengue genotypes replacing one another over time"
+  card-style: summary_large_image
 ---
 
 ::: {.facts .k-dengue}

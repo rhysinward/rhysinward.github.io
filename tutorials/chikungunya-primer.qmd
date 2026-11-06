@@ -5,6 +5,13 @@ categories: [Chikungunya, Primer]
 date: 2026-10-18
 image: ../assets/img/chikv.svg
 image-alt: "Illustration of a chikungunya epidemic curve"
+open-graph:
+  image: ../assets/img/card-chikungunya-primer.png
+  image-alt: "Chikungunya: a primer, by Rhys Inward, with an illustration of an epidemic curve"
+twitter-card:
+  image: ../assets/img/card-chikungunya-primer.png
+  image-alt: "Chikungunya: a primer, by Rhys Inward, with an illustration of an epidemic curve"
+  card-style: summary_large_image
 ---
 
 ::: {.facts .k-chik}

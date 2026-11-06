@@ -2,6 +2,7 @@
 pagetitle: "Rhys Inward"
 description: "Field epidemiology fellow at UKHSA and Oxford DPhil candidate using pathogen genomes and surveillance data to show how dengue, chikungunya and SARS-CoV-2 spread."
 page-layout: full
+html-math-method: plain
 listing:
   - id: latest
     contents:
@@ -154,7 +155,7 @@ Working with patients, families and the public on research questions and tools.
 :::: {#contact .home-section}
 ::: {.contact}
 ::: {.contact-text}
-### Get in touch
+## Get in touch
 
 I'm happy to talk about collaborations, field epidemiology and patient involvement, or, away from work, hiking, squash and choral music. Email [rhys.inward@biology.ox.ac.uk](mailto:rhys.inward@biology.ox.ac.uk).
 

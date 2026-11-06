@@ -5,6 +5,13 @@ categories: [Methods, Tutorial]
 date: 2026-10-22
 image: ../assets/img/rt.svg
 image-alt: "Illustration of a reproduction number curve with an uncertainty band"
+open-graph:
+  image: ../assets/img/card-renewal-rt.png
+  image-alt: "Estimating Rt with a renewal equation, a tutorial by Rhys Inward, with an illustration of a reproduction number curve"
+twitter-card:
+  image: ../assets/img/card-renewal-rt.png
+  image-alt: "Estimating Rt with a renewal equation, a tutorial by Rhys Inward, with an illustration of a reproduction number curve"
+  card-style: summary_large_image
 ---
 
 The renewal equation says that new infections today depend on recent infections, weighted by the generation interval $w_s$, the chance that $s$ days separate an infection from the one it causes:
@@ -40,6 +47,7 @@ $R_t$ is 1.5 until day 50, when a control measure brings it down to 0.8.
 
 ```{r}
 #| fig-cap: "Simulated daily incidence."
+#| fig-alt: "Bar chart of simulated daily cases over 120 days. Cases rise from about 5 a day to a peak of around 130 just before day 50, then fall steadily to under 10 a day by day 120."
 #| fig-width: 7
 #| fig-height: 3.2
 rt_true <- ifelse(days < 50, 1.5, 0.8)
@@ -80,6 +88,7 @@ est$hi <- qgamma(0.975, est$shape, est$rate)
 
 ```{r}
 #| fig-cap: "Estimated Rt with a 95% credible interval. The dashed line is the true value."
+#| fig-alt: "Line chart of estimated Rt from day 15 to day 120, with a shaded 95% credible interval and the true Rt as a dashed step that drops from 1.5 to 0.8 at day 50. The estimate starts near 2, settles close to 1.5 by day 30, falls to about 0.8 within a week of day 50 and stays near 0.8, with the band widening as cases fall."
 #| fig-width: 7
 #| fig-height: 3.6
 ggplot(est, aes(day)) +

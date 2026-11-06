@@ -1,5 +1,6 @@
 ---
 title: "Patient & public involvement"
+image-alt: "Portrait of Rhys Inward"
 subtitle: "Research works better when the people it affects help shape it."
 ---
 

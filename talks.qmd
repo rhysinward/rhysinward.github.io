@@ -1,11 +1,19 @@
 ---
 title: "Talks & posters"
+html-math-method: plain
 subtitle: "Conference talks and posters, invited lectures and panels."
 listing:
   id: talks
   contents: talks.yml
   template: _templates/talks.ejs
   sort: false
+open-graph:
+  image: assets/img/card-talks.png
+  image-alt: "Talks and posters by Rhys Inward, with illustrations of a slide and a poster"
+twitter-card:
+  image: assets/img/card-talks.png
+  image-alt: "Talks and posters by Rhys Inward, with illustrations of a slide and a poster"
+  card-style: summary_large_image
 ---
 
 ::: {#talks}

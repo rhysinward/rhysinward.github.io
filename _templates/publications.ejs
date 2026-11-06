@@ -16,7 +16,7 @@ const nFirst = items.filter(isFirst).length;
   <li class="pub" data-kind="<%= isFirst(item) ? 'first' : 'co' %>">
     <div class="pub-year"><%= ph(item.year) %></div>
     <div class="pub-body">
-      <h3 class="pub-title"><%= ph(item.title) %></h3>
+      <h2 class="pub-title"><%= ph(item.title) %></h2>
       <p class="pub-authors"><%= me(item.authors) %></p>
       <p class="pub-venue"><em><%= ph(item.journal) %></em><% for (const t of (item.tags || [])) { %><span class="pub-tag<%= isFirstTag(t) ? ' is-first' : '' %>"><%= t %></span><% } %></p>
       <% if (item.links) { %><p class="pub-links"><% for (const l of item.links) { %><a href="<%= l.href %>"><%= l.label %></a><% } %></p><% } %>

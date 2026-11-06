@@ -1,6 +1,7 @@
 ---
 image-alt: "Portrait of Rhys Inward"
 title: "Timeline"
+html-math-method: plain
 subtitle: "The highlights first, then every role, qualification, grant and award."
 listing:
   - id: timeline
@@ -12,8 +13,6 @@ listing:
     template: _templates/awards.ejs
     sort: false
 ---
-
-<!-- Add a public CV to files/ and link it here, e.g. [Download my CV (PDF)](files/Rhys_Inward_CV.pdf){.btn-line} -->
 
 ## At a glance {.glance-title}
 

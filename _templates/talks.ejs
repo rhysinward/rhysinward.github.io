@@ -17,7 +17,7 @@ const kinds = [...new Set(items.map(i => i.kind))];
     <div class="talk-thumb"><img src="<%= item.image || ('assets/img/' + (thumbs[k] || 'talk.svg')) %>" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag"><%= item.kind %></span><% if (item.note) { %> <span class="talk-note"><%= ph(item.note) %></span><% } %>
-      <h3><%= ph(item.title) %></h3>
+      <h2 class="talk-title"><%= ph(item.title) %></h2>
       <p class="talk-meta"><%= [item.role, item.event, item.place, item.when].filter(Boolean).map(s => ph(s)).join(" · ") %></p>
       <% if (item.links) { %><p class="talk-links"><% for (const l of item.links) { %><a href="<%= l.href %>"><%= l.label %></a><% } %></p><% } %>
     </div>
