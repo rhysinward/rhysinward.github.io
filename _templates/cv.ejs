@@ -6,7 +6,7 @@ const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g,
 const ph = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="ph">$1</span>').replace(/\b20XX\b/g, '<span class="ph">20XX</span>');
 // Keep the dash with the first date so a wrapped range reads "Aug 2021 –" then "2025".
 const when = s => ph(s).replace(/ – /g, "&nbsp;– ");
-const me = s => ph(s).replace(/Inward RPD(\*?)/g, '<strong>Inward RPD$1</strong>');
+const me = s => ph(s).replace(/Inward RPD(\*?)/g, '<strong>Inward&nbsp;RPD$1</strong>');
 const isDPhil = i => /^DPhil/.test(i.title || "");
 const groups = {
   positions: i => (i.kind === "public-health" || i.kind === "research") && !isDPhil(i),
@@ -27,7 +27,7 @@ const doi = item => {
     <span class="cv-when"><%= when(item.when) %></span>
     <div class="cv-what">
       <p class="cv-title"><%= ph(item.title) %></p>
-      <% if (item.org) { %><p class="cv-org"><%= ph(item.org).replace(/ · /g, ", ") %></p><% } %>
+      <% if (item.org) { %><p class="cv-org"><%= ph(item.org).replace(/ · /g, "; ") %></p><% } %>
       <% if (item.text) { %><p class="cv-text"><%= ph(item.text) %></p><% } %>
     </div>
   </li>
@@ -44,7 +44,7 @@ const doi = item => {
   <li class="cv-item">
     <span class="cv-when"><%= ph(item.year) %></span>
     <div class="cv-what">
-      <p class="cv-text"><%= me(item.authors) %>. <span class="cv-ptitle"><%= ph(item.title) %>.</span> <em><%= ph(item.journal) %></em>.<% if (d) { %> <a href="https://doi.org/<%= esc(d) %>">doi:<%= esc(d) %></a><% } %><% if (tags.length) { %> <span class="cv-tags">(<%= tags.join(", ").toLowerCase() %>)</span><% } %></p>
+      <p class="cv-text"><%= me(item.authors) %>. <span class="cv-ptitle"><%= ph(item.title) %>.</span> <em><%= ph(item.journal) %></em>.<% if (d) { %> <a class="cv-doi" href="https://doi.org/<%= esc(d) %>">doi:<%= esc(d) %></a><% } %><% if (tags.length) { %> <span class="cv-tags">(<%= tags.map(t => /^[A-Z]{2,}$/.test(t) ? t : t.toLowerCase()).join(", ") %>)</span><% } %></p>
     </div>
   </li>
 <% } %>
@@ -64,7 +64,7 @@ const doi = item => {
 </ol>
 <% } else if (section === "talks") { %>
 <ol class="cv-list">
-<% for (const item of items) { %>
+<% for (const item of items.filter(i => i.kind !== "Workshop")) { %>
   <li class="cv-item">
     <span class="cv-when"><%= when(item.when) %></span>
     <div class="cv-what">

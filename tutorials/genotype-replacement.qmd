@@ -45,7 +45,7 @@ head(seqs)
 
 ```{r}
 #| fig-cap: "Share of sequences belonging to the new genotype each month. Point size shows the number of sequences."
-#| fig-alt: "Scatter plot of the monthly share of sequences that belong to the new genotype over 36 months. The share stays close to 0 for the first six months, passes one half around month 18 and is close to 1 by month 30. Larger points mark months with more sequences."
+#| fig-alt: "Scatter plot of the monthly share of sequences that belong to the new genotype over 36 months. The share stays close to 0 for the first six months, passes one half around month 20 and is close to 1 by month 30. Larger points mark months with more sequences."
 #| fig-width: 7
 #| fig-height: 3.6
 ggplot(seqs, aes(month, new / n)) +
@@ -108,7 +108,7 @@ Things to try:
 
 - **Sequence the new genotype more often.** Choose *3 times as often*. The new genotype looks commoner than it is and the curve shifts earlier, but the growth rate barely moves: a bias that stays constant shifts the curve without changing its slope.
 - **Sequence it more often early on only.** Choose *More often early on*. The first months look further along than they are, the curve flattens, and the growth rate drops to about 0.21 against a true 0.25.
-- **Sequence less.** Drop to 5 sequences a month. The estimate still centres on the truth, but its confidence interval is about three times wider.
+- **Sequence less.** Drop to 5 sequences a month. On average the estimate still centres on the truth, but its confidence interval is typically about three times wider. Click *New random sample* a few times to see how much single samples vary.
 
 ```{ojs}
 //| echo: false
@@ -126,17 +126,18 @@ viewof sampling = Inputs.radio(new Map([
   ["New genotype sequenced 3 times as often", "constant"],
   ["More often early on, fading by month 18", "fading"]
 ]), { value: "random", label: "Which cases get sequenced" })
-viewof seed = Inputs.button("New random sample", { value: 4, reduce: v => v + 1 })
+viewof seed = Inputs.button("New random sample", { value: 8, reduce: v => v + 1 })
 ```
 
 ```{ojs}
 //| echo: false
 //| output: false
 biases = ({ random: () => 1, constant: () => 3, fading: m => 1 + 2 * Math.max(0, 1 - m / 18) })
-seqs = {
-  const lcg = d3.randomLcg(seed);
-  return simulateSequences({ growth, perMonth, bias: biases[sampling], rpois: d3.randomPoisson.source(lcg), rbinom: d3.randomBinomial.source(lcg) });
-}
+seqs = simulateSequences({
+  growth, perMonth, bias: biases[sampling],
+  rpois: d3.randomPoisson.source(d3.randomLcg(seed)),
+  runif: d3.randomUniform.source(d3.randomLcg(seed + 1e6))()
+})
 fit = logisticFit(seqs.map(d => d.month), seqs.map(d => d.newer), seqs.map(d => d.n))
 curve = d3.range(0, 35.01, 0.25).map(m => {
   const eta = fit.b0 + fit.b1 * m;
@@ -155,7 +156,7 @@ html`<p class="explorer-key" aria-hidden="true"><span><i class="sw sw-main"></i>
 ```{ojs}
 //| echo: false
 tidyPlot(Plot.plot({
-  width, height: 250, marginLeft: 44, marginBottom: 36,
+  width: Math.max(width, 280), height: 250, marginLeft: 44, marginBottom: 36,
   ariaLabel: "Share of sequences belonging to the new genotype, with the fitted and true curves",
   ariaDescription: `Monthly share of sequences that belong to the new genotype over 36 months, with a fitted logistic curve${fitted ? ` growing at ${fit.b1.toFixed(2)} per month` : ""} and the true curve, dashed, growing at ${growth.toFixed(2)} per month.`,
   x: { label: "Month", domain: [0, 35] },

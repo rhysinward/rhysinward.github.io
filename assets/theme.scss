@@ -604,7 +604,7 @@ body code span.op, body code span.ot, body code span.at, body code span.va { col
   background: var(--paper-2) !important;
   color: var(--ink) !important;
 }
-.aa-Item[aria-selected="true"] { box-shadow: inset 3px 0 0 var(--C); }
+.aa-Item[aria-selected="true"] > .search-item, .aa-Item[aria-selected="true"] .search-result-more { box-shadow: inset 4px 0 0 var(--C) !important; }
 .aa-Panel mark, .aa-Panel .search-match { background: color-mix(in srgb, var(--G) 26%, transparent) !important; color: var(--ink) !important; }
 .aa-DetachedCancelButton:focus-visible { outline: 2px solid var(--C); outline-offset: 2px; }
 
@@ -621,9 +621,17 @@ nav[role="doc-toc"] a:focus-visible,
   box-shadow: none !important;
 }
 .navbar-toggler:focus:not(:focus-visible) { box-shadow: none; }
+// These sit inside containers that clip overflow, so draw the ring inside the link.
+.navbar-collapse .nav-link:focus-visible, #TOC .nav-link:focus-visible, nav[role="doc-toc"] a:focus-visible, .hub a:focus-visible { outline-offset: -2px !important; }
 
 // Code: keep the first line clear of the copy button.
 div.sourceCode pre.sourceCode { padding-right: 2.6rem; }
+// A wrapped line continues indented, so it is not read as a new line.
+div.sourceCode pre.sourceCode > code.sourceCode > span { display: inline-block; padding-left: 4ch; text-indent: -4ch; }
+// Output blocks keep their columns and scroll sideways on narrow screens; show that they do.
+.cell-output pre { scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent; }
+.cell-output pre::-webkit-scrollbar { height: 6px; }
+.cell-output pre::-webkit-scrollbar-thumb { background: var(--rule-strong); border-radius: 3px; }
 .cell-output pre[tabindex]:focus-visible { outline: 2px solid var(--C); outline-offset: 2px; }
 
 // A topic tag on a tutorial links to its hub; outline the hub it lands on.
@@ -710,6 +718,9 @@ div.sourceCode pre.sourceCode { padding-right: 2.6rem; }
 .cv-actions button { font: inherit; font-weight: 700; background: transparent; cursor: pointer; }
 .cv-actions .cv-pdf[hidden] { display: none; }
 .cv-updated { color: var(--ink-2); font-size: 0.88rem; }
+.cv-date { display: block; color: var(--ink-2); font-size: 0.85rem; }
+.print-only { display: none; }
+.cv-pubs .cv-doi { display: inline-block; }
 .cv h2 { font-size: 1.4rem; margin: 2rem 0 0.4rem; padding-bottom: 0.3rem !important; border-bottom: 1px solid var(--rule) !important; }
 .cv h2 + p { color: var(--ink-2); font-size: 0.92rem; margin: 0.35rem 0 0.2rem; }
 .cv .cv-sub { font-size: 0.82rem; font-weight: 700; color: var(--ink-2); margin: 1rem 0 0; }
@@ -725,7 +736,7 @@ div.sourceCode pre.sourceCode { padding-right: 2.6rem; }
 .cv-ptitle { color: var(--ink); }
 .cv-pubs .cv-when { padding-top: 0.12rem; }
 .cv-tags { color: var(--ink-2); }
-.cv-pubs a { overflow-wrap: anywhere; }
+.cv-pubs a { overflow-wrap: break-word; }
 @media (max-width: 575.98px) {
   .cv-item { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
 }
@@ -733,7 +744,16 @@ div.sourceCode pre.sourceCode { padding-right: 2.6rem; }
 // Printing (any page, laid out for the CV): no site chrome, A4, black on white.
 @media print {
   @page { size: A4; margin: 14mm 15mm 14mm; }
-  :root { --paper: #fff; --paper-2: #fff; --ink: #000; --ink-2: #333; --rule: #ccc; --C: #000; }
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --paper: #fff; --paper-2: #fff; --ink: #000; --ink-2: #333; --rule: #ccc; --rule-strong: #999; --C: #000; color-scheme: light;
+  }
+  // Name and page numbers on every page, so loose pages can be put back in order.
+  @page {
+    @bottom-left { content: "Rhys Inward, CV"; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 8pt; color: #555; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: "Atkinson Hyperlegible", sans-serif; font-size: 8pt; color: #555; }
+  }
+  body { padding-top: 0 !important; }
+  .print-only { display: inline; }
   html { font-size: 9pt; }
   body { background: #fff !important; color: #000; line-height: 1.42; }
   #quarto-header, .nav-footer, #quarto-announcement, .cv-actions, .quarto-search, #quarto-back-to-top, .anchorjs-link { display: none !important; }

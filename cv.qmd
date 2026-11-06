@@ -1,5 +1,5 @@
 ---
-pagetitle: "CV – Rhys Inward"
+pagetitle: "CV"
 description: "Curriculum vitae of Rhys Inward: field epidemiology fellow at UKHSA and Oxford DPhil candidate in genomic epidemiology."
 image-alt: "Portrait of Rhys Inward"
 html-math-method: plain
@@ -59,12 +59,14 @@ UK Field Epidemiology Training Programme fellow, UK Health Security Agency. DPhi
 :::
 
 ::: {.cv-contact}
-[{{< var email >}}](mailto:{{< var email >}}) [rhysinward.github.io](https://rhysinward.github.io) [ORCID 0000-0003-0016-661X](https://orcid.org/0000-0003-0016-661X) [github.com/rhysinward](https://github.com/rhysinward)
+[{{< var email >}}](mailto:{{< var email >}}) [rhysinward.github.io](https://rhysinward.github.io) [ORCID 0000-0003-0016-661X](https://orcid.org/0000-0003-0016-661X) [github.com/rhysinward](https://github.com/rhysinward) [LinkedIn](https://www.linkedin.com/in/rhys-inward-4750a71b2/)
 :::
+
+[Updated {{< meta date >}}]{.cv-date}
 ::::
 
 ::: {.cv-actions}
-[Download PDF](files/rhys-inward-cv.pdf){.btn-ink .cv-pdf} <button type="button" class="btn-line cv-print">Print</button> [Updated {{< meta date >}}. Built from the same records as the rest of this site.]{.cv-updated}
+[Download PDF](files/rhys-inward-cv.pdf){.btn-ink .cv-pdf} <button type="button" class="btn-line cv-print">Print</button> [Built from the same records as the rest of this site.]{.cv-updated}
 :::
 
 ## Positions
@@ -79,7 +81,7 @@ UK Field Epidemiology Training Programme fellow, UK Health Security Agency. DPhi
 
 ## Publications
 
-Joint first authors are marked \*. Full list on [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ).
+Joint first authors are marked \*. Full list on [Google Scholar](https://scholar.google.com/citations?user=MG7ctSYAAAAJ)[&nbsp;(scholar.google.com/citations?user=MG7ctSYAAAAJ)]{.print-only}.
 
 ::: {#cv-publications}
 :::

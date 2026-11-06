@@ -88,7 +88,7 @@ est$hi <- qgamma(0.975, est$shape, est$rate)
 
 ```{r}
 #| fig-cap: "Estimated Rt with a 95% credible interval. The dashed line is the true value."
-#| fig-alt: "Line chart of estimated Rt from day 15 to day 120, with a shaded 95% credible interval and the true Rt as a dashed step that drops from 1.5 to 0.8 at day 50. The estimate starts near 2, settles close to 1.5 by day 30, falls to about 0.8 within a week of day 50 and stays near 0.8, with the band widening as cases fall."
+#| fig-alt: "Line chart of estimated Rt from day 15 to day 120, with a shaded 95% credible interval, a solid reference line at Rt = 1, and the true Rt as a dashed step that drops from 1.5 to 0.8 at day 50. The estimate starts near 2 with a wide band, stays between about 1.4 and 1.7 until day 50, falls to about 0.8 within a week of the drop and stays near 0.8, with the band widening again towards the end as cases fall."
 #| fig-width: 7
 #| fig-height: 3.6
 ggplot(est, aes(day)) +
@@ -108,13 +108,13 @@ The same simulation and estimator, running in your browser. Change a setting and
 
 Things to try:
 
-- **Assume the wrong generation interval.** Leave the true mean at 6 days and set the analyst's to 4. The estimate is pulled towards 1: roughly 1.3 instead of 1.5 while cases grow, and 0.86 instead of 0.8 after the drop. Assume 9 days and it is pushed away from 1 instead.
-- **Add imported cases.** Set 10 a day, then switch on *Count imported cases as local*. The estimate runs high throughout and creeps back towards 1 after the drop, because imported cases look like local offspring.
+- **Assume the wrong generation interval.** Leave the true mean at 6 days and set the analyst's to 4. The estimate is pulled towards 1: about 1.3 instead of 1.5 before the drop, and about 0.87 instead of 0.8 after it. Assume 9 days and it is pushed away from 1 instead, to about 1.8 and 0.73.
+- **Add imported cases.** Set 10 a day, then switch on *Count imported cases as local*. The estimate is too high, most of all in the first weeks when imported cases outnumber local ones, and after the drop it creeps back towards 1, because imported cases look like local offspring.
 - **Widen the window.** Go from 7 to 21 days. The band narrows, but the estimate takes about two weeks, rather than four days, to fall below 1 after the drop.
 
 ```{ojs}
 //| echo: false
-import { genInterval, simulate, cori, labelRange, tidyPlot } from "./explorers.js"
+import { genInterval, simulate, cori, meanBetween, labelRange, tidyPlot } from "./explorers.js"
 ```
 
 ::: {.explorer .ex-rt}
@@ -140,11 +140,12 @@ est = cori({
   local: lump ? sim.local.map((v, i) => v + sim.imp[i]) : sim.local,
   imp: lump ? null : sim.imp,
   w: genInterval(assumedMean),
-  tau
+  tau,
+  firstDay: Math.max(15, tau + 5)
 }).map(r => (r.cases < minCases ? { ...r, mean: NaN, lo: NaN, hi: NaN } : r))
-fmt = (day) => {
-  const r = est.find(d => d.day === day);
-  return r && Number.isFinite(r.mean) ? r.mean.toFixed(2) : "too few cases";
+fmt = (from, to) => {
+  const m = meanBetween(est, from, to);
+  return Number.isFinite(m) ? m.toFixed(2) : "too few cases";
 }
 ```
 
@@ -156,7 +157,7 @@ html`<p class="explorer-key" aria-hidden="true"><span><i class="sw sw-main"></i>
 ```{ojs}
 //| echo: false
 tidyPlot(Plot.plot({
-  width, height: 190, marginLeft: 44, marginBottom: 36,
+  width: Math.max(width, 280), height: 190, marginLeft: 44, marginBottom: 36,
   ariaLabel: "Simulated daily cases",
   ariaDescription: `Bar chart of simulated daily cases over 120 days, peaking at ${d3.max(sim.local)} local cases on day ${sim.local.indexOf(d3.max(sim.local)) + 1}${imports ? `, plus ${imports} imported cases a day` : ""}.`,
   x: { label: "Day", domain: [0.5, 120.5] },
@@ -173,9 +174,9 @@ tidyPlot(Plot.plot({
 ```{ojs}
 //| echo: false
 tidyPlot(Plot.plot({
-  width, height: 230, marginLeft: 44, marginBottom: 36,
+  width: Math.max(width, 280), height: 230, marginLeft: 44, marginBottom: 36,
   ariaLabel: "Estimated Rt against the true value",
-  ariaDescription: `Estimated Rt with a 95% credible interval from day ${est[0].day}. The true Rt, dashed, is 1.5 until day 50 and 0.8 after. Estimate on day 40: ${fmt(40)}; on day 110: ${fmt(110)}.`,
+  ariaDescription: `Estimated Rt with a 95% credible interval from day ${est[0].day}. The true Rt, dashed, is 1.5 until day 50 and 0.8 after. Average estimate before the drop, days 30 to 49: ${fmt(30, 49)}; after it, days 60 to 110: ${fmt(60, 110)}.`,
   x: { label: "Day", domain: [0.5, 120.5] },
   y: { label: "Rt", grid: true, domain: [0, 3] },
   marks: [
@@ -189,12 +190,12 @@ tidyPlot(Plot.plot({
 
 ```{ojs}
 //| echo: false
-html`<p class="explorer-readout" aria-live="polite">Estimate on day 40: <strong>${fmt(40)}</strong> (true 1.5). On day 110: <strong>${fmt(110)}</strong> (true 0.8).</p>`
+html`<p class="explorer-readout" aria-live="polite">Average estimate before the drop (days 30 to 49): <strong>${fmt(30, 49)}</strong>, true 1.5. After it (days 60 to 110): <strong>${fmt(60, 110)}</strong>, true 0.8.</p>`
 ```
 
 :::
 
-The line is left out wherever the window holds fewer than 11 cases, where the estimate reflects the prior more than the data. Your browser draws its own random numbers, so the outbreak differs from the one above, which R generated with `set.seed(1)`.
+The line is left out wherever the window holds fewer than 11 cases, where the estimate reflects the prior more than the data. It starts on day 15, or later for long windows, so no window includes the five days used to seed the outbreak. Your browser draws its own random numbers, so the outbreak differs from the one above, which R generated with `set.seed(1)`.
 
 ::: {.callout-note}
 ## For mosquito-borne viruses
