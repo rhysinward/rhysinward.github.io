@@ -125,15 +125,27 @@ export function logisticFit(x, k, n) {
 // Monthly sequence counts for a genotype taking over along a logistic curve.
 // bias(m) is how many times more likely a case of the new genotype is to be
 // sequenced in month m than a case of the old one (1 = random sampling).
-export function simulateSequences({ months = 36, perMonth = 40, growth = 0.25, midpoint = 18, bias = () => 1, rpois, rbinom }) {
+// rpois draws the monthly totals and runif one uniform per sequence, from separate
+// streams, so changing the sampling scheme changes only which sequences count as
+// the new genotype, not how many were sequenced or the random draws behind them.
+export function simulateSequences({ months = 36, perMonth = 40, growth = 0.25, midpoint = 18, bias = () => 1, rpois, runif }) {
   const rows = [];
+  const draw = rpois(perMonth);
   for (let m = 0; m < months; m++) {
     const p = 1 / (1 + Math.exp(-growth * (m - midpoint)));
     const b = bias(m), shown = b * p / (b * p + 1 - p);
-    const n = rpois(perMonth)();
-    rows.push({ month: m, n, newer: n > 0 ? rbinom(n, shown)() : 0, truth: p });
+    const n = draw();
+    let newer = 0;
+    for (let i = 0; i < n; i++) if (runif() < shown) newer++;
+    rows.push({ month: m, n, newer, truth: p });
   }
   return rows;
+}
+
+// Mean of the shown estimates between two days (inclusive), or NaN if none are shown.
+export function meanBetween(est, from, to) {
+  const xs = est.filter(r => r.day >= from && r.day <= to && Number.isFinite(r.mean)).map(r => r.mean);
+  return xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : NaN;
 }
 
 // Accessibility helpers for Observable Inputs and Plot.

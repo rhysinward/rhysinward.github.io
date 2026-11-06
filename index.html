@@ -50,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7680bebbae53e5a19594c60580c752a4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -358,7 +358,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <div id="listing-latest" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGVuZ3VlJTJDVHV0b3JpYWw=" data-listing-date-sort="1792800000000" data-listing-file-modified-sort="1794006954599" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1168">
+<div class="g-col-1" data-index="0" data-categories="RGVuZ3VlJTJDVHV0b3JpYWw=" data-listing-date-sort="1792800000000" data-listing-file-modified-sort="1794008494723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1183">
 <a href="./tutorials/genotype-replacement.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -381,7 +381,7 @@ Genotype replacement in R
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="TWV0aG9kcyUyQ1R1dG9yaWFs" data-listing-date-sort="1792627200000" data-listing-file-modified-sort="1794006954599" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1304">
+<div class="g-col-1" data-index="1" data-categories="TWV0aG9kcyUyQ1R1dG9yaWFs" data-listing-date-sort="1792627200000" data-listing-file-modified-sort="1794008494723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1391">
 <a href="./tutorials/renewal-rt.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -404,7 +404,7 @@ Estimating Rt with a renewal equation
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="RGVuZ3VlJTJDUHJpbWVy" data-listing-date-sort="1792454400000" data-listing-file-modified-sort="1794006954599" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
+<div class="g-col-1" data-index="2" data-categories="RGVuZ3VlJTJDUHJpbWVy" data-listing-date-sort="1792454400000" data-listing-file-modified-sort="1794008494723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
 <a href="./tutorials/dengue-primer.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -484,12 +484,25 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
 
     // Wide output blocks scroll sideways; make them reachable by keyboard.
-    document.querySelectorAll(".cell-output pre").forEach(pre => {
-      if (pre.scrollWidth > pre.clientWidth + 1) {
+    const outputs = document.querySelectorAll(".cell-output pre");
+    const markScroll = pre => {
+      const wide = pre.scrollWidth > pre.clientWidth + 1;
+      if (wide) {
         pre.tabIndex = 0;
-        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+        pre.setAttribute("role", "region");
+        // Each region needs its own name.
+        pre.setAttribute("aria-label", `Code output ${[...outputs].indexOf(pre) + 1} of ${outputs.length}, scrolls sideways`);
+      } else if (pre.getAttribute("role") === "region") {
+        pre.removeAttribute("tabindex");
+        pre.removeAttribute("role");
+        pre.removeAttribute("aria-label");
       }
-    });
+    };
+    outputs.forEach(markScroll);
+    if (outputs.length && "ResizeObserver" in window) {
+      const ro = new ResizeObserver(entries => entries.forEach(e => markScroll(e.target)));
+      outputs.forEach(pre => ro.observe(pre));
+    }
 
     // Topic tags on a tutorial point at that topic on the tutorials page, not at
     // a filtered list on the home page. Quarto wraps each tag in a link once it
@@ -500,10 +513,14 @@ document.querySelectorAll(".chip-filter").forEach(group => {
       const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
       const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
       const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
-      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
-        const want = target(a.closest(".quarto-category").textContent.trim());
-        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
-      });
+      const fix = () => {
+        // If our fallback link was wrapped again by Quarto, keep just one link.
+        cats.querySelectorAll(".quarto-category a a").forEach(inner => inner.replaceWith(...inner.childNodes));
+        cats.querySelectorAll(".quarto-category a").forEach(a => {
+          const want = target(a.closest(".quarto-category").textContent.trim());
+          if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+        });
+      };
       fix();
       new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
       // If Quarto never adds its links (listings.json unavailable), add them.
@@ -530,7 +547,7 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     }
     if (e.key !== "Tab") return;
     const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
-      .filter(el => !el.disabled && el.getClientRects().length);
+      .filter(el => !el.disabled && el.getClientRects().length && !el.matches(".aa-SubmitButton"));
     if (!stops.length) return;
     const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
     if (!box.contains(here)) { e.preventDefault(); first.focus(); }
@@ -541,11 +558,24 @@ document.querySelectorAll(".chip-filter").forEach(group => {
   new MutationObserver(() => {
     const open = !!document.querySelector(".aa-DetachedOverlay");
     if (wasOpen && !open) {
-      const btn = document.querySelector(".aa-DetachedSearchButton");
-      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+      // Wait a tick: the overlay's own close may still be moving focus.
+      setTimeout(() => {
+        const btn = document.querySelector(".aa-DetachedSearchButton");
+        const here = document.activeElement;
+        if (btn && (!here || here === document.body || !here.isConnected)) btn.focus();
+      }, 0);
     }
     wasOpen = open;
   }).observe(document.body, { childList: true });
+
+  // Escape closes the phone menu and returns focus to the menu button.
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape" || document.querySelector(".aa-DetachedContainer")) return;
+    const menu = document.querySelector("#navbarCollapse.show");
+    if (!menu || !window.bootstrap) return;
+    bootstrap.Collapse.getOrCreateInstance(menu).hide();
+    document.querySelector(".navbar-toggler")?.focus();
+  });
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
