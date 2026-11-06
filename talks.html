@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-440323d9283f995a290bb2206ec28529.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,46 +110,21 @@ ul.task-list li input[type="checkbox"] {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Talks &amp; posters – Rhys Inward">
 <meta property="og:description" content="Conference talks and posters, invited lectures and panels.">
-<meta property="og:image" content="https://rhysinward.github.io/assets/img/poster.svg">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/card-talks.png">
 <meta property="og:site_name" content="Rhys Inward">
-<meta property="og:image:alt" content="">
+<meta property="og:image:alt" content="Talks and posters by Rhys Inward, with illustrations of a slide and a poster">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Talks &amp; posters – Rhys Inward">
 <meta name="twitter:description" content="Conference talks and posters, invited lectures and panels.">
-<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/poster.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image:alt" content="">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/card-talks.png">
+<meta name="twitter:image:alt" content="Talks and posters by Rhys Inward, with illustrations of a slide and a poster">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -191,6 +167,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./timeline.html"> 
 <span class="menu-text">Timeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -252,7 +232,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Climate, importation, and immunity shape chikungunya transmission across emerging and endemic settings</h3>
+      <h2 class="talk-title anchored">Climate, importation, and immunity shape chikungunya transmission across emerging and endemic settings</h2>
       <p class="talk-meta">International Pandemic Sciences Conference · Singapore · 2026</p>
       
     </div>
@@ -262,7 +242,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">PPIE: the patient experience</h3>
+      <h2 class="talk-title anchored">PPIE: the patient experience</h2>
       <p class="talk-meta">Guest speaker · NIHR Health and Care Internship Training Day · London · 2026</p>
       
     </div>
@@ -272,7 +252,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">Championing patient and public involvement in research</h3>
+      <h2 class="talk-title anchored">Championing patient and public involvement in research</h2>
       <p class="talk-meta">Guest speaker · Encephalitis International VIP Changemaker Event · London · 2025</p>
       
     </div>
@@ -282,7 +262,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">Incorporating patient voice in clinical research</h3>
+      <h2 class="talk-title anchored">Incorporating patient voice in clinical research</h2>
       <p class="talk-meta">Expert panellist · Evelina London Research Showcase · London · 2025</p>
       
     </div>
@@ -292,7 +272,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Global homogenisation of dengue virus diversity following the relaxation of COVID-19 pandemic restrictions</h3>
+      <h2 class="talk-title anchored">Global homogenisation of dengue virus diversity following the relaxation of COVID-19 pandemic restrictions</h2>
       <p class="talk-meta">Ecology and Evolution of Infectious Diseases (EEID) · University of Notre Dame, USA · 2025</p>
       
     </div>
@@ -302,7 +282,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">Patient perspective: from patient to researcher</h3>
+      <h2 class="talk-title anchored">Patient perspective: from patient to researcher</h2>
       <p class="talk-meta">Invited speaker and expert panellist · British Paediatric Neurology Association Annual Meeting · Birmingham · 2024</p>
       
     </div>
@@ -312,7 +292,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">Patient perspective: from patient to researcher</h3>
+      <h2 class="talk-title anchored">Patient perspective: from patient to researcher</h2>
       <p class="talk-meta">Invited speaker · Royal College of Paediatrics and Child Health · London · 2024</p>
       
     </div>
@@ -322,7 +302,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Streamlining large-scale analyses: building scalable and flexible pipelines for disease analytics – case study of dengue in Vietnam</h3>
+      <h2 class="talk-title anchored">Streamlining large-scale analyses: building scalable and flexible pipelines for disease analytics – case study of dengue in Vietnam</h2>
       <p class="talk-meta">Epidemics Conference · Bologna, Italy · 2023</p>
       <p class="talk-links"><a href="https://github.com/rhysinward/dengue_pipeline">Pipeline code</a></p>
     </div>
@@ -332,7 +312,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span> <span class="talk-note">Best speaker prize</span>
-      <h3 class="anchored">Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam</h3>
+      <h2 class="talk-title anchored">Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam</h2>
       <p class="talk-meta">Contributed talk · EScamps · University of Cambridge · 2023</p>
       <p class="talk-links"><a href="https://doi.org/10.3201/eid2910.230529">Paper</a></p>
     </div>
@@ -342,7 +322,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam</h3>
+      <h2 class="talk-title anchored">Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam</h2>
       <p class="talk-meta">Virus Evolution and Molecular Epidemiology (VEME) · Stellenbosch University, South Africa · 2023</p>
       <p class="talk-links"><a href="https://doi.org/10.3201/eid2910.230529">Paper</a></p>
     </div>
@@ -352,7 +332,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam</h3>
+      <h2 class="talk-title anchored">Cryptic transmission and re-emergence of Cosmopolitan genotype of dengue virus serotype 2 within Ho Chi Minh City and southern Vietnam</h2>
       <p class="talk-meta">Pandemic Sciences Conference · University of Oxford · 2023</p>
       <p class="talk-links"><a href="https://doi.org/10.3201/eid2910.230529">Paper</a></p>
     </div>
@@ -362,7 +342,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/workshop.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Workshop</span>
-      <h3 class="anchored">Viral evolution and genomic dataset construction; applying statistical inference while accounting for phylogenetic structure; Bayesian statistics for phylogenetics (BEAST)</h3>
+      <h2 class="talk-title anchored">Viral evolution and genomic dataset construction; applying statistical inference while accounting for phylogenetic structure; Bayesian statistics for phylogenetics (BEAST)</h2>
       <p class="talk-meta">Invited lectures · Genomic Epidemiology and Statistics Workshop, Oxford University Clinical Research Unit · Ho Chi Minh City, Vietnam · 2022</p>
       
     </div>
@@ -372,7 +352,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/poster.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Poster</span>
-      <h3 class="anchored">Spatial dynamics of SARS-CoV-2 across a heterogeneous mobility landscape in Chile</h3>
+      <h2 class="talk-title anchored">Spatial dynamics of SARS-CoV-2 across a heterogeneous mobility landscape in Chile</h2>
       <p class="talk-meta">Virus Genomics and Evolution (VGE) · Cambridge · 2022</p>
       <p class="talk-links"><a href="https://doi.org/10.1093/pnasnexus/pgae483">Paper</a></p>
     </div>
@@ -382,7 +362,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/workshop.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Workshop</span>
-      <h3 class="anchored">Virus evolution and genomic dataset construction</h3>
+      <h2 class="talk-title anchored">Virus evolution and genomic dataset construction</h2>
       <p class="talk-meta">Invited lecture · Genomic Epidemiology and Data Science Workshop, Universidad Autónoma de Yucatán · Mérida, Mexico · 2022</p>
       
     </div>
@@ -392,7 +372,7 @@ window.Quarto = {
     <div class="talk-thumb"><img src="assets/img/talk.svg" alt="" loading="lazy"></div>
     <div class="talk-body">
       <span class="tag">Talk</span>
-      <h3 class="anchored">Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data</h3>
+      <h2 class="talk-title anchored">Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data</h2>
       <p class="talk-meta">Contributed talk · Ecology and Evolution of Infectious Diseases (EEID) · Emory University, Atlanta, USA · 2022</p>
       <p class="talk-links"><a href="https://doi.org/10.1038/s41467-022-32812-0">Paper</a></p>
     </div>
@@ -424,6 +404,84 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     sides();
   });
 });
+</script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -837,8 +895,8 @@ document.querySelectorAll(".chip-filter").forEach(group => {
 <p>© 2026 Rhys Inward · Views are my own</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p><a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a> · <a href="./cv.html">CV</a></p>
+</div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org">Quarto</a></p>
 </div>

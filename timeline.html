@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-440323d9283f995a290bb2206ec28529.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -137,35 +138,6 @@ ul.task-list li input[type="checkbox"] {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Timeline – Rhys Inward">
 <meta property="og:description" content="The highlights first, then every role, qualification, grant and award.">
@@ -220,6 +192,10 @@ window.Quarto = {
     <a class="nav-link active" href="./timeline.html" aria-current="page"> 
 <span class="menu-text">Timeline</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -262,7 +238,7 @@ window.Quarto = {
 </header>
 
 
-<!-- Add a public CV to files/ and link it here, e.g. [Download my CV (PDF)](files/Rhys_Inward_CV.pdf){.btn-line} -->
+<p>For a printable version, see the <a href="./cv.html">CV</a>.</p>
 <section id="at-a-glance" class="level2 glance-title">
 <h2 class="glance-title anchored" data-anchor-id="at-a-glance">At a glance</h2>
 <div class="glance">
@@ -472,7 +448,7 @@ window.Quarto = {
       </div>
       <h3 class="tl-title anchored">DPhil in Biology</h3>
       <p class="tl-org">University of Oxford · Department of Biology and Pandemic Sciences Institute</p>
-      <p class="tl-text">Thesis on integrating multiple data sources and quantitative tools to understand pathogen dynamics, with chapters on dengue and chikungunya transmission and on the GRAPEVNE pipeline environment. Supervised by Moritz Kraemer and Katrina Lythgoe. Funded by the Oxford-Natural Motion Graduate Scholarship with Jesus College.</p>
+      <p class="tl-text">Thesis on integrating multiple data sources and quantitative tools to understand pathogen dynamics, with chapters on dengue and chikungunya transmission and on the GRAPEVNE pipeline environment. Supervised by Moritz Kraemer and Katrina Lythgoe. Funded by the Oxford-NaturalMotion Graduate Scholarship with Jesus College.</p>
     </div>
   </li>
 
@@ -675,7 +651,7 @@ window.Quarto = {
   <li class="pub is-key">
     <div class="pub-year">2023</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Oxford-Natural Motion Graduate Scholarship</h3>
+      <h3 class="pub-title anchored">Oxford-NaturalMotion Graduate Scholarship</h3>
       <p class="pub-venue">University of Oxford, in partnership with Jesus College<span class="pub-tag">Scholarship</span><span class="pub-tag is-first">Highlight</span></p>
       
     </div>
@@ -762,6 +738,84 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     sides();
   });
 });
+</script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1175,8 +1229,8 @@ document.querySelectorAll(".chip-filter").forEach(group => {
 <p>© 2026 Rhys Inward · Views are my own</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p><a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a> · <a href="./cv.html">CV</a></p>
+</div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org">Quarto</a></p>
 </div>

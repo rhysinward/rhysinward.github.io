@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-440323d9283f995a290bb2206ec28529.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,18 +114,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 <meta property="og:title" content="Genotype replacement in R – Rhys Inward">
 <meta property="og:description" content="Estimate how fast a new dengue genotype takes over, with a logistic model fitted to sequence counts.">
-<meta property="og:image" content="https://rhysinward.github.io/assets/img/dengue.svg">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/card-genotype-replacement.png">
 <meta property="og:site_name" content="Rhys Inward">
-<meta property="og:image:alt" content="Illustration of dengue genotypes replacing one another over time">
+<meta property="og:image:alt" content="Genotype replacement in R, a tutorial by Rhys Inward, with an illustration of genotypes replacing one another">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Genotype replacement in R – Rhys Inward">
 <meta name="twitter:description" content="Estimate how fast a new dengue genotype takes over, with a logistic model fitted to sequence counts.">
-<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/dengue.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image:alt" content="Illustration of dengue genotypes replacing one another over time">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/card-genotype-replacement.png">
+<meta name="twitter:image:alt" content="Genotype replacement in R, a tutorial by Rhys Inward, with an illustration of genotypes replacing one another">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -169,6 +175,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../timeline.html"> 
 <span class="menu-text">Timeline</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -197,6 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#fit-a-logistic-model" id="toc-fit-a-logistic-model" class="nav-link" data-scroll-target="#fit-a-logistic-model">3. Fit a logistic model</a></li>
   <li><a href="#plot-the-fit" id="toc-plot-the-fit" class="nav-link" data-scroll-target="#plot-the-fit">4. Plot the fit</a></li>
   <li><a href="#read-off-the-growth-advantage" id="toc-read-off-the-growth-advantage" class="nav-link" data-scroll-target="#read-off-the-growth-advantage">5. Read off the growth advantage</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">6. Try it yourself</a></li>
   </ul>
 </nav>
     </div>
@@ -283,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="genotype-replacement_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="genotype-replacement_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="Scatter plot of the monthly share of sequences that belong to the new genotype over 36 months. The share stays close to 0 for the first six months, passes one half around month 18 and is close to 1 by month 30. Larger points mark months with more sequences." width="672"></p>
 <figcaption>Share of sequences belonging to the new genotype each month. Point size shows the number of sequences.</figcaption>
 </figure>
 </div>
@@ -326,7 +337,7 @@ month        0.2516952 0.01222148  20.59449 3.075353e-94</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="genotype-replacement_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="genotype-replacement_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="The same monthly proportions with a fitted S-shaped logistic curve rising from near 0 to near 1, crossing one half around month 18, inside a narrow shaded 95% confidence band that follows the points closely." width="672"></p>
 <figcaption>Fitted logistic curve with a 95% confidence interval.</figcaption>
 </figure>
 </div>
@@ -345,6 +356,154 @@ month        0.2516952 0.01222148  20.59449 3.075353e-94</code></pre>
 </div>
 </div>
 <p>The model estimates a growth rate of 0.25 per month against a true value of 0.25. Each month, the odds that a sequence belongs to the new genotype multiply by about 1.29.</p>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">6. Try it yourself</h2>
+<p>The same simulation and model, running in your browser: three years of monthly sequencing, with the new genotype reaching half of all cases in month 18. Change a setting and the sequences are drawn again and the model refitted.</p>
+<p>Things to try:</p>
+<ul>
+<li><strong>Sequence the new genotype more often.</strong> Choose <em>3 times as often</em>. The new genotype looks commoner than it is and the curve shifts earlier, but the growth rate barely moves: a bias that stays constant shifts the curve without changing its slope.</li>
+<li><strong>Sequence it more often early on only.</strong> Choose <em>More often early on</em>. The first months look further along than they are, the curve flattens, and the growth rate drops to about 0.21 against a true 0.25.</li>
+<li><strong>Sequence less.</strong> Drop to 5 sequences a month. The estimate still centres on the truth, but its confidence interval is about three times wider.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="114" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { simulateSequences<span class="op">,</span> logisticFit<span class="op">,</span> labelRange<span class="op">,</span> tidyPlot } <span class="im">from</span> <span class="st">"./explorers.js"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="explorer ex-geno">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="122" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>viewof growth <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="fl">0.6</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="fl">0.25</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"True growth rate (per month)"</span> }))</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>viewof perMonth <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">5</span><span class="op">,</span> <span class="dv">200</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Sequences a month"</span> }))</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>viewof sampling <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"At random"</span><span class="op">,</span> <span class="st">"random"</span>]<span class="op">,</span></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"New genotype sequenced 3 times as often"</span><span class="op">,</span> <span class="st">"constant"</span>]<span class="op">,</span></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"More often early on, fading by month 18"</span><span class="op">,</span> <span class="st">"fading"</span>]</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>])<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="st">"random"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Which cases get sequenced"</span> })</span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>viewof seed <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"New random sample"</span><span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> v <span class="kw">=&gt;</span> v <span class="op">+</span> <span class="dv">1</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="135" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>biases <span class="op">=</span> ({ <span class="dt">random</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">constant</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">fading</span><span class="op">:</span> m <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span> <span class="op">-</span> m <span class="op">/</span> <span class="dv">18</span>) })</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>seqs <span class="op">=</span> {</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lcg <span class="op">=</span> d3<span class="op">.</span><span class="fu">randomLcg</span>(seed)<span class="op">;</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">simulateSequences</span>({ growth<span class="op">,</span> perMonth<span class="op">,</span> <span class="dt">bias</span><span class="op">:</span> biases[sampling]<span class="op">,</span> <span class="dt">rpois</span><span class="op">:</span> d3<span class="op">.</span><span class="at">randomPoisson</span><span class="op">.</span><span class="fu">source</span>(lcg)<span class="op">,</span> <span class="dt">rbinom</span><span class="op">:</span> d3<span class="op">.</span><span class="at">randomBinomial</span><span class="op">.</span><span class="fu">source</span>(lcg) })<span class="op">;</span></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>fit <span class="op">=</span> <span class="fu">logisticFit</span>(seqs<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">month</span>)<span class="op">,</span> seqs<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">newer</span>)<span class="op">,</span> seqs<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">n</span>))</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>curve <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">35.01</span><span class="op">,</span> <span class="fl">0.25</span>)<span class="op">.</span><span class="fu">map</span>(m <span class="kw">=&gt;</span> {</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> eta <span class="op">=</span> fit<span class="op">.</span><span class="at">b0</span> <span class="op">+</span> fit<span class="op">.</span><span class="at">b1</span> <span class="op">*</span> m<span class="op">;</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> se <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(fit<span class="op">.</span><span class="at">cov</span>[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> m <span class="op">*</span> fit<span class="op">.</span><span class="at">cov</span>[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">+</span> m <span class="op">*</span> m <span class="op">*</span> fit<span class="op">.</span><span class="at">cov</span>[<span class="dv">1</span>][<span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p <span class="op">=</span> x <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x))<span class="op">;</span></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { <span class="dt">month</span><span class="op">:</span> m<span class="op">,</span> <span class="dt">fit</span><span class="op">:</span> <span class="fu">p</span>(eta)<span class="op">,</span> <span class="dt">lo</span><span class="op">:</span> <span class="fu">p</span>(eta <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> se)<span class="op">,</span> <span class="dt">hi</span><span class="op">:</span> <span class="fu">p</span>(eta <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> se)<span class="op">,</span> <span class="dt">truth</span><span class="op">:</span> <span class="fu">p</span>(growth <span class="op">*</span> (m <span class="op">-</span> <span class="dv">18</span>)) }<span class="op">;</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>fitted <span class="op">=</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(fit<span class="op">.</span><span class="at">b1</span>) <span class="op">&amp;&amp;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(fit<span class="op">.</span><span class="at">se1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="151" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 150;"><span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p class="explorer-key" aria-hidden="true"&gt;&lt;span&gt;&lt;i class="sw sw-main"&gt;&lt;/i&gt;Share of sequences each month&lt;/span&gt;&lt;span&gt;&lt;i class="sw sw-band"&gt;&lt;/i&gt;Fitted curve and 95% interval&lt;/span&gt;&lt;span&gt;&lt;i class="sw sw-dash"&gt;&lt;/i&gt;True share of cases&lt;/span&gt;&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="156" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 155;"><span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyPlot</span>(Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>  width<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">44</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Share of sequences belonging to the new genotype, with the fitted and true curves"</span><span class="op">,</span></span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaDescription</span><span class="op">:</span> <span class="vs">`Monthly share of sequences that belong to the new genotype over 36 months, with a fitted logistic curve</span><span class="sc">${</span>fitted <span class="op">?</span> <span class="vs">` growing at </span><span class="sc">${</span>fit<span class="op">.</span><span class="at">b1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> per month`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs"> and the true curve, dashed, growing at </span><span class="sc">${</span>growth<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> per month.`</span><span class="op">,</span></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Month"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">35</span>] }<span class="op">,</span></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Proportion new genotype"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>] }<span class="op">,</span></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a>  <span class="dt">r</span><span class="op">:</span> { <span class="dt">range</span><span class="op">:</span> [<span class="fl">1.5</span><span class="op">,</span> <span class="dv">5</span>] }<span class="op">,</span></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>    fitted <span class="op">?</span> Plot<span class="op">.</span><span class="fu">areaY</span>(curve<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"month"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"lo"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"hi"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"fit band"</span> }) <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(seqs<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">n</span> <span class="op">&gt;</span> <span class="dv">0</span>)<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"month"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">newer</span> <span class="op">/</span> d<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"points"</span> })<span class="op">,</span></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>    fitted <span class="op">?</span> Plot<span class="op">.</span><span class="fu">lineY</span>(curve<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"month"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"fit"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"fit"</span> }) <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(curve<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"month"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"truth"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,4"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"truth"</span> })</span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="174" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 173;"><span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p class="explorer-readout" aria-live="polite"&gt;</span><span class="sc">${</span>fitted</span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`Estimated growth rate &lt;strong&gt;</span><span class="sc">${</span>fit<span class="op">.</span><span class="at">b1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt; per month (95% CI </span><span class="sc">${</span>(fit<span class="op">.</span><span class="at">b1</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> fit<span class="op">.</span><span class="at">se1</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> to </span><span class="sc">${</span>(fit<span class="op">.</span><span class="at">b1</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> fit<span class="op">.</span><span class="at">se1</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">), against a true </span><span class="sc">${</span>growth<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">.</span><span class="sc">${</span>fit<span class="op">.</span><span class="at">b1</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="vs">` The odds of sampling the new genotype double every </span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">LN2</span> <span class="op">/</span> fit<span class="op">.</span><span class="at">b1</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> months.`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="st">"The model could not be fitted to this sample. Try more sequences a month."</span><span class="sc">}</span><span class="vs">&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<p>Your browser draws its own random numbers, so these samples differ from the one above, which R generated with <code>set.seed(42)</code>. The sampling choices are illustrations, not real data.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -381,6 +540,95 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     sides();
   });
 });
+</script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IHNpbXVsYXRlU2VxdWVuY2VzLCBsb2dpc3RpY0ZpdCwgbGFiZWxSYW5nZSwgdGlkeVBsb3QgfSBmcm9tIFwiLi9leHBsb3JlcnMuanNcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGdyb3d0aCA9IGxhYmVsUmFuZ2UoSW5wdXRzLnJhbmdlKFswLjA1LCAwLjZdLCB7IHZhbHVlOiAwLjI1LCBzdGVwOiAwLjAxLCBsYWJlbDogXCJUcnVlIGdyb3d0aCByYXRlIChwZXIgbW9udGgpXCIgfSkpXG52aWV3b2YgcGVyTW9udGggPSBsYWJlbFJhbmdlKElucHV0cy5yYW5nZShbNSwgMjAwXSwgeyB2YWx1ZTogNDAsIHN0ZXA6IDUsIGxhYmVsOiBcIlNlcXVlbmNlcyBhIG1vbnRoXCIgfSkpXG52aWV3b2Ygc2FtcGxpbmcgPSBJbnB1dHMucmFkaW8obmV3IE1hcChbXG4gIFtcIkF0IHJhbmRvbVwiLCBcInJhbmRvbVwiXSxcbiAgW1wiTmV3IGdlbm90eXBlIHNlcXVlbmNlZCAzIHRpbWVzIGFzIG9mdGVuXCIsIFwiY29uc3RhbnRcIl0sXG4gIFtcIk1vcmUgb2Z0ZW4gZWFybHkgb24sIGZhZGluZyBieSBtb250aCAxOFwiLCBcImZhZGluZ1wiXVxuXSksIHsgdmFsdWU6IFwicmFuZG9tXCIsIGxhYmVsOiBcIldoaWNoIGNhc2VzIGdldCBzZXF1ZW5jZWRcIiB9KVxudmlld29mIHNlZWQgPSBJbnB1dHMuYnV0dG9uKFwiTmV3IHJhbmRvbSBzYW1wbGVcIiwgeyB2YWx1ZTogNCwgcmVkdWNlOiB2ID0+IHYgKyAxIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJiaWFzZXMgPSAoeyByYW5kb206ICgpID0+IDEsIGNvbnN0YW50OiAoKSA9PiAzLCBmYWRpbmc6IG0gPT4gMSArIDIgKiBNYXRoLm1heCgwLCAxIC0gbSAvIDE4KSB9KVxuc2VxcyA9IHtcbiAgY29uc3QgbGNnID0gZDMucmFuZG9tTGNnKHNlZWQpO1xuICByZXR1cm4gc2ltdWxhdGVTZXF1ZW5jZXMoeyBncm93dGgsIHBlck1vbnRoLCBiaWFzOiBiaWFzZXNbc2FtcGxpbmddLCBycG9pczogZDMucmFuZG9tUG9pc3Nvbi5zb3VyY2UobGNnKSwgcmJpbm9tOiBkMy5yYW5kb21CaW5vbWlhbC5zb3VyY2UobGNnKSB9KTtcbn1cbmZpdCA9IGxvZ2lzdGljRml0KHNlcXMubWFwKGQgPT4gZC5tb250aCksIHNlcXMubWFwKGQgPT4gZC5uZXdlciksIHNlcXMubWFwKGQgPT4gZC5uKSlcbmN1cnZlID0gZDMucmFuZ2UoMCwgMzUuMDEsIDAuMjUpLm1hcChtID0+IHtcbiAgY29uc3QgZXRhID0gZml0LmIwICsgZml0LmIxICogbTtcbiAgY29uc3Qgc2UgPSBNYXRoLnNxcnQoZml0LmNvdlswXVswXSArIDIgKiBtICogZml0LmNvdlswXVsxXSArIG0gKiBtICogZml0LmNvdlsxXVsxXSk7XG4gIGNvbnN0IHAgPSB4ID0+IDEgLyAoMSArIE1hdGguZXhwKC14KSk7XG4gIHJldHVybiB7IG1vbnRoOiBtLCBmaXQ6IHAoZXRhKSwgbG86IHAoZXRhIC0gMS45NiAqIHNlKSwgaGk6IHAoZXRhICsgMS45NiAqIHNlKSwgdHJ1dGg6IHAoZ3Jvd3RoICogKG0gLSAxOCkpIH07XG59KVxuZml0dGVkID0gTnVtYmVyLmlzRmluaXRlKGZpdC5iMSkgJiYgTnVtYmVyLmlzRmluaXRlKGZpdC5zZTEpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxwIGNsYXNzPVwiZXhwbG9yZXIta2V5XCIgYXJpYS1oaWRkZW49XCJ0cnVlXCI+PHNwYW4+PGkgY2xhc3M9XCJzdyBzdy1tYWluXCI+PC9pPlNoYXJlIG9mIHNlcXVlbmNlcyBlYWNoIG1vbnRoPC9zcGFuPjxzcGFuPjxpIGNsYXNzPVwic3cgc3ctYmFuZFwiPjwvaT5GaXR0ZWQgY3VydmUgYW5kIDk1JSBpbnRlcnZhbDwvc3Bhbj48c3Bhbj48aSBjbGFzcz1cInN3IHN3LWRhc2hcIj48L2k+VHJ1ZSBzaGFyZSBvZiBjYXNlczwvc3Bhbj48L3A+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidGlkeVBsb3QoUGxvdC5wbG90KHtcbiAgd2lkdGgsIGhlaWdodDogMjUwLCBtYXJnaW5MZWZ0OiA0NCwgbWFyZ2luQm90dG9tOiAzNixcbiAgYXJpYUxhYmVsOiBcIlNoYXJlIG9mIHNlcXVlbmNlcyBiZWxvbmdpbmcgdG8gdGhlIG5ldyBnZW5vdHlwZSwgd2l0aCB0aGUgZml0dGVkIGFuZCB0cnVlIGN1cnZlc1wiLFxuICBhcmlhRGVzY3JpcHRpb246IGBNb250aGx5IHNoYXJlIG9mIHNlcXVlbmNlcyB0aGF0IGJlbG9uZyB0byB0aGUgbmV3IGdlbm90eXBlIG92ZXIgMzYgbW9udGhzLCB3aXRoIGEgZml0dGVkIGxvZ2lzdGljIGN1cnZlJHtmaXR0ZWQgPyBgIGdyb3dpbmcgYXQgJHtmaXQuYjEudG9GaXhlZCgyKX0gcGVyIG1vbnRoYCA6IFwiXCJ9IGFuZCB0aGUgdHJ1ZSBjdXJ2ZSwgZGFzaGVkLCBncm93aW5nIGF0ICR7Z3Jvd3RoLnRvRml4ZWQoMil9IHBlciBtb250aC5gLFxuICB4OiB7IGxhYmVsOiBcIk1vbnRoXCIsIGRvbWFpbjogWzAsIDM1XSB9LFxuICB5OiB7IGxhYmVsOiBcIlByb3BvcnRpb24gbmV3IGdlbm90eXBlXCIsIGdyaWQ6IHRydWUsIGRvbWFpbjogWzAsIDFdIH0sXG4gIHI6IHsgcmFuZ2U6IFsxLjUsIDVdIH0sXG4gIG1hcmtzOiBbXG4gICAgZml0dGVkID8gUGxvdC5hcmVhWShjdXJ2ZSwgeyB4OiBcIm1vbnRoXCIsIHkxOiBcImxvXCIsIHkyOiBcImhpXCIsIGZpbGw6IFwiY3VycmVudENvbG9yXCIsIGFyaWFEZXNjcmlwdGlvbjogXCJmaXQgYmFuZFwiIH0pIDogbnVsbCxcbiAgICBQbG90LmRvdChzZXFzLmZpbHRlcihkID0+IGQubiA+IDApLCB7IHg6IFwibW9udGhcIiwgeTogZCA9PiBkLm5ld2VyIC8gZC5uLCByOiBcIm5cIiwgZmlsbDogXCJjdXJyZW50Q29sb3JcIiwgYXJpYURlc2NyaXB0aW9uOiBcInBvaW50c1wiIH0pLFxuICAgIGZpdHRlZCA/IFBsb3QubGluZVkoY3VydmUsIHsgeDogXCJtb250aFwiLCB5OiBcImZpdFwiLCBzdHJva2U6IFwiY3VycmVudENvbG9yXCIsIHN0cm9rZVdpZHRoOiAyLCBhcmlhRGVzY3JpcHRpb246IFwiZml0XCIgfSkgOiBudWxsLFxuICAgIFBsb3QubGluZVkoY3VydmUsIHsgeDogXCJtb250aFwiLCB5OiBcInRydXRoXCIsIHN0cm9rZTogXCJjdXJyZW50Q29sb3JcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjUsNFwiLCBhcmlhRGVzY3JpcHRpb246IFwidHJ1dGhcIiB9KVxuICBdXG59KSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHAgY2xhc3M9XCJleHBsb3Jlci1yZWFkb3V0XCIgYXJpYS1saXZlPVwicG9saXRlXCI+JHtmaXR0ZWRcbiAgPyBodG1sYEVzdGltYXRlZCBncm93dGggcmF0ZSA8c3Ryb25nPiR7Zml0LmIxLnRvRml4ZWQoMil9PC9zdHJvbmc+IHBlciBtb250aCAoOTUlIENJICR7KGZpdC5iMSAtIDEuOTYgKiBmaXQuc2UxKS50b0ZpeGVkKDIpfSB0byAkeyhmaXQuYjEgKyAxLjk2ICogZml0LnNlMSkudG9GaXhlZCgyKX0pLCBhZ2FpbnN0IGEgdHJ1ZSAke2dyb3d0aC50b0ZpeGVkKDIpfS4ke2ZpdC5iMSA+IDAgPyBgIFRoZSBvZGRzIG9mIHNhbXBsaW5nIHRoZSBuZXcgZ2Vub3R5cGUgZG91YmxlIGV2ZXJ5ICR7KE1hdGguTE4yIC8gZml0LmIxKS50b0ZpeGVkKDEpfSBtb250aHMuYCA6IFwiXCJ9YFxuICA6IFwiVGhlIG1vZGVsIGNvdWxkIG5vdCBiZSBmaXR0ZWQgdG8gdGhpcyBzYW1wbGUuIFRyeSBtb3JlIHNlcXVlbmNlcyBhIG1vbnRoLlwifTwvcD5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2dyb3d0aCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwZXJNb250aCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzYW1wbGluZycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzZWVkJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../tutorials";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -794,8 +1042,8 @@ document.querySelectorAll(".chip-filter").forEach(group => {
 <p>© 2026 Rhys Inward · Views are my own</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p><a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a> · <a href="../cv.html">CV</a></p>
+</div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org">Quarto</a></p>
 </div>

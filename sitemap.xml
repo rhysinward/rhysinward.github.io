@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rhysinward.github.io/timeline.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhysinward.github.io/tutorials/dengue-primer.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhysinward.github.io/tutorials/chikungunya-primer.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhysinward.github.io/tutorials/index.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhysinward.github.io/publications.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
+    <loc>https://rhysinward.github.io/research.html</loc>
+    <lastmod>2026-11-06T23:15:54.598Z</lastmod>
   </url>
   <url>
     <loc>https://rhysinward.github.io/index.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhysinward.github.io/talks.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
+    <lastmod>2026-11-06T23:15:54.597Z</lastmod>
   </url>
   <url>
     <loc>https://rhysinward.github.io/ppie.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
+    <lastmod>2026-11-06T23:15:54.598Z</lastmod>
   </url>
   <url>
-    <loc>https://rhysinward.github.io/research.html</loc>
-    <lastmod>2026-10-27T23:36:24.612Z</lastmod>
+    <loc>https://rhysinward.github.io/tutorials/index.html</loc>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/tutorials/dengue-primer.html</loc>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/tutorials/chikungunya-primer.html</loc>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/talks.html</loc>
+    <lastmod>2026-11-06T23:15:54.598Z</lastmod>
   </url>
   <url>
     <loc>https://rhysinward.github.io/tutorials/genotype-replacement.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
   </url>
   <url>
     <loc>https://rhysinward.github.io/tutorials/renewal-rt.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
   </url>
   <url>
     <loc>https://rhysinward.github.io/tutorials/s-intermedius-primer.html</loc>
-    <lastmod>2026-10-27T23:36:24.613Z</lastmod>
+    <lastmod>2026-11-06T23:15:54.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/cv.html</loc>
+    <lastmod>2026-11-06T23:15:54.592Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/publications.html</loc>
+    <lastmod>2026-11-06T23:15:54.598Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhysinward.github.io/timeline.html</loc>
+    <lastmod>2026-11-06T23:15:54.598Z</lastmod>
   </url>
 </urlset>

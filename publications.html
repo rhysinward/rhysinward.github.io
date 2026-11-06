@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-440323d9283f995a290bb2206ec28529.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,35 +110,6 @@ ul.task-list li input[type="checkbox"] {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Publications – Rhys Inward">
 <meta property="og:description" content="Peer-reviewed papers, preprints and software.">
@@ -191,6 +163,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./timeline.html"> 
 <span class="menu-text">Timeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -247,7 +223,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2026</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Global approaches to infectious disease surveillance and modeling</h3>
+      <h2 class="pub-title anchored">Global approaches to infectious disease surveillance and modeling</h2>
       <p class="pub-authors">Khurana MP, Tsui JLH, Gutierrez B, …, <strong class="me">Inward RPD</strong>, …, Kraemer MUG</p>
       <p class="pub-venue"><em>Nature Medicine</em><span class="pub-tag">Review</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1038/s41591-026-04351-4">Paper</a></p>
@@ -257,7 +233,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2026</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Cardiac structure relates to hemorrhagic cerebral small vessel disease phenotype</h3>
+      <h2 class="pub-title anchored">Cardiac structure relates to hemorrhagic cerebral small vessel disease phenotype</h2>
       <p class="pub-authors">Stewart CR, Lyon J, Nash PS, Best JG, Bonifacio G, Jitpimolmard J, <strong class="me">Inward RPD</strong>, Chan E, Oliver R, Werring DJ</p>
       <p class="pub-venue"><em>Journal of the American Heart Association</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1161/JAHA.124.039474">Paper</a></p>
@@ -267,7 +243,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2026</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Transmission lineage dynamics and the detection of viral importation in emerging epidemics</h3>
+      <h2 class="pub-title anchored">Transmission lineage dynamics and the detection of viral importation in emerging epidemics</h2>
       <p class="pub-authors">Tsui JLH, Sambaturu P, Pena RE, Too L, Gutierrez B, <strong class="me">Inward RPD</strong>, Kraemer MUG, du Plessis L, Pybus OG</p>
       <p class="pub-venue"><em>Epidemics</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1016/j.epidem.2026.100893">Paper</a><a href="https://github.com/joetsui1994/Transmission-lineage-dynamics-and-detection">Code</a></p>
@@ -277,7 +253,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2025</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">A market-based virus monitoring strategy complementary to epidemiological surveillance in urban settings</h3>
+      <h2 class="pub-title anchored">A market-based virus monitoring strategy complementary to epidemiological surveillance in urban settings</h2>
       <p class="pub-authors">Martínez-Duque P, Jiménez-Rico MA, Bacab-Cab LA, …, <strong class="me">Inward RPD</strong>, …, Escalera-Zamudio M</p>
       <p class="pub-venue"><em>medRxiv</em><span class="pub-tag">Preprint</span></p>
       <p class="pub-links"><a href="https://doi.org/10.64898/2025.12.22.25342882">Preprint</a></p>
@@ -287,7 +263,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2025</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">The role of climate change in the expansion of dengue</h3>
+      <h2 class="pub-title anchored">The role of climate change in the expansion of dengue</h2>
       <p class="pub-authors">de Abreu R, Fernandez IP, Mishra S, …, <strong class="me">Inward RPD</strong>, …, Sparrow S</p>
       <p class="pub-venue"><em>medRxiv</em><span class="pub-tag">Preprint</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1101/2025.10.06.25337235">Preprint</a></p>
@@ -297,7 +273,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2025</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Scalable, open-access and multidisciplinary data integration pipeline for climate-sensitive diseases</h3>
+      <h2 class="pub-title anchored">Scalable, open-access and multidisciplinary data integration pipeline for climate-sensitive diseases</h2>
       <p class="pub-authors">Dasgupta A, Perez-Fernandez I, Huynh T, …, <strong class="me">Inward RPD</strong>, …, Kraemer MUG</p>
       <p class="pub-venue"><em>Wellcome Open Research</em><span class="pub-tag">Software</span></p>
       <p class="pub-links"><a href="https://doi.org/10.12688/wellcomeopenres.24774.3">Paper</a><a href="https://github.com/kraemer-lab/DART-Pipeline">Code</a></p>
@@ -307,7 +283,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2025</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Genomic surveillance of climate-amplified cholera outbreak, Malawi, 2022–2023</h3>
+      <h2 class="pub-title anchored">Genomic surveillance of climate-amplified cholera outbreak, Malawi, 2022–2023</h2>
       <p class="pub-authors">Chabuka L, Choga WT, Mavian CN, …, <strong class="me">Inward RPD</strong>, …, Kagoli M</p>
       <p class="pub-venue"><em>Emerging Infectious Diseases</em></p>
       <p class="pub-links"><a href="https://doi.org/10.3201/eid3106.240930">Paper</a></p>
@@ -317,7 +293,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2025</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">GRAPEVNE – Graphical Analytical Pipeline Development Environment for Infectious Diseases</h3>
+      <h2 class="pub-title anchored">GRAPEVNE – Graphical Analytical Pipeline Development Environment for Infectious Diseases</h2>
       <p class="pub-authors">Brittain JS*, Tsui J*, <strong class="me">Inward RPD</strong>*, …, Kraemer MUG</p>
       <p class="pub-venue"><em>Wellcome Open Research</em><span class="pub-tag is-first">Joint first author</span><span class="pub-tag">Software</span></p>
       <p class="pub-links"><a href="https://doi.org/10.12688/wellcomeopenres.23824.1">Paper</a><a href="https://github.com/kraemer-lab/GRAPEVNE">Code</a><a href="https://grapevne.readthedocs.io">Docs</a></p>
@@ -327,7 +303,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2024</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">UK research priority setting for childhood neurological conditions</h3>
+      <h2 class="pub-title anchored">UK research priority setting for childhood neurological conditions</h2>
       <p class="pub-authors">Cadwgan J, Goodwin J, Babcock B, …, <strong class="me">Inward RPD</strong>, …, UK Childhood Neurological Disorders PSP Group</p>
       <p class="pub-venue"><em>Developmental Medicine &amp; Child Neurology</em><span class="pub-tag">PPIE</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1111/dmcn.16021">Paper</a></p>
@@ -337,7 +313,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2024</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Routes of importation and spatial dynamics of SARS-CoV-2 variants during localized interventions in Chile</h3>
+      <h2 class="pub-title anchored">Routes of importation and spatial dynamics of SARS-CoV-2 variants during localized interventions in Chile</h2>
       <p class="pub-authors">Gutierrez B, Tsui JLH, Pullano G, …, <strong class="me">Inward RPD</strong>, …, Kraemer MUG</p>
       <p class="pub-venue"><em>PNAS Nexus</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1093/pnasnexus/pgae483">Paper</a><a href="https://github.com/BernardoGG/SARS2_Chile">Code</a></p>
@@ -347,7 +323,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2024</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Impacts of climate change-related human migration on infectious diseases</h3>
+      <h2 class="pub-title anchored">Impacts of climate change-related human migration on infectious diseases</h2>
       <p class="pub-authors">Tsui JLH, Pena RE, Moir M, <strong class="me">Inward RPD</strong>, …, Sambaturu P</p>
       <p class="pub-venue"><em>Nature Climate Change</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1038/s41558-024-02078-z">Paper</a></p>
@@ -357,7 +333,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2023</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam</h3>
+      <h2 class="pub-title anchored">Reemergence of Cosmopolitan genotype dengue virus serotype 2, southern Vietnam</h2>
       <p class="pub-authors">Tran VT*, <strong class="me">Inward RPD</strong>*, Gutierrez B, Nguyen NM, Nguyen PT, Rajendiran I, Cao TT, Duong KTH, Kraemer MUG, Yacoub S</p>
       <p class="pub-venue"><em>Emerging Infectious Diseases</em><span class="pub-tag is-first">Joint first author</span></p>
       <p class="pub-links"><a href="https://doi.org/10.3201/eid2910.230529">Paper</a><a href="https://github.com/rhysinward/Phylodynamics-HCMC">Code</a></p>
@@ -367,7 +343,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2023</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Comparing the evolutionary dynamics of predominant SARS-CoV-2 virus lineages co-circulating in Mexico</h3>
+      <h2 class="pub-title anchored">Comparing the evolutionary dynamics of predominant SARS-CoV-2 virus lineages co-circulating in Mexico</h2>
       <p class="pub-authors">Castelán-Sánchez HG*, Delaye L*, <strong class="me">Inward RPD</strong>*, Dellicour S*, Gutierrez B*, …, Escalera Zamudio M</p>
       <p class="pub-venue"><em>eLife</em><span class="pub-tag is-first">Joint first author</span></p>
       <p class="pub-links"><a href="https://doi.org/10.7554/eLife.82069">Paper</a><a href="https://github.com/rhysinward/Mexico_subsampling">Code</a></p>
@@ -377,7 +353,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2023</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Genomic assessment of invasion dynamics of SARS-CoV-2 Omicron BA.1</h3>
+      <h2 class="pub-title anchored">Genomic assessment of invasion dynamics of SARS-CoV-2 Omicron BA.1</h2>
       <p class="pub-authors">Tsui JLH*, McCrone JT*, Lambert B*, Bajaj S*, <strong class="me">Inward RPD</strong>*, Bosetti P*, …, Kraemer MUG</p>
       <p class="pub-venue"><em>Science</em><span class="pub-tag is-first">Joint first author</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1126/science.adg6605">Paper</a><a href="https://github.com/joetsui1994/Omicron-BA.1-invasion-dynamics">Code</a></p>
@@ -387,7 +363,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2023</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Identification of evolutionary trajectories shared across human betacoronaviruses</h3>
+      <h2 class="pub-title anchored">Identification of evolutionary trajectories shared across human betacoronaviruses</h2>
       <p class="pub-authors">Escalera-Zamudio M, Kosakovsky Pond SL, Martínez de la Viña N, Gutiérrez B, <strong class="me">Inward RPD</strong>, Thézé J, van Dorp L, Castelán-Sánchez HG, Bowden TA, Pybus OG, Hulswit RJG</p>
       <p class="pub-venue"><em>Genome Biology and Evolution</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1093/gbe/evad076">Paper</a></p>
@@ -397,7 +373,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2022</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Impact of spatiotemporal heterogeneity in COVID-19 disease surveillance on epidemiological parameters and case growth rates</h3>
+      <h2 class="pub-title anchored">Impact of spatiotemporal heterogeneity in COVID-19 disease surveillance on epidemiological parameters and case growth rates</h2>
       <p class="pub-authors"><strong class="me">Inward RPD</strong>*, Jackson F*, Dasgupta A, Lee G, Battle AL, Parag KV, Kraemer MUG; Global.health consortium</p>
       <p class="pub-venue"><em>Epidemics</em><span class="pub-tag is-first">Joint first author</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1016/j.epidem.2022.100627">Paper</a><a href="https://github.com/fojackson8/COVID19_mapping_epiparams">Code</a></p>
@@ -407,7 +383,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2022</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Context-specific emergence and growth of the SARS-CoV-2 Delta variant</h3>
+      <h2 class="pub-title anchored">Context-specific emergence and growth of the SARS-CoV-2 Delta variant</h2>
       <p class="pub-authors">McCrone JT, Hill V, Bajaj S, …, <strong class="me">Inward RPD</strong>, …, Kraemer MUG</p>
       <p class="pub-venue"><em>Nature</em></p>
       <p class="pub-links"><a href="https://doi.org/10.1038/s41586-022-05200-3">Paper</a><a href="https://github.com/COG-UK/Delta-analysis">Code</a></p>
@@ -417,7 +393,7 @@ window.Quarto = {
   <li class="pub" data-kind="first">
     <div class="pub-year">2022</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data</h3>
+      <h2 class="pub-title anchored">Using multiple sampling strategies to estimate SARS-CoV-2 epidemiological parameters from genomic sequencing data</h2>
       <p class="pub-authors"><strong class="me">Inward RPD</strong>, Parag KV, Faria NR</p>
       <p class="pub-venue"><em>Nature Communications</em><span class="pub-tag is-first">First author</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1038/s41467-022-32812-0">Paper</a><a href="https://github.com/rhysinward/Phylodynamic-Subsampling">Code</a></p>
@@ -427,7 +403,7 @@ window.Quarto = {
   <li class="pub" data-kind="co">
     <div class="pub-year">2021</div>
     <div class="pub-body">
-      <h3 class="pub-title anchored">Epidemic waves of COVID-19 in Scotland: a genomic perspective on the impact of the introduction and relaxation of lockdown on SARS-CoV-2</h3>
+      <h2 class="pub-title anchored">Epidemic waves of COVID-19 in Scotland: a genomic perspective on the impact of the introduction and relaxation of lockdown on SARS-CoV-2</h2>
       <p class="pub-authors">Lycett SJ, Hughes J, McHugh MP, …, <strong class="me">Inward RPD</strong>, …, Robertson DL</p>
       <p class="pub-venue"><em>medRxiv</em><span class="pub-tag">Preprint</span></p>
       <p class="pub-links"><a href="https://doi.org/10.1101/2021.01.08.20248677">Preprint</a></p>
@@ -460,6 +436,84 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     sides();
   });
 });
+</script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -873,8 +927,8 @@ document.querySelectorAll(".chip-filter").forEach(group => {
 <p>© 2026 Rhys Inward · Views are my own</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p><a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a> · <a href="./cv.html">CV</a></p>
+</div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org">Quarto</a></p>
 </div>

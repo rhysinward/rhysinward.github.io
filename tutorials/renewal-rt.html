@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-440323d9283f995a290bb2206ec28529.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ed6e94332b22285a5d9939aee8f24a0b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,6 +114,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Young+Serif&amp;display=swap">
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js" type="text/javascript"></script>
@@ -147,14 +149,18 @@ window.Quarto = {
 
 <meta property="og:title" content="Estimating Rt with a renewal equation – Rhys Inward">
 <meta property="og:description" content="Simulate an outbreak from the renewal equation, then recover the time-varying reproduction number.">
-<meta property="og:image" content="https://rhysinward.github.io/assets/img/rt.svg">
+<meta property="og:image" content="https://rhysinward.github.io/assets/img/card-renewal-rt.png">
 <meta property="og:site_name" content="Rhys Inward">
-<meta property="og:image:alt" content="Illustration of a reproduction number curve with an uncertainty band">
+<meta property="og:image:alt" content="Estimating Rt with a renewal equation, a tutorial by Rhys Inward, with an illustration of a reproduction number curve">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Estimating Rt with a renewal equation – Rhys Inward">
 <meta name="twitter:description" content="Simulate an outbreak from the renewal equation, then recover the time-varying reproduction number.">
-<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/rt.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image:alt" content="Illustration of a reproduction number curve with an uncertainty band">
+<meta name="twitter:image" content="https://rhysinward.github.io/assets/img/card-renewal-rt.png">
+<meta name="twitter:image:alt" content="Estimating Rt with a renewal equation, a tutorial by Rhys Inward, with an illustration of a reproduction number curve">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -198,6 +204,10 @@ window.Quarto = {
     <a class="nav-link" href="../timeline.html"> 
 <span class="menu-text">Timeline</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -225,6 +235,7 @@ window.Quarto = {
   <li><a href="#simulate-an-outbreak" id="toc-simulate-an-outbreak" class="nav-link" data-scroll-target="#simulate-an-outbreak">2. Simulate an outbreak</a></li>
   <li><a href="#estimate-rt-over-a-sliding-window" id="toc-estimate-rt-over-a-sliding-window" class="nav-link" data-scroll-target="#estimate-rt-over-a-sliding-window">3. Estimate Rt over a sliding window</a></li>
   <li><a href="#compare-with-the-truth" id="toc-compare-with-the-truth" class="nav-link" data-scroll-target="#compare-with-the-truth">4. Compare with the truth</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">5. Try it yourself</a></li>
   </ul>
 </nav>
     </div>
@@ -308,7 +319,7 @@ I_t \sim \text{Poisson}\left(R_t \sum_{s \geq 1} I_{t-s}\, w_s\right)
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="renewal-rt_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="renewal-rt_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="Bar chart of simulated daily cases over 120 days. Cases rise from about 5 a day to a peak of around 130 just before day 50, then fall steadily to under 10 a day by day 120." width="672"></p>
 <figcaption>Simulated daily incidence.</figcaption>
 </figure>
 </div>
@@ -346,13 +357,198 @@ I_t \sim \text{Poisson}\left(R_t \sum_{s \geq 1} I_{t-s}\, w_s\right)
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="renewal-rt_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="renewal-rt_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="Line chart of estimated Rt from day 15 to day 120, with a shaded 95% credible interval and the true Rt as a dashed step that drops from 1.5 to 0.8 at day 50. The estimate starts near 2, settles close to 1.5 by day 30, falls to about 0.8 within a week of day 50 and stays near 0.8, with the band widening as cases fall." width="672"></p>
 <figcaption>Estimated Rt with a 95% credible interval. The dashed line is the true value.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>The estimate tracks the true <span class="math inline">\(R_t\)</span> and takes about a window’s length to catch up after the drop on day 50.</p>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">5. Try it yourself</h2>
+<p>The same simulation and estimator, running in your browser. Change a setting and the outbreak is simulated again and <span class="math inline">\(R_t\)</span> re-estimated. The true <span class="math inline">\(R_t\)</span> is fixed at 1.5, dropping to 0.8 on day 50.</p>
+<p>Things to try:</p>
+<ul>
+<li><strong>Assume the wrong generation interval.</strong> Leave the true mean at 6 days and set the analyst’s to 4. The estimate is pulled towards 1: roughly 1.3 instead of 1.5 while cases grow, and 0.86 instead of 0.8 after the drop. Assume 9 days and it is pushed away from 1 instead.</li>
+<li><strong>Add imported cases.</strong> Set 10 a day, then switch on <em>Count imported cases as local</em>. The estimate runs high throughout and creeps back towards 1 after the drop, because imported cases look like local offspring.</li>
+<li><strong>Widen the window.</strong> Go from 7 to 21 days. The band narrows, but the estimate takes about two weeks, rather than four days, to fall below 1 after the drop.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="116" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { genInterval<span class="op">,</span> simulate<span class="op">,</span> cori<span class="op">,</span> labelRange<span class="op">,</span> tidyPlot } <span class="im">from</span> <span class="st">"./explorers.js"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="explorer ex-rt">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="124" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>viewof trueMean <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">2</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"True generation interval (mean, days)"</span> }))</span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>viewof assumedMean <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">2</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Generation interval the analyst assumes (days)"</span> }))</span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>viewof tau <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">28</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Estimation window (days)"</span> }))</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>viewof imports <span class="op">=</span> <span class="fu">labelRange</span>(Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Imported cases a day"</span> }))</span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>viewof lump <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">toggle</span>({ <span class="dt">label</span><span class="op">:</span> <span class="st">"Count imported cases as local"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="kw">false</span> })</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>viewof seed <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"New random outbreak"</span><span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> v <span class="kw">=&gt;</span> v <span class="op">+</span> <span class="dv">1</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="135" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>rtTrue <span class="op">=</span> (t) <span class="kw">=&gt;</span> (t <span class="op">&lt;</span> <span class="dv">49</span> <span class="op">?</span> <span class="fl">1.5</span> <span class="op">:</span> <span class="fl">0.8</span>)</span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> <span class="fu">simulate</span>({ <span class="dt">rt</span><span class="op">:</span> rtTrue<span class="op">,</span> <span class="dt">w</span><span class="op">:</span> <span class="fu">genInterval</span>(trueMean)<span class="op">,</span> <span class="dt">rpois</span><span class="op">:</span> d3<span class="op">.</span><span class="at">randomPoisson</span><span class="op">.</span><span class="fu">source</span>(d3<span class="op">.</span><span class="fu">randomLcg</span>(seed))<span class="op">,</span> <span class="dt">imported</span><span class="op">:</span> imports })</span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>cases <span class="op">=</span> sim<span class="op">.</span><span class="at">local</span><span class="op">.</span><span class="fu">map</span>((v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({ <span class="dt">day</span><span class="op">:</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">local</span><span class="op">:</span> v<span class="op">,</span> <span class="dt">imported</span><span class="op">:</span> sim<span class="op">.</span><span class="at">imp</span>[i] }))</span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>minCases <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>est <span class="op">=</span> <span class="fu">cori</span>({</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="dt">local</span><span class="op">:</span> lump <span class="op">?</span> sim<span class="op">.</span><span class="at">local</span><span class="op">.</span><span class="fu">map</span>((v<span class="op">,</span> i) <span class="kw">=&gt;</span> v <span class="op">+</span> sim<span class="op">.</span><span class="at">imp</span>[i]) <span class="op">:</span> sim<span class="op">.</span><span class="at">local</span><span class="op">,</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>  <span class="dt">imp</span><span class="op">:</span> lump <span class="op">?</span> <span class="kw">null</span> <span class="op">:</span> sim<span class="op">.</span><span class="at">imp</span><span class="op">,</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>  <span class="dt">w</span><span class="op">:</span> <span class="fu">genInterval</span>(assumedMean)<span class="op">,</span></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  tau</span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> (r<span class="op">.</span><span class="at">cases</span> <span class="op">&lt;</span> minCases <span class="op">?</span> { <span class="op">...</span>r<span class="op">,</span> <span class="dt">mean</span><span class="op">:</span> <span class="kw">NaN</span><span class="op">,</span> <span class="dt">lo</span><span class="op">:</span> <span class="kw">NaN</span><span class="op">,</span> <span class="dt">hi</span><span class="op">:</span> <span class="kw">NaN</span> } <span class="op">:</span> r))</span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> (day) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> est<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">day</span> <span class="op">===</span> day)<span class="op">;</span></span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> r <span class="op">&amp;&amp;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(r<span class="op">.</span><span class="at">mean</span>) <span class="op">?</span> r<span class="op">.</span><span class="at">mean</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>) <span class="op">:</span> <span class="st">"too few cases"</span><span class="op">;</span></span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="152" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p class="explorer-key" aria-hidden="true"&gt;&lt;span&gt;&lt;i class="sw sw-main"&gt;&lt;/i&gt;Local cases&lt;/span&gt;</span><span class="sc">${</span>imports <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;span&gt;&lt;i class="sw sw-imported"&gt;&lt;/i&gt;Imported cases&lt;/span&gt;`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;span&gt;&lt;i class="sw sw-rule"&gt;&lt;/i&gt;&lt;span&gt;Day 50, when R&lt;sub&gt;t&lt;/sub&gt; drops&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="157" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyPlot</span>(Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>  width<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">190</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">44</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Simulated daily cases"</span><span class="op">,</span></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaDescription</span><span class="op">:</span> <span class="vs">`Bar chart of simulated daily cases over 120 days, peaking at </span><span class="sc">${</span>d3<span class="op">.</span><span class="fu">max</span>(sim<span class="op">.</span><span class="at">local</span>)<span class="sc">}</span><span class="vs"> local cases on day </span><span class="sc">${</span>sim<span class="op">.</span><span class="at">local</span><span class="op">.</span><span class="fu">indexOf</span>(d3<span class="op">.</span><span class="fu">max</span>(sim<span class="op">.</span><span class="at">local</span>)) <span class="op">+</span> <span class="dv">1</span><span class="sc">}${</span>imports <span class="op">?</span> <span class="vs">`, plus </span><span class="sc">${</span>imports<span class="sc">}</span><span class="vs"> imported cases a day`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">.`</span><span class="op">,</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Day"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.5</span><span class="op">,</span> <span class="fl">120.5</span>] }<span class="op">,</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Cases"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(cases<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">day</span> <span class="op">-</span> <span class="fl">0.42</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">day</span> <span class="op">+</span> <span class="fl">0.42</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"local"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"local cases"</span> })<span class="op">,</span></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(cases<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">imported</span>)<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">day</span> <span class="op">-</span> <span class="fl">0.42</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">day</span> <span class="op">+</span> <span class="fl">0.42</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"local"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">local</span> <span class="op">+</span> d<span class="op">.</span><span class="at">imported</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"imported cases"</span> })<span class="op">,</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="fl">49.5</span>]<span class="op">,</span> { <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"drop"</span> })<span class="op">,</span></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="174" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 173;"><span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyPlot</span>(Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>  width<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">230</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">44</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Estimated Rt against the true value"</span><span class="op">,</span></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaDescription</span><span class="op">:</span> <span class="vs">`Estimated Rt with a 95% credible interval from day </span><span class="sc">${</span>est[<span class="dv">0</span>]<span class="op">.</span><span class="at">day</span><span class="sc">}</span><span class="vs">. The true Rt, dashed, is 1.5 until day 50 and 0.8 after. Estimate on day 40: </span><span class="sc">${</span><span class="fu">fmt</span>(<span class="dv">40</span>)<span class="sc">}</span><span class="vs">; on day 110: </span><span class="sc">${</span><span class="fu">fmt</span>(<span class="dv">110</span>)<span class="sc">}</span><span class="vs">.`</span><span class="op">,</span></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Day"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.5</span><span class="op">,</span> <span class="fl">120.5</span>] }<span class="op">,</span></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Rt"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>] }<span class="op">,</span></span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">1</span>]<span class="op">,</span> { <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"reference"</span> })<span class="op">,</span></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(est<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"day"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"lo"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(d<span class="op">.</span><span class="at">hi</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"estimate band"</span> })<span class="op">,</span></span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(est<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"day"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(d<span class="op">.</span><span class="at">mean</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"estimate"</span> })<span class="op">,</span></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">121</span>)<span class="op">.</span><span class="fu">map</span>(day <span class="kw">=&gt;</span> ({ day<span class="op">,</span> <span class="dt">rt</span><span class="op">:</span> <span class="fu">rtTrue</span>(day <span class="op">-</span> <span class="dv">1</span>) }))<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"day"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"rt"</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"step-after"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"currentColor"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,4"</span><span class="op">,</span> <span class="dt">ariaDescription</span><span class="op">:</span> <span class="st">"true Rt"</span> })</span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="191" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p class="explorer-readout" aria-live="polite"&gt;Estimate on day 40: &lt;strong&gt;</span><span class="sc">${</span><span class="fu">fmt</span>(<span class="dv">40</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt; (true 1.5). On day 110: &lt;strong&gt;</span><span class="sc">${</span><span class="fu">fmt</span>(<span class="dv">110</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt; (true 0.8).&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<p>The line is left out wherever the window holds fewer than 11 cases, where the estimate reflects the prior more than the data. Your browser draws its own random numbers, so the outbreak differs from the one above, which R generated with <code>set.seed(1)</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -389,6 +585,95 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     sides();
   });
 });
+</script>
+<script>
+// Accessibility and navigation fixes for Quarto's built-in markup.
+(() => {
+  const ready = fn => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", fn) : fn();
+  ready(() => {
+    // The menu button is a disclosure, not a menu; name the main navigation.
+    document.querySelectorAll(".navbar-toggler[role='menu']").forEach(b => b.removeAttribute("role"));
+    const mainNav = document.querySelector("#quarto-header nav");
+    if (mainNav && !mainNav.hasAttribute("aria-label")) mainNav.setAttribute("aria-label", "Main");
+
+    // Listing card titles are h5 straight under a section h2; announce them as h3.
+    document.querySelectorAll(".quarto-grid-item h5.card-title").forEach(h => h.setAttribute("aria-level", "3"));
+
+    // Wide output blocks scroll sideways; make them reachable by keyboard.
+    document.querySelectorAll(".cell-output pre").forEach(pre => {
+      if (pre.scrollWidth > pre.clientWidth + 1) {
+        pre.tabIndex = 0;
+        pre.setAttribute("aria-label", "Code output, scrolls sideways");
+      }
+    });
+
+    // Topic tags on a tutorial point at that topic on the tutorials page, not at
+    // a filtered list on the home page. Quarto wraps each tag in a link once it
+    // has loaded listings.json, so rewrite the link whenever it appears.
+    const cats = document.querySelector("header.quarto-title-block .quarto-categories");
+    if (cats) {
+      const offset = document.querySelector("meta[name='quarto:offset']")?.content || "./";
+      const hubs = ["Dengue", "Chikungunya", "S. intermedius", "Methods"];
+      const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const target = name => offset + "tutorials/index.html" + (hubs.includes(name) ? "#" + slug(name) : "");
+      const fix = () => cats.querySelectorAll(".quarto-category a").forEach(a => {
+        const want = target(a.closest(".quarto-category").textContent.trim());
+        if (a.getAttribute("href") !== want) a.setAttribute("href", want);
+      });
+      fix();
+      new MutationObserver(fix).observe(cats, { childList: true, subtree: true });
+      // If Quarto never adds its links (listings.json unavailable), add them.
+      window.addEventListener("load", () => setTimeout(() => {
+        cats.querySelectorAll(".quarto-category").forEach(tag => {
+          if (tag.querySelector("a")) return;
+          const a = document.createElement("a");
+          a.href = target(tag.textContent.trim());
+          a.append(...tag.childNodes);
+          tag.append(a);
+        });
+      }, 2000));
+    }
+  });
+
+  // Search overlay: keep Tab inside it while open, let Escape close it from
+  // anywhere, and return focus to the search button when it closes.
+  document.addEventListener("keydown", e => {
+    const box = document.querySelector(".aa-DetachedContainer");
+    if (!box) return;
+    if (e.key === "Escape" && document.activeElement !== box.querySelector("input")) {
+      box.querySelector(".aa-DetachedCancelButton")?.click();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const stops = [...box.querySelectorAll("input, button, a[href], [tabindex]:not([tabindex='-1'])")]
+      .filter(el => !el.disabled && el.getClientRects().length);
+    if (!stops.length) return;
+    const first = stops[0], last = stops[stops.length - 1], here = document.activeElement;
+    if (!box.contains(here)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && here === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && here === last) { e.preventDefault(); first.focus(); }
+  }, true);
+  let wasOpen = false;
+  new MutationObserver(() => {
+    const open = !!document.querySelector(".aa-DetachedOverlay");
+    if (wasOpen && !open) {
+      const btn = document.querySelector(".aa-DetachedSearchButton");
+      if (btn && (document.activeElement === document.body || !document.activeElement)) btn.focus();
+    }
+    wasOpen = open;
+  }).observe(document.body, { childList: true });
+})();
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IGdlbkludGVydmFsLCBzaW11bGF0ZSwgY29yaSwgbGFiZWxSYW5nZSwgdGlkeVBsb3QgfSBmcm9tIFwiLi9leHBsb3JlcnMuanNcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHRydWVNZWFuID0gbGFiZWxSYW5nZShJbnB1dHMucmFuZ2UoWzIsIDIwXSwgeyB2YWx1ZTogNiwgc3RlcDogMSwgbGFiZWw6IFwiVHJ1ZSBnZW5lcmF0aW9uIGludGVydmFsIChtZWFuLCBkYXlzKVwiIH0pKVxudmlld29mIGFzc3VtZWRNZWFuID0gbGFiZWxSYW5nZShJbnB1dHMucmFuZ2UoWzIsIDIwXSwgeyB2YWx1ZTogNiwgc3RlcDogMSwgbGFiZWw6IFwiR2VuZXJhdGlvbiBpbnRlcnZhbCB0aGUgYW5hbHlzdCBhc3N1bWVzIChkYXlzKVwiIH0pKVxudmlld29mIHRhdSA9IGxhYmVsUmFuZ2UoSW5wdXRzLnJhbmdlKFsxLCAyOF0sIHsgdmFsdWU6IDcsIHN0ZXA6IDEsIGxhYmVsOiBcIkVzdGltYXRpb24gd2luZG93IChkYXlzKVwiIH0pKVxudmlld29mIGltcG9ydHMgPSBsYWJlbFJhbmdlKElucHV0cy5yYW5nZShbMCwgMjBdLCB7IHZhbHVlOiAwLCBzdGVwOiAxLCBsYWJlbDogXCJJbXBvcnRlZCBjYXNlcyBhIGRheVwiIH0pKVxudmlld29mIGx1bXAgPSBJbnB1dHMudG9nZ2xlKHsgbGFiZWw6IFwiQ291bnQgaW1wb3J0ZWQgY2FzZXMgYXMgbG9jYWxcIiwgdmFsdWU6IGZhbHNlIH0pXG52aWV3b2Ygc2VlZCA9IElucHV0cy5idXR0b24oXCJOZXcgcmFuZG9tIG91dGJyZWFrXCIsIHsgdmFsdWU6IDQsIHJlZHVjZTogdiA9PiB2ICsgMSB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicnRUcnVlID0gKHQpID0+ICh0IDwgNDkgPyAxLjUgOiAwLjgpXG5zaW0gPSBzaW11bGF0ZSh7IHJ0OiBydFRydWUsIHc6IGdlbkludGVydmFsKHRydWVNZWFuKSwgcnBvaXM6IGQzLnJhbmRvbVBvaXNzb24uc291cmNlKGQzLnJhbmRvbUxjZyhzZWVkKSksIGltcG9ydGVkOiBpbXBvcnRzIH0pXG5jYXNlcyA9IHNpbS5sb2NhbC5tYXAoKHYsIGkpID0+ICh7IGRheTogaSArIDEsIGxvY2FsOiB2LCBpbXBvcnRlZDogc2ltLmltcFtpXSB9KSlcbm1pbkNhc2VzID0gMTFcbmVzdCA9IGNvcmkoe1xuICBsb2NhbDogbHVtcCA/IHNpbS5sb2NhbC5tYXAoKHYsIGkpID0+IHYgKyBzaW0uaW1wW2ldKSA6IHNpbS5sb2NhbCxcbiAgaW1wOiBsdW1wID8gbnVsbCA6IHNpbS5pbXAsXG4gIHc6IGdlbkludGVydmFsKGFzc3VtZWRNZWFuKSxcbiAgdGF1XG59KS5tYXAociA9PiAoci5jYXNlcyA8IG1pbkNhc2VzID8geyAuLi5yLCBtZWFuOiBOYU4sIGxvOiBOYU4sIGhpOiBOYU4gfSA6IHIpKVxuZm10ID0gKGRheSkgPT4ge1xuICBjb25zdCByID0gZXN0LmZpbmQoZCA9PiBkLmRheSA9PT0gZGF5KTtcbiAgcmV0dXJuIHIgJiYgTnVtYmVyLmlzRmluaXRlKHIubWVhbikgPyByLm1lYW4udG9GaXhlZCgyKSA6IFwidG9vIGZldyBjYXNlc1wiO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8cCBjbGFzcz1cImV4cGxvcmVyLWtleVwiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPjxzcGFuPjxpIGNsYXNzPVwic3cgc3ctbWFpblwiPjwvaT5Mb2NhbCBjYXNlczwvc3Bhbj4ke2ltcG9ydHMgPiAwID8gaHRtbGA8c3Bhbj48aSBjbGFzcz1cInN3IHN3LWltcG9ydGVkXCI+PC9pPkltcG9ydGVkIGNhc2VzPC9zcGFuPmAgOiBcIlwifTxzcGFuPjxpIGNsYXNzPVwic3cgc3ctcnVsZVwiPjwvaT48c3Bhbj5EYXkgNTAsIHdoZW4gUjxzdWI+dDwvc3ViPiBkcm9wczwvc3Bhbj48L3NwYW4+PC9wPmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRpZHlQbG90KFBsb3QucGxvdCh7XG4gIHdpZHRoLCBoZWlnaHQ6IDE5MCwgbWFyZ2luTGVmdDogNDQsIG1hcmdpbkJvdHRvbTogMzYsXG4gIGFyaWFMYWJlbDogXCJTaW11bGF0ZWQgZGFpbHkgY2FzZXNcIixcbiAgYXJpYURlc2NyaXB0aW9uOiBgQmFyIGNoYXJ0IG9mIHNpbXVsYXRlZCBkYWlseSBjYXNlcyBvdmVyIDEyMCBkYXlzLCBwZWFraW5nIGF0ICR7ZDMubWF4KHNpbS5sb2NhbCl9IGxvY2FsIGNhc2VzIG9uIGRheSAke3NpbS5sb2NhbC5pbmRleE9mKGQzLm1heChzaW0ubG9jYWwpKSArIDF9JHtpbXBvcnRzID8gYCwgcGx1cyAke2ltcG9ydHN9IGltcG9ydGVkIGNhc2VzIGEgZGF5YCA6IFwiXCJ9LmAsXG4gIHg6IHsgbGFiZWw6IFwiRGF5XCIsIGRvbWFpbjogWzAuNSwgMTIwLjVdIH0sXG4gIHk6IHsgbGFiZWw6IFwiQ2FzZXNcIiwgZ3JpZDogdHJ1ZSB9LFxuICBtYXJrczogW1xuICAgIFBsb3QucmVjdFkoY2FzZXMsIHsgeDE6IGQgPT4gZC5kYXkgLSAwLjQyLCB4MjogZCA9PiBkLmRheSArIDAuNDIsIHk6IFwibG9jYWxcIiwgZmlsbDogXCJjdXJyZW50Q29sb3JcIiwgYXJpYURlc2NyaXB0aW9uOiBcImxvY2FsIGNhc2VzXCIgfSksXG4gICAgUGxvdC5yZWN0WShjYXNlcy5maWx0ZXIoZCA9PiBkLmltcG9ydGVkKSwgeyB4MTogZCA9PiBkLmRheSAtIDAuNDIsIHgyOiBkID0+IGQuZGF5ICsgMC40MiwgeTE6IFwibG9jYWxcIiwgeTI6IGQgPT4gZC5sb2NhbCArIGQuaW1wb3J0ZWQsIGZpbGw6IFwiY3VycmVudENvbG9yXCIsIGFyaWFEZXNjcmlwdGlvbjogXCJpbXBvcnRlZCBjYXNlc1wiIH0pLFxuICAgIFBsb3QucnVsZVgoWzQ5LjVdLCB7IHN0cm9rZTogXCJjdXJyZW50Q29sb3JcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjQsM1wiLCBhcmlhRGVzY3JpcHRpb246IFwiZHJvcFwiIH0pLFxuICAgIFBsb3QucnVsZVkoWzBdKVxuICBdXG59KSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRpZHlQbG90KFBsb3QucGxvdCh7XG4gIHdpZHRoLCBoZWlnaHQ6IDIzMCwgbWFyZ2luTGVmdDogNDQsIG1hcmdpbkJvdHRvbTogMzYsXG4gIGFyaWFMYWJlbDogXCJFc3RpbWF0ZWQgUnQgYWdhaW5zdCB0aGUgdHJ1ZSB2YWx1ZVwiLFxuICBhcmlhRGVzY3JpcHRpb246IGBFc3RpbWF0ZWQgUnQgd2l0aCBhIDk1JSBjcmVkaWJsZSBpbnRlcnZhbCBmcm9tIGRheSAke2VzdFswXS5kYXl9LiBUaGUgdHJ1ZSBSdCwgZGFzaGVkLCBpcyAxLjUgdW50aWwgZGF5IDUwIGFuZCAwLjggYWZ0ZXIuIEVzdGltYXRlIG9uIGRheSA0MDogJHtmbXQoNDApfTsgb24gZGF5IDExMDogJHtmbXQoMTEwKX0uYCxcbiAgeDogeyBsYWJlbDogXCJEYXlcIiwgZG9tYWluOiBbMC41LCAxMjAuNV0gfSxcbiAgeTogeyBsYWJlbDogXCJSdFwiLCBncmlkOiB0cnVlLCBkb21haW46IFswLCAzXSB9LFxuICBtYXJrczogW1xuICAgIFBsb3QucnVsZVkoWzFdLCB7IHN0cm9rZTogXCJjdXJyZW50Q29sb3JcIiwgYXJpYURlc2NyaXB0aW9uOiBcInJlZmVyZW5jZVwiIH0pLFxuICAgIFBsb3QuYXJlYVkoZXN0LCB7IHg6IFwiZGF5XCIsIHkxOiBcImxvXCIsIHkyOiBkID0+IE1hdGgubWluKGQuaGksIDMpLCBmaWxsOiBcImN1cnJlbnRDb2xvclwiLCBjbGlwOiB0cnVlLCBhcmlhRGVzY3JpcHRpb246IFwiZXN0aW1hdGUgYmFuZFwiIH0pLFxuICAgIFBsb3QubGluZVkoZXN0LCB7IHg6IFwiZGF5XCIsIHk6IGQgPT4gTWF0aC5taW4oZC5tZWFuLCAzKSwgc3Ryb2tlOiBcImN1cnJlbnRDb2xvclwiLCBzdHJva2VXaWR0aDogMiwgY2xpcDogdHJ1ZSwgYXJpYURlc2NyaXB0aW9uOiBcImVzdGltYXRlXCIgfSksXG4gICAgUGxvdC5saW5lWShkMy5yYW5nZSgxLCAxMjEpLm1hcChkYXkgPT4gKHsgZGF5LCBydDogcnRUcnVlKGRheSAtIDEpIH0pKSwgeyB4OiBcImRheVwiLCB5OiBcInJ0XCIsIGN1cnZlOiBcInN0ZXAtYWZ0ZXJcIiwgc3Ryb2tlOiBcImN1cnJlbnRDb2xvclwiLCBzdHJva2VEYXNoYXJyYXk6IFwiNSw0XCIsIGFyaWFEZXNjcmlwdGlvbjogXCJ0cnVlIFJ0XCIgfSlcbiAgXVxufSkpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxwIGNsYXNzPVwiZXhwbG9yZXItcmVhZG91dFwiIGFyaWEtbGl2ZT1cInBvbGl0ZVwiPkVzdGltYXRlIG9uIGRheSA0MDogPHN0cm9uZz4ke2ZtdCg0MCl9PC9zdHJvbmc+ICh0cnVlIDEuNSkuIE9uIGRheSAxMTA6IDxzdHJvbmc+JHtmbXQoMTEwKX08L3N0cm9uZz4gKHRydWUgMC44KS48L3A+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0cnVlTWVhbicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhc3N1bWVkTWVhbicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0YXUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnaW1wb3J0cycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdsdW1wJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlZWQnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../tutorials";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -802,8 +1087,8 @@ document.querySelectorAll(".chip-filter").forEach(group => {
 <p>© 2026 Rhys Inward · Views are my own</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p><a href="mailto:rhys.inward@biology.ox.ac.uk">rhys.inward@biology.ox.ac.uk</a> · <a href="../cv.html">CV</a></p>
+</div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org">Quarto</a></p>
 </div>
