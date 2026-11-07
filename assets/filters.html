@@ -125,3 +125,43 @@ document.querySelectorAll(".chip-filter").forEach(group => {
   });
 })();
 </script>
+<script>
+// Home hero animation: plays muted while on screen, never starts by itself for
+// people who prefer reduced motion, and can always be paused or played.
+(() => {
+  const fig = document.querySelector(".hero-video");
+  if (!fig) return;
+  const video = fig.querySelector("video");
+  const btn = fig.querySelector(".hero-video-toggle");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  video.controls = false;
+  btn.hidden = false;
+  let stopped = reduce.matches;   // paused by the visitor, or by their motion setting
+  let onScreen = false;
+  const sync = () => {
+    btn.classList.toggle("is-paused", video.paused);
+    btn.setAttribute("aria-label", video.paused ? "Play the animation" : "Pause the animation");
+  };
+  const update = () => {
+    if (!stopped && onScreen) {
+      video.play().catch(() => { stopped = true; sync(); });
+    } else {
+      video.pause();
+    }
+  };
+  btn.addEventListener("click", () => {
+    stopped = !video.paused;
+    if (!stopped) onScreen = true;
+    update();
+  });
+  video.addEventListener("play", sync);
+  video.addEventListener("pause", sync);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; update(); }, { threshold: 0.2 }).observe(video);
+  } else {
+    onScreen = true; update();
+  }
+  reduce.addEventListener?.("change", () => { if (reduce.matches) { stopped = true; update(); } });
+  sync();
+})();
+</script>

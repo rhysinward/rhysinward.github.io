@@ -774,3 +774,27 @@ div.sourceCode pre.sourceCode > code.sourceCode > span { display: inline-block; 
   .cv-head { padding-bottom: 0.7rem; margin-bottom: 0.6rem; }
   .cv h2 + p { margin: 0.2rem 0 0; }
 }
+
+// 15. Home hero animation (assets/video, made by _tools/denv2-animation) -------
+
+.hero-video { margin: 0; }
+.hero-video-frame { position: relative; }
+// The video is drawn on the light paper colour, so its frame and button stay light in dark mode too.
+.hero-video video { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 12px; border: 1px solid var(--rule); background: #FBFAF7; }
+.hero-video-toggle {
+  position: absolute; right: 0.6rem; bottom: 0.6rem;
+  width: 2.3rem; height: 2.3rem; padding: 0;
+  display: grid; place-items: center;
+  border-radius: 50%; border: 1px solid #C7C6BE;
+  background: rgba(251, 250, 247, 0.94); color: #1D2930; cursor: pointer;
+}
+.hero-video-toggle[hidden] { display: none; }
+.hero-video-toggle svg { width: 0.95rem; height: 0.95rem; fill: currentColor; }
+.hero-video-toggle .icon-play, .hero-video-toggle.is-paused .icon-pause { display: none; }
+.hero-video-toggle.is-paused .icon-play { display: block; }
+.hero-video-toggle:hover { border-color: #1D2930; }
+.hero-video-toggle:focus-visible { outline: 2px solid var(--C); outline-offset: 2px; }
+.hero-key { list-style: none; margin: 0.65rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.2rem 0.95rem; font-size: 0.82rem; color: var(--ink-2); }
+.hero-key li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.hero-key li::before { content: ""; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--k); flex: none; }
+.hero-video .hero-caption { display: block; text-align: left; margin-top: 0.45rem; font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0; line-height: 1.5; color: var(--ink-2); }
