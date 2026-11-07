@@ -43,8 +43,8 @@ I'm a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a
 ```{=html}
 <figure class="hero-video">
   <div class="hero-video-frame">
-    <video controls muted loop playsinline preload="metadata" poster="assets/video/denv2-ii-poster.jpg" width="1080" height="1080"
-      aria-label="Animated map of South and Southeast Asia and southern China with a phylogenetic tree beneath it. From 1998 to 2023, lines show dengue virus 2 lineages moving between countries, circles grow and shrink with the number of lineages in each place, and the tree fills in with colour as time passes.">
+    <video controls muted loop playsinline preload="metadata" poster="assets/video/denv2-ii-poster.jpg" data-poster-time="18" width="1080" height="1080"
+      aria-label="Animated map of South and Southeast Asia, China and Taiwan with a phylogenetic tree beneath it. From 1998 to 2023, lines show dengue virus 2 lineages moving between countries and regions, circles grow and shrink with the number of lineages in each place, and the tree fills in with colour as time passes.">
       <source src="assets/video/denv2-ii.mp4" type="video/mp4">
     </video>
     <button type="button" class="hero-video-toggle" hidden aria-label="Pause the animation">
@@ -59,7 +59,7 @@ I'm a field epidemiology fellow with the UK Health Security Agency (UKHSA) and a
     <li style="--k: #2B5C8A">Maritime Southeast Asia</li>
     <li style="--k: #7A4D80">China and Taiwan</li>
   </ul>
-  <figcaption class="hero-caption">Dengue virus 2, genotype II (Cosmopolitan), moving between South and Southeast Asia and southern China, 1998–2023, reconstructed from 1,627 genomes. Lines are inferred movements, fainter where less certain; circles show the lineages in each place. From my DPhil work, in preparation. Made with <a href="https://github.com/evogytis/baltic">baltic</a>, after Gytis Dudas.</figcaption>
+  <figcaption class="hero-caption">Dengue virus 2, genotype II (Cosmopolitan), moving between South and Southeast Asia, China and Taiwan: a discrete phylogeographic reconstruction from 1,627 E-gene sequences sampled 2000–2023, shown from 1998 with lineages already established. Lines are inferred movements; circles show the lineages in each place, and shrink at the end because sampling stops. From my DPhil work, in preparation. Made with <a href="https://github.com/evogytis/baltic">baltic</a>, after Gytis Dudas.</figcaption>
 </figure>
 ```
 :::

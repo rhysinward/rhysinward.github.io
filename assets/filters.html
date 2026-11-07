@@ -142,9 +142,28 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     btn.classList.toggle("is-paused", video.paused);
     btn.setAttribute("aria-label", video.paused ? "Play the animation" : "Pause the animation");
   };
+  // The first play continues from the poster frame (data-poster-time, in
+  // seconds) so the picture does not jump back to the start; it then loops.
+  let started = false;
+  let played = false;
   const update = () => {
     if (!stopped && onScreen) {
-      video.play().catch(() => { stopped = true; sync(); });
+      if (!started && video.dataset.posterTime) {
+        started = true;
+        const seek = () => { video.currentTime = parseFloat(video.dataset.posterTime); };
+        if (video.readyState >= 1) seek();
+        else video.addEventListener("loadedmetadata", seek, { once: true });
+      }
+      // Only a refusal to autoplay counts as stopped; an AbortError just means
+      // our own pause() (e.g. scrolling away) interrupted a pending play().
+      const first = !played;
+      played = true;
+      video.play().then(() => {
+        // On the first play only: if the browser reset the position while
+        // loading, apply the poster time once more.
+        const p = parseFloat(video.dataset.posterTime || "0");
+        if (first && p && video.currentTime < 1) video.currentTime = p;
+      }).catch(e => { if (e.name === "NotAllowedError") { stopped = true; sync(); } });
     } else {
       video.pause();
     }

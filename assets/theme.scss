@@ -782,7 +782,7 @@ div.sourceCode pre.sourceCode > code.sourceCode > span { display: inline-block; 
 // The video is drawn on the light paper colour, so its frame and button stay light in dark mode too.
 .hero-video video { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 12px; border: 1px solid var(--rule); background: #FBFAF7; }
 .hero-video-toggle {
-  position: absolute; right: 0.6rem; bottom: 0.6rem;
+  position: absolute; right: 0.6rem; top: 0.6rem;   // over quiet land, clear of the tree band
   width: 2.3rem; height: 2.3rem; padding: 0;
   display: grid; place-items: center;
   border-radius: 50%; border: 1px solid #C7C6BE;
@@ -793,8 +793,8 @@ div.sourceCode pre.sourceCode > code.sourceCode > span { display: inline-block; 
 .hero-video-toggle .icon-play, .hero-video-toggle.is-paused .icon-pause { display: none; }
 .hero-video-toggle.is-paused .icon-play { display: block; }
 .hero-video-toggle:hover { border-color: #1D2930; }
-.hero-video-toggle:focus-visible { outline: 2px solid var(--C); outline-offset: 2px; }
+.hero-video-toggle:focus-visible { outline: 2px solid #2B5C8A; outline-offset: 2px; }   // fixed: it sits on the light video in both modes
 .hero-key { list-style: none; margin: 0.65rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.2rem 0.95rem; font-size: 0.82rem; color: var(--ink-2); }
 .hero-key li { display: inline-flex; align-items: center; gap: 0.4rem; }
-.hero-key li::before { content: ""; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--k); flex: none; }
+.hero-key li::before { content: ""; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--k); flex: none; box-shadow: 0 0 0 1.5px #FBFAF7; }   // the light ring keeps dark dots visible in dark mode
 .hero-video .hero-caption { display: block; text-align: left; margin-top: 0.45rem; font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0; line-height: 1.5; color: var(--ink-2); }

@@ -7,7 +7,7 @@ mkdir -p "$dest"
 fps=30
 # H.264 MP4 plays everywhere; +faststart lets it start before it has fully downloaded.
 ffmpeg -y -v error -framerate $fps -i "$out/frames/f_%05d.png" \
-  -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -tune animation -movflags +faststart -an \
+  -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -tune animation -level:v 4.0 -movflags +faststart -an \
   "$dest/denv2-ii.mp4"
 # (A VP9 WebM came out larger than this MP4 for this flat, line-art animation, so only the MP4 is made.)
 # Poster: the frame at about 2016, shown before playback and to people who prefer reduced motion.
