@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-1e2507db5f55d85482394ea8c8ce1bf8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f23954ae16d51efdc03256ec3ead35e6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8db7c802f7c6c11e8bea58dade600e51.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -414,9 +414,28 @@ document.querySelectorAll(".chip-filter").forEach(group => {
     btn.classList.toggle("is-paused", video.paused);
     btn.setAttribute("aria-label", video.paused ? "Play the animation" : "Pause the animation");
   };
+  // The first play continues from the poster frame (data-poster-time, in
+  // seconds) so the picture does not jump back to the start; it then loops.
+  let started = false;
+  let played = false;
   const update = () => {
     if (!stopped && onScreen) {
-      video.play().catch(() => { stopped = true; sync(); });
+      if (!started && video.dataset.posterTime) {
+        started = true;
+        const seek = () => { video.currentTime = parseFloat(video.dataset.posterTime); };
+        if (video.readyState >= 1) seek();
+        else video.addEventListener("loadedmetadata", seek, { once: true });
+      }
+      // Only a refusal to autoplay counts as stopped; an AbortError just means
+      // our own pause() (e.g. scrolling away) interrupted a pending play().
+      const first = !played;
+      played = true;
+      video.play().then(() => {
+        // On the first play only: if the browser reset the position while
+        // loading, apply the poster time once more.
+        const p = parseFloat(video.dataset.posterTime || "0");
+        if (first && p && video.currentTime < 1) video.currentTime = p;
+      }).catch(e => { if (e.name === "NotAllowedError") { stopped = true; sync(); } });
     } else {
       video.pause();
     }
